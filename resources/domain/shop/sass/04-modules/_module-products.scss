@@ -1,0 +1,226 @@
+.media-gallery {
+  .media-gallery__main {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mobile() {
+        height: 240px;
+    }
+  }
+
+  .media-gallery__list {
+    display: flex;
+    margin-top: 1rem;
+
+    .media-gallery__item {
+      @include radius();
+      @include transition();
+      cursor: pointer;
+      margin: 4px;
+      padding: 8px;
+
+      @include mobile() {
+          padding: 4px;
+      }
+
+      .media-gallery__image {
+        height: 40px !important;
+        @include radius();
+      }
+
+      &:hover {
+        background: #e0e0e0;
+      }
+
+      &.media-gallery__item--active {
+        background: $color-primary;
+      }
+    }
+  }
+}
+
+.products {
+  .products__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    color: rgba($color-white, .64);
+  }
+
+  .products__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    @include tablet() {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mobile() {
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 4px;
+      grid-row-gap: 4px;
+    }
+  }
+}
+
+.product-item {
+  box-shadow: 0 8px 16px rgba($color-primary, .16), 0 16px 32px rgba($color-primary, .32);
+  background: #111;
+  flex-direction: column;
+  display: flex;
+  border-bottom: none;
+  @include boxShadow();
+  @include radius();
+  color: $color-white;
+
+  &:hover {
+    box-shadow: 0 16px 32px rgba($color-primary, .32), 0 32px 64px rgba($color-primary, .40);
+    background: $color-primary;
+
+    .product__price {
+      color: $color-white !important;;
+    }
+  }
+
+  .product__media {
+    margin: 1.5rem;
+    height: 200px;
+    text-align: center;
+    position: relative;
+    background: $color-white;
+    @include transition();
+    @include radius();
+
+    @include mobile() {
+      padding: 1px;
+      height: 160px;
+      margin: 4px;
+    }
+
+    .product__badge {
+      left: .5rem;
+      bottom: .5rem;
+      position: absolute;
+      display: flex;
+      z-index: 50;
+
+      .product__badge__item {
+        margin-right: 4px;
+        background: $color-secondary;
+        font-family: $font-default;
+        font-size: 12px;
+        display: inline-block;
+        padding: 4px 8px;
+        font-weight: 500;
+        color: $color-white;
+        @include radius(6px);
+
+        @include mobile() {
+          display: none;
+
+          &:first-child {
+            display: block;
+          }
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .product__image {
+      max-height: 100%;
+      @include transition();
+
+      @include mobile() {
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .product__content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    @include mobile() {
+      padding: 1rem;
+    }
+
+    .product__name {
+      font-family: $font-default;
+      line-height: 1;
+      font-weight: 500;
+
+      @include mobile() {
+        font-size: 14px;
+      }
+    }
+
+    .product__detail {
+      font-size: 14px;
+      color: $color-gray;
+      margin-top: .250rem;
+
+      @include mobile() {
+        font-size: 12px;
+      }
+    }
+
+    .product__rating {
+      margin-top: .750rem;
+      display: flex;
+      align-items: center;
+
+      .product__rating__icon {
+        height: 16px;
+        width: 16px;
+        color: rgba($color-white, .32);
+
+        &.product__rating__icon--fill {
+          color: darken($color-secondary, 10%);
+        }
+      }
+    }
+
+    .product__info {
+      display: flex;
+      margin-bottom: 1rem;
+      align-items: center;
+
+      .product__price {
+        color: lighten($color-secondary, 10%);
+        font-family: $font-default;
+        line-height: 1;
+        font-weight: 600;
+        font-size: 18px;
+
+        @include mobile() {
+          font-size: 16px;
+        }
+      }
+
+      .product__sale {
+        font-size: 14px;
+        margin-left: .5rem;
+        color: $color-gray-light;
+        text-decoration: line-through;
+
+        @include mobile() {
+          margin-top: .250rem;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}

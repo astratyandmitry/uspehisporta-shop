@@ -1,0 +1,50 @@
+.module-page {
+  &.is-regular {
+    .text {
+      padding: 2em;
+
+      p {
+        margin: 0 0 1em 0;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+
+    .action {
+      border-top: 1px solid $color-background-light;
+      background: $color-background-lighter;
+      padding: 2em;
+    }
+  }
+
+  &.is-access {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 560px;
+    text-align: center;
+
+    .heading {
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      padding: 0 0 2em 0;
+      margin: 0 0 2em 0;
+
+      h1 {
+        color: $color-white;
+        font-size: 2em;
+      }
+    }
+
+    .error {
+      p {
+        color: $color-white;
+        opacity: .80;
+        font-size: 1.2em;
+        margin: 0;
+      }
+    }
+  }
+}

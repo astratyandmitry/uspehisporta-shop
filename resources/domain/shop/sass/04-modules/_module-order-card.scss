@@ -1,0 +1,74 @@
+.order-card {
+  flex-grow: 1;
+
+  .detail {
+    background: #333;
+    padding: 3rem;
+    margin-top: 3rem;
+    @include radius();
+    @include boxShadow();
+
+    @include mobile() {
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      align-items: start;
+      grid-column-gap: 2rem;
+      margin-bottom: 2rem;
+
+      @include mobile() {
+        grid-template-columns: 1fr;
+        grid-row-gap: .5rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .section__label {
+        border-bottom: 2px dotted rgba($color-white, .08);
+        font-weight: 500;
+        color: rgba($color-white, .64);
+        line-height: 1;
+
+        @include mobile() {
+          font-size: 12px;
+        }
+
+        @include mobile() {
+          border-bottom: none;
+        }
+
+        span {
+          background: #333;
+          padding-bottom: 1rem;
+          padding-right: 1rem;
+
+          @include mobile() {
+            padding: 0;
+          }
+        }
+      }
+
+      .section__content {
+        color: $color-white;
+
+        @include mobile() {
+          font-size: 14px;
+        }
+
+        p:first-child {
+          margin-top: 0;
+        }
+
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

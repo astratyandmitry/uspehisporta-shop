@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /shop/*
+Disallow: /cms/*
+Disallow: /auth/*
+Disallow: /order
+Disallow: /order-*
+Disallow: /basket
+Disallow: /basket/*
+Sitemap: https://sextore.kz/sitemap.xml

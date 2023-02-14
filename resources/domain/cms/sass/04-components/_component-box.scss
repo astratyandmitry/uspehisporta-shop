@@ -1,0 +1,49 @@
+.boxes {
+  display: grid;
+  grid-column-gap: 1.5em;
+
+  &.boxes--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &.boxes--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.boxes--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &.boxes--5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @include mobile() {
+    display: none;
+  }
+
+  .box {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .02), 0 16px 32px rgba(0, 0, 0, .08);
+    background: $color-background-lighter;
+    text-align: center;
+    margin: 0 0 2em 0;
+    padding: 2em;
+    @include radius($radius);
+    @include non-select();
+
+
+    h6 {
+      color: $color-text-secondary;
+      font-weight: 500;
+      font-size: .750em;
+      margin: 0;
+    }
+
+    strong {
+      margin: .250em 0 0 0;
+      color: $color-primary;
+      display: block;
+      font-size: 2em;
+    }
+  }
+}

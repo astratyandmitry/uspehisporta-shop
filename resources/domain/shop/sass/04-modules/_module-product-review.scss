@@ -1,0 +1,14 @@
+.product-review {
+  .product-review__grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr ;
+    grid-column-gap: 3rem;
+  }
+
+  .product-review__form {
+    background: $color-white;
+    padding: 3rem;
+    @include radius();
+    @include boxShadow();
+  }
+}

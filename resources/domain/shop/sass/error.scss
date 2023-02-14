@@ -1,0 +1,66 @@
+// Configure
+@import '01-config/config-normalize';
+@import '01-config/config-vars';
+@import '01-config/config-mixins';
+@import '01-config/config-fonts';
+
+.error-page {
+  background: #222;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    text-align: center;
+  }
+
+  .error {
+    position: relative;
+
+    .error__code {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #111;
+      font-family: $font-default;
+      font-weight: 700;
+      z-index: 111;
+      font-size: 320px;
+      position: absolute;
+
+      @include mobile() {
+        font-size: 200px;
+      }
+    }
+
+    .error__message {
+      z-index: 1111;
+      position: relative;
+      color: $color-white;
+      font-family: $font-default;
+      font-weight: 400;
+      font-size: 60px;
+
+      @include mobile() {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .button {
+    margin-top: 12rem;
+    display: inline-block;
+    text-decoration: none;
+    color: $color-white;
+    background: $color-secondary;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    @include radius();
+    @include transition();
+
+    &:hover {
+      background: darken($color-secondary, 10%);
+    }
+  }
+}

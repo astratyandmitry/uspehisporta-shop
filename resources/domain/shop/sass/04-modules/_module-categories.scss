@@ -1,0 +1,29 @@
+.category-list {
+  .category-list__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+
+    @include mobile() {
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: .5rem;
+      grid-row-gap: .5rem;
+    }
+  }
+
+  .category {
+    border-bottom: none;
+    overflow: hidden;
+    @include radius();
+
+    .category__image {
+      width: 100%;
+      @include transition();
+    }
+
+    &:hover {
+      box-shadow: 0 16px 32px rgba($color-primary, .32), 0 32px 64px rgba($color-primary, .40);
+    }
+  }
+}

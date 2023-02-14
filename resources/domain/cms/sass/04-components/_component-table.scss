@@ -1,0 +1,244 @@
+.table {
+  overflow-x: auto;
+  margin: 0;
+
+  * {
+    outline: none;
+  }
+
+  table {
+    border: none;
+    width: 100%;
+
+    audio {
+      height: 32px;
+      outline: none;
+    }
+
+    tr {
+      th {
+        border-bottom: 1px solid #111;
+        color: rgba(255, 255, 255, .64);
+        font-weight: 500;
+        text-align: left;
+        background: #222;
+        padding: 1em;
+
+        @include mobile() {
+          padding: .5em;
+        }
+
+        span {
+          font-size: .875em;
+        }
+      }
+
+      &.row--filter {
+        th {
+          border-bottom: 1px solid $color-background-light;
+          background: $color-background-lighter;
+
+          .holder {
+            background: $color-background-light;
+            font-size: .875em;
+            padding: .750em;
+            @include radius($radius);
+          }
+
+          input,
+          select {
+            font-weight: 400;
+            font-size: .875em;
+
+            @include mobile_tablet() {
+              padding: .5em;
+            }
+          }
+
+          button {
+            font-weight: 400;
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+
+      td {
+        border-bottom: 1px solid $color-background-light;
+        background: $color-white;
+        padding: 1.5em 1em;
+
+        @include tablet() {
+          padding: 1em;
+        }
+
+        @include mobile() {
+          padding: .5em;
+        }
+
+        &.cell--checkbox {
+          width: 10px !important;
+        }
+
+        &.cell--image {
+          img {
+            max-width: 64px;
+            max-height: 64px;
+            @include radius($radius);
+          }
+
+          .holder {
+            background: $color-background-light;
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            @include radius($radius);
+          }
+        }
+
+        &.has--icon {
+          a, span.clipboard {
+            margin-right: .5em;
+            border-bottom: none;
+            color: rgba(0, 0, 0, .32);
+            opacity: 0;
+            @include transition();
+
+            @include mobile_tablet() {
+              opacity: 1;
+            }
+
+            &:hover {
+              color: $color-primary;
+            }
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        .text--label {
+          display: block;
+        }
+
+        .text--detail {
+          color: $color-text-secondary;
+          font-size: .875em;
+
+          a {
+            color: $color-text-secondary;
+            border-bottom: none;
+
+            &:hover {
+              color: $color-text-primary;
+            }
+          }
+        }
+
+        form {
+          display: inline-block;
+        }
+      }
+
+      &.row--success {
+        td {
+          background: rgba(137, 255, 75, 0.24) !important;
+        }
+      }
+
+      &.row--danger {
+        td {
+          background: rgba(255, 112, 112, 0.24) !important;
+        }
+      }
+
+      &:hover {
+        td {
+          background: #fafafa;
+
+          &.has--icon {
+            a, span.clipboard {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      &.row--section {
+        td {
+          color: $color-text-secondary;
+          background: #fafafa;
+          font-weight: 500;
+        }
+      }
+
+      &.row--empty {
+        td {
+          color: $color-text-placeholder;
+          background: #fff;
+          border-bottom: none;
+          text-align: center;
+          padding: 4em 2em;
+
+        }
+      }
+    }
+  }
+
+  &.table--card {
+    table {
+      tr {
+        td {
+          border-bottom: 1px solid #f0f0f0;
+          padding: 1.5em;
+
+          @include mobile() {
+            padding: 1em;
+            font-size: .875em;
+          }
+
+          &.cell--title {
+            border-right: 1px solid $color-background-light;
+            background: $color-background-lighter;
+            color: $color-text-secondary;
+            font-weight: 500;
+          }
+
+          &.cell--image {
+            a {
+              display: block;
+              border-bottom: none;
+
+              &:hover img {
+                transform: scale(1.025);
+              }
+            }
+
+            img {
+              max-height: 240px !important;
+              max-width: 240px !important;
+              width: auto !important;
+              @include transition();
+              @include radius($radius);
+            }
+          }
+
+          &.cell--key {
+            border-bottom-color: #222;
+            background: #222;
+            color: rgba(255, 255, 255, .64);
+            text-align: right;
+            font-size: .875em;
+            font-weight: 500;
+            width: 200px;
+
+            @include mobile() {
+              width: auto !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

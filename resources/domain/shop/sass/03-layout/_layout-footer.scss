@@ -1,0 +1,114 @@
+.footer {
+  box-shadow: inset 0 8px 16px rgba(0, 0, 0, .16), inset 0 16px 32px rgba(0, 0, 0, .32);
+  background: #111;
+  padding: 2rem 0;
+
+  @include mobile() {
+    padding: 1.5rem 0;
+  }
+
+  .section__title {
+    color: rgba($color-white, .40);
+  }
+
+
+  .section {
+    .section__title {
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba($color-white, .16);
+      margin-bottom: 1rem;
+
+      @include mobile() {
+        font-size: 16px;
+        margin-bottom: .750rem;
+      }
+    }
+
+    &.section__contacts {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
+      background: #222;
+      @include radius();
+      padding: 2rem;
+
+      @include mobile() {
+          padding: 1rem;
+      }
+
+      .section__body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 4rem;
+        grid-row-gap: 1rem;
+
+        @include mobile() {
+            grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .contact {
+      .contact__value {
+        color: rgba(255, 255, 255, .80);
+        font-size: 14px;
+
+        a {
+          color: rgba(255, 255, 255, .80);
+
+          &:hover {
+            color: $color-white;
+          }
+        }
+      }
+
+      .contact__label {
+        font-weight: 600;
+        font-size: 12px;
+        margin-bottom: 2px;
+        color: rgba(255, 255, 255, .40);
+      }
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      display: flex;
+      justify-content: center;
+
+      @include mobile() {
+        display: block;
+        margin: 0;
+      }
+
+      .menu__item {
+        padding: .5rem 2rem;
+
+        @include mobile() {
+          padding: 0 0 1rem 0;
+          font-size: 14px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .menu__link {
+          color: rgba(255, 255, 255, .80);
+          border-bottom: none;
+
+          &:hover {
+            color: $color-secondary;
+          }
+        }
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 14px;
+    color: rgba(255, 255, 255, .24);
+  }
+}

@@ -1,0 +1,45 @@
+.pagination {
+  background: $color-background-lighter;
+  text-align: center;
+  list-style: none;
+  padding: 1em 2em;
+  margin: 0;
+  @include radius-bottom($radius);
+
+  @include mobile() {
+    padding: .5em;
+  }
+
+
+  li {
+    display: inline-block;
+
+    a {
+      color: $color-text-secondary;
+      padding: .25em .75em;
+      font-size: .875em;
+      display: block;
+      border: none;
+      @include radius($radius);
+
+
+      @include mobile() {
+        padding: .25em .5em;
+        font-size: .750em;
+      }
+
+
+      &:hover {
+        background: $color-background-light;
+      }
+    }
+
+    &.is-active {
+      a {
+        color: $color-white;
+        background: #222;
+        font-weight: 500;
+      }
+    }
+  }
+}

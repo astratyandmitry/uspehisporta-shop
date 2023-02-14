@@ -1,0 +1,265 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  background: #fafafa;
+}
+
+figure {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+body * {
+  z-index: 1;
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+.background {
+  background: $color-primary;
+  position: absolute;
+  height: 244px;
+  z-index: -1;
+  width: 100%;
+  left: 0;
+  top: 0;
+
+  @include mobile() {
+    display: none;
+  }
+}
+
+.row {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: $width;
+  padding: 0 2em;
+  margin: 0 auto;
+
+  @include mobile() {
+    padding: 0 1em;
+  }
+}
+
+.heading {
+  display: grid;
+  padding: 2em 2em !important;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  grid-column-gap: 1em;
+
+  @include mobile() {
+    background: $color-primary;
+    padding: 2em 1em !important;
+    margin: 0 auto 2em !important;
+    grid-template-columns: 1fr;
+    grid-row-gap: .5em;
+  }
+
+  h1 {
+    color: $color-white;
+    font-weight: 500;
+    font-size: 1.8em;
+
+    @include tablet() {
+      font-size: 1.5em;
+    }
+
+    @include mobile() {
+      font-size: 1em;
+    }
+  }
+
+  .heading-action {
+    text-align: right;
+
+    a {
+      font-size: .875em;
+    }
+
+    @include mobile() {
+      a {
+        color: $color-white;
+        border-bottom: none;
+        font-size: .750em;
+      }
+    }
+
+    .btn {
+      border: 1px solid rgba(255, 255, 255, .32);
+      color: $color-white;
+
+      &:hover {
+        border-color: $color-white;
+        background: $color-white;
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.subheading {
+  margin: 4rem auto 2rem;
+
+  @include mobile_tablet() {
+    margin: 1rem auto .5rem;
+  }
+
+  h2 {
+    color: $color-text-regular;
+    font-weight: 500;
+    font-size: 1.5em;
+
+    @include tablet() {
+      font-size: 1.2em;
+    }
+
+    @include mobile() {
+      font-size: 1em;
+    }
+  }
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  grid-column-gap: 1.5em;
+
+  @include tablet() {
+    grid-template-columns: 1fr 240px;
+
+  }
+
+  @include mobile() {
+    grid-template-columns: 1fr !important;
+    grid-row-gap: 2em;
+  }
+}
+
+.block {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .02), 0 16px 32px rgba(0, 0, 0, .08);
+  background: $color-white;
+  box-sizing: border-box;
+  overflow: auto;
+  @include radius($radius);
+
+  &:after {
+    @include clear();
+  }
+
+  &.block--transparent {
+    background: transparent;
+  }
+
+  &.block--offset {
+    margin: 2em 0 0 0;
+  }
+
+  .section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+.navigation {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    border-bottom: 1px solid $color-background-light;
+
+    a {
+      color: $color-text-secondary;
+      border-bottom: none;
+      font-size: .750em;
+      display: block;
+      padding: 1em;
+
+      @include mobile() {
+        font-size: .750em;
+        padding: 8px;
+      }
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.permission {
+  padding: 1rem;
+  background: #fafafa;
+  margin-bottom: .5rem !important;
+  position: relative;
+  @include radius($radius);
+
+  &:last-child {
+    margin-bottom: 2rem !important;
+  }
+
+  &:hover {
+    background: whitesmoke;
+  }
+
+  input,
+  label {
+    position: relative;
+    z-index: 50;
+  }
+
+  input:checked + .permission__fill {
+    background: white;
+    border: 1px solid #f0f0f0;
+  }
+
+  .permission__fill {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    @include radius($radius);
+  }
+}
+
+
+.js-sortable--on-drag td {
+  background: #ececec !important;
+  opacity: .64 !important;
+}
+
+.js-sortable-handle {
+  opacity: .40;
+
+  &:hover {
+    opacity: 1;
+    color: $color-primary;
+    cursor: pointer;
+  }
+}
+
+

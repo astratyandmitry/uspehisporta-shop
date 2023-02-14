@@ -1,0 +1,32 @@
+// Configure
+@import '01-config/config-normalize';
+@import '01-config/config-vars';
+@import '01-config/config-mixins';
+@import '01-config/config-fonts';
+// Basic HTML
+@import '02-basic/basic-selection';
+@import '02-basic/basic-links';
+@import '02-basic/basic-form';
+@import '02-basic/basic-pagination';
+@import '02-basic/basic-helpers';
+@import '02-basic/basic-message';
+//@import '02-basic/basic-slick';
+//@import '02-basic/basic-rangeslider';
+// Main Layout
+@import '03-layout/layout-main';
+@import '03-layout/layout-header';
+@import '03-layout/layout-footer';
+@import '03-layout/layout-heading';
+// Modules
+@import '04-modules/module-home';
+@import '04-modules/module-page';
+@import '04-modules/module-categories';
+@import '04-modules/module-products-filter';
+@import '04-modules/module-products';
+@import '04-modules/module-product-card';
+@import '04-modules/module-product-review';
+@import '04-modules/module-auth';
+@import '04-modules/module-orders';
+@import '04-modules/module-order-card';
+@import "04-modules/module-basket";
+@import "04-modules/module-items-table";

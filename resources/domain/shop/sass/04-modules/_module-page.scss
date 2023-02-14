@@ -1,0 +1,114 @@
+.page {
+  .page__grid {
+    display: flex;
+    align-items: flex-start;
+
+    @include mobile-tablet() {
+      display: block;
+    }
+  }
+
+  .page__content {
+    @extend .typography;
+    background: #111;
+    padding: 3rem;
+    color: $color-white;
+    flex-grow: 1;
+    @include radius();
+
+    @include mobile() {
+      font-size: 14px;
+    }
+
+    @include mobile-tablet() {
+      padding: 1.5rem;
+    }
+  }
+
+  .page-nav {
+    margin-left: 3rem;
+
+    @include mobile-tablet() {
+      margin-left: 0;
+      margin-top: 1.5rem;
+    }
+
+    .page-nav__list {
+      width: 280px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @include mobile-tablet() {
+        width: auto;
+      }
+
+      .page-nav__divider {
+        height: 1px;
+        background: rgba($color-white, .04);
+        margin: 8px 0;
+      }
+
+      .page-nav__item {
+        margin-bottom: 2px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .page-nav__label {
+          padding: .750rem;
+          border-bottom: none;
+          font-size: 14px;
+          display: block;
+          background: #111;
+          color: rgba($color-white, .40);
+          font-weight: 500;
+          white-space: nowrap;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+          @include radius();
+
+          @include tablet() {
+            font-size: 13px;
+          }
+
+          @include mobile() {
+            font-size: 12px;
+          }
+        }
+
+        .page-nav__link {
+          padding: .750rem;
+          border-bottom: none;
+          font-size: 14px;
+          display: block;
+          color: rgba($color-white, .64);
+          white-space: nowrap;
+          @include radius();
+
+          @include tablet() {
+            font-size: 13px;
+          }
+
+          @include mobile() {
+            font-size: 12px;
+          }
+
+          &:hover {
+            color: $color-white;
+            background: #333;
+          }
+        }
+
+        &.page-nav__item--active {
+          .page-nav__link {
+            background: #111;
+            color: $color-white;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,260 @@
+.items-table {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
+  background: #111;
+  overflow: hidden;
+  flex-grow: 1;
+  @include boxShadow();
+  @include radius();
+
+  @include mobile() {
+    display: table;
+  }
+
+  .items-table__icon {
+    width: 24px;
+    height: 24px;
+    color: rgba($color-white, .32);
+    @include transition();
+
+    @include mobile() {
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1.5rem;
+    }
+
+    &:hover {
+      color: $color-secondary;
+      cursor: pointer;
+    }
+  }
+
+  tr {
+    @include mobile() {
+      border-bottom: 1px solid #333;
+      display: block;
+      padding: 1.5rem;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    td, th {
+      padding: 1.5rem;
+      border-bottom: 1px solid #333;
+
+      @include mobile() {
+        display: block;
+        border-bottom: none;
+        padding: 0 !important;
+      }
+    }
+  }
+
+  tbody {
+    width: 100%;
+
+    td {
+      padding: 1rem 1.5rem;
+      background: #111;
+
+      @include mobile() {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  thead {
+    width: 100%;
+
+    th {
+      background: #000;
+      color: $color-gray-light;
+      font-family: $font-default;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    @include mobile() {
+      display: none;
+    }
+  }
+
+  tfoot {
+    width: 100%;
+
+    tr {
+      @include mobile() {
+        background: #111;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        th:nth-child(3) {
+          display: none;
+        }
+      }
+
+      th {
+        background: #000;
+        border-bottom-color: #333;
+        font-weight: 500;
+        padding: 1rem 1.5rem;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: $color-white;
+
+        span {
+          color: rgba($color-white, .40);
+        }
+      }
+    }
+
+    tr:last-child {
+      @include mobile() {
+        background: $color-dark;
+      }
+
+      th {
+        background: #111;
+        color: $color-white;
+        border-bottom: none;
+
+        span {
+          color: rgba($color-white, .40);
+        }
+      }
+    }
+  }
+
+  .count {
+    .count__config {
+      display: flex;
+      align-items: center;
+
+      .count__value {
+        margin: 0 4px;
+      }
+    }
+
+    .count__button {
+      color: $color-white;
+      background: #333;
+      font-family: $font-default;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      display: inline-block;
+      padding: .5rem .750rem;
+      line-height: 1;
+
+      text-align: center;
+      @include nonSelect();
+      @include transition();
+      @include radius();
+
+      &:hover {
+        cursor: pointer;
+        background: #444;
+        color: $color-white;
+      }
+
+      &:disabled {
+        background: #000;
+        color: rgba($color-white, .40);
+        cursor: not-allowed;
+      }
+    }
+
+    .count__value {
+      font-family: $font-default;
+      font-size: 18px;
+      background: #333;
+      border: none;
+      display: inline-block;
+      padding: .5rem;
+      line-height: 1;
+      width: 48px;
+      text-align: center;
+      color: $color-white;
+      @include radius();
+      @include nonSelect();
+    }
+
+    .count__label {
+      font-size: 14px;
+      color: rgba($color-white, .40);
+      margin-top: .5rem;
+    }
+  }
+
+  .price {
+    text-align: right;
+    color: $color-white;
+
+    @include mobile() {
+      text-align: left;
+    }
+
+    .price__value {
+      font-family: $font-default;
+      font-size: 20px;
+    }
+
+    .price__prev {
+      font-size: 14px;
+      margin-top: .5rem;
+      text-decoration: line-through;
+
+      @include mobile() {
+        margin-top: 0;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .product {
+    display: flex;
+    width: auto;
+    align-items: center;
+    border-bottom: none;
+
+    @include mobile() {
+      margin-bottom: 1.5rem;
+    }
+
+    .product__media {
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      padding: 1px;
+      text-align: center;
+      margin-right: 1.5rem;
+      @include radius();
+
+      .product__image {
+        display: block;
+        max-width: 80px;
+        max-height: 80px;
+      @include radius();
+      }
+    }
+
+    .product__content {
+      .product__name {
+        font-family: $font-default;
+        font-weight: 500;
+        line-height: 1;
+        color: $color-white;
+      }
+
+      .product__detail {
+        color: $color-gray;
+        font-size: 14px;
+        margin-top: 4px;
+      }
+    }
+  }
+}

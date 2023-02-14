@@ -1,0 +1,34 @@
+.badge {
+  background: $color-background-light;
+  color: $color-text-secondary;
+  display: inline-block;
+  margin: 0 .5em .5em 0;
+  padding: 6px 10px;
+  font-size: .875em;
+  font-weight: 500;
+  @include radius(24px);
+  @include non-select();
+
+  &.badge--sm {
+    font-size: .750em;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &.badge--success {
+    background: #E3FCEC;
+    color: #1F9D55;
+  }
+
+  &.badge--danger {
+    background: #FCEBEA;
+    color: #CC1F1A;
+  }
+
+  &.badge--warning {
+    background: #FFF5EB;
+    color: #DE751F;
+  }
+}

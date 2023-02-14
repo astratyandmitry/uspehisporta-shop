@@ -1,0 +1,89 @@
+.uploader {
+  margin-top: 1rem;
+
+  .uploader__form {
+    .uploader__button--upload i {
+      margin-right: 6px;
+    }
+
+    .uploader__button--remove i {
+      margin-right: 0;
+    }
+  }
+
+  .uploader__preview {
+    img {
+      margin-top: 1rem;
+      max-height: 200px;
+      max-width: 560px;
+      vertical-align: middle;
+      display: block;
+      @include radius($radius);
+    }
+  }
+
+  .uploader__gallery {
+    border: 1px solid #f0f0f0;
+    margin-top: 1rem;
+    padding: .5rem;
+    @include radius($radius);
+
+    .uploader__gallery__item {
+      background: #fafafa;
+      display: inline-block;
+      margin: .5rem;
+      width: 128px;
+      height: 128px;
+      line-height: 128px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      @include radius($radius);
+
+      .uploader__gallery__delete {
+        position: absolute;
+        z-index: 99;
+        top: .5rem;
+        right: .5rem;
+        background: rgba(0, 0, 0, .32);
+        color: $color-white;
+        text-align: center;
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        font-size: 14px;
+        @include radius(50%);
+        @include transition();
+
+        &:hover {
+          background: $color-danger;
+          cursor: pointer;
+        }
+      }
+
+      img {
+        vertical-align: middle;
+        display: inline-block;
+        max-width: 128px;
+        max-height: 128px;
+        @include radius($radius);
+      }
+    }
+  }
+
+  &.uploader--loading {
+    position: relative;
+    cursor: progress;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, .50);
+    }
+  }
+}

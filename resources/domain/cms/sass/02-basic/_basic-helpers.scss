@@ -1,0 +1,58 @@
+// display
+.display--block {
+  display: block;
+}
+
+.display--inline-block {
+  display: inline-block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+// font
+.text--bold {
+  font-weight: 500;
+}
+
+.text--primary {
+  color: $color-primary !important;
+}
+
+.text--info {
+  color: $color-text-secondary;
+}
+
+.text--warning {
+  color: $color-warning;
+}
+
+.text--success {
+  color: $color-success;
+}
+
+.text--danger {
+  color: $color-danger;
+}
+
+// text-align
+.text--left {
+  text-align: left;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--right {
+  text-align: right;
+}
+
+.pull--left {
+  float: left;
+}
+
+.pull--right {
+  float: right;
+}

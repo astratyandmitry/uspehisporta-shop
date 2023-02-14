@@ -1,0 +1,118 @@
+.orders {
+  flex-grow: 1;
+
+  .orders__list {
+    .order {
+      display: block;
+      border-bottom: none;
+      background: $color-white;
+      margin-bottom: 1.5rem;
+      color: $color-dark;
+      @include radius();
+      @include boxShadow();
+      @include transition();
+
+      @include mobile() {
+        margin-bottom: 1rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        .order__title {
+          color: $color-secondary !important;
+        }
+      }
+
+      .order__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem;
+
+        @include mobile() {
+          padding: 1.5rem;
+        }
+
+        .order__title {
+          font-size: 20px;
+          font-weight: 500;
+          margin: 0;
+
+          @include mobile() {
+            font-size: 18px;
+          }
+        }
+
+        .order__status {
+          .order__badge {
+            padding: 8px 12px;
+            background: #fafafa;
+            font-weight: 500;
+            font-size: 14px;
+            @include radius();
+
+            @include mobile() {
+              font-size: 12px;
+              padding: 6px 10px;
+            }
+
+            &.order__badge--danger {
+              color: #CC1F1A;
+              background: #FCEBEA;
+            }
+
+            &.order__badge--info {
+              color: #2779BD;
+              background: #EFF8FF;
+            }
+
+            &.order__badge--success {
+              color: #1F9D55;
+              background: #E3FCEC;
+            }
+          }
+        }
+      }
+
+      .order__content {
+        border-top: 1px solid whitesmoke;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 2rem;
+
+        @include mobile() {
+          grid-template-columns: auto 1fr;
+          padding: 1.5rem;
+
+          .order__section:nth-child(2) {
+            display: none;
+          }
+        }
+
+        .order__section {
+          .order__label {
+            color: $color-gray;
+            margin: 0 0 .5rem 0;
+            font-size: 14px;
+
+            @include mobile() {
+              font-size: 12px;
+            }
+          }
+
+          .order__value {
+            font-weight: 500;
+
+            @include mobile() {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

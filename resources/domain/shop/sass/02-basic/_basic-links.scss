@@ -1,0 +1,37 @@
+a {
+  text-decoration: none !important;
+  color: $color-secondary;
+  outline: 0;
+  @include transition();
+
+  &:hover,
+  &:focus {
+    color: lighten($color-secondary, 10%);
+  }
+}
+
+u {
+  text-decoration: none;
+}
+
+.link-w-icon {
+  font-family: $font-default;
+  font-weight: 500;
+  font-size: 14px;
+  border-bottom: none;
+
+  i {
+    font-size: 12px;
+    margin-right: 6px;
+    margin-left: 6px;
+    opacity: .80;
+    @include transition();
+  }
+
+  &:hover {
+    i {
+      margin-left: 12px;
+      margin-right: 0;
+    }
+  }
+}

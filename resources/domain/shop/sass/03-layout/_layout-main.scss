@@ -1,0 +1,282 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  background: #222;
+
+  &.fixed {
+    overflow: hidden;
+  }
+}
+
+button {
+  outline: none;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+figure {
+  margin: 0 !important;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+input {
+  outline: none;
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+main {
+  padding: 3rem 0;
+
+  @include mobile() {
+    padding: 1.5rem 0;
+  }
+}
+
+.container {
+  max-width: $width;
+  padding: 0 1rem;
+  margin: 0 auto;
+
+  &.container--md {
+    max-width: $width-md;
+  }
+
+  &.container--sm {
+    max-width: $width-sm;
+  }
+}
+
+.empty {
+  @include radius();
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
+  background: #111;
+  padding: 3rem;
+  flex-grow: 1;
+
+  @include mobile-tablet() {
+    padding: 1.5rem;
+  }
+
+  .empty__title {
+    font-family: $font-default;
+    font-size: 24px;
+    margin-bottom: .5rem;
+    color: $color-white;
+
+    @include mobile() {
+      font-size: 20px;
+    }
+  }
+
+  .empty__message {
+    color: rgba($color-white, .50);
+
+    @include mobile() {
+      font-size: 14px;
+    }
+  }
+
+  &.empty--sm {
+    padding: 2rem;
+
+    .empty__title {
+      font-size: 20px;
+
+      @include mobile() {
+        font-size: 16px;
+      }
+    }
+
+    .empty__message {
+      font-size: 14px;
+
+      @include mobile() {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .empty__action {
+    a {
+      margin-top: 1.5rem;
+      background: $color-secondary;
+      padding: .750rem 1.5rem;
+      font-weight: 500;
+
+      @include mobile() {
+        margin-top: 1.5rem;
+        padding: .750rem 1rem;
+        font-size: 14px;
+      }
+
+      &:hover {
+        background: darken($color-secondary, 10%);
+        color: $color-white;
+      }
+    }
+  }
+}
+
+.loader {
+  background: rgba(0, 0, 0, .32);
+  position: fixed;
+  display: none;
+  visibility: hidden;
+  z-index: 20;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  @include transition();
+
+  &.loader--active {
+    display: block;
+    visibility: visible;
+  }
+}
+
+.loadable {
+  position: relative;
+  z-index: 10;
+  flex-grow: 1;
+
+  .loadable__loader {
+    background: rgba(0, 0, 0, .32);
+    position: absolute;
+    display: none;
+    visibility: hidden;
+    z-index: 20;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    @include transition();
+
+    &.loadable__loader--active {
+      display: block;
+      visibility: visible;
+    }
+  }
+}
+
+.breadcrumbs {
+  font-size: 14px;
+
+  @include mobile() {
+    display: none;
+  }
+
+  .breadcrumbs__divider {
+    color: #c0c0c0;
+  }
+
+  .breadcrumbs__item {
+    font-weight: 500;
+
+    .breadcrumbs__link {
+      color: $color-gray-dark;
+      font-weight: 400;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+}
+
+.floating-contacts {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .floating-contact {
+    margin: 0 .5rem;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 4px 8px rgba($color-secondary, .16), 0 8px 16px rgba($color-secondary, .24);
+    background: $color-secondary;
+    display: flex;
+    color: $color-white;
+    align-items: center;
+    justify-content: center;
+    @include radius(100%);
+    @include transition();
+
+    svg {
+      fill: currentColor;
+    }
+
+    &:hover {
+      transform: scale(1.1, 1.1);
+    }
+  }
+}
+
+.age-confirm {
+  z-index: 9999999;
+  position: fixed;
+  background: rgba(0, 0, 0, .80);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+
+  .age-confirm-content {
+    padding: 0 2rem;
+    max-width: 480px;
+    text-align: center;
+  }
+
+  .age-confirm-title {
+    margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-white;
+  }
+
+  .age-confirm-about {
+    color: rgba(255, 255, 255, .80);
+  }
+
+  .age-confirm-actions {
+    margin-top: 2rem;
+
+    .form-button {
+      box-shadow: 0 8px 16px rgba($color-secondary, .16), 0 16px 32px rgba($color-secondary, .32);
+
+      &.--secondary {
+        box-shadow: 0 8px 16px rgba($color-primary, .16), 0 16px 32px rgba($color-primary, .32);
+
+      }
+    }
+  }
+}

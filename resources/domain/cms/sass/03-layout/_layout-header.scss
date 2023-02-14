@@ -1,0 +1,96 @@
+header {
+  background: transparent;
+  padding: 1.5em 0;
+  z-index: 100;
+
+  @include mobile() {
+    padding: 1em 0;
+    background: $color-primary;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 4em;
+    align-items: center;
+
+    @include mobile() {
+      grid-column-gap: 2em;
+    }
+  }
+
+  .brand {
+    .logotype {
+      color: $color-white;
+      font-weight: 500;
+      @include non-select();
+
+      span {
+        opacity: .64;
+      }
+    }
+  }
+
+  .hamburger {
+    color: $color-white;
+    opacity: .64;
+
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  .menu {
+    white-space: nowrap;
+    overflow-x: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mobile() {
+      text-align: right;
+      padding: 8px 0;
+    }
+
+    li {
+      display: inline-block;
+      position: relative;
+      margin: 0 1.5em 0 0;
+
+
+      @include mobile() {
+        margin: 0 1em 0 0;
+      }
+
+      a {
+        border-bottom: none;
+        color: $color-white;
+        opacity: .64;
+        font-size: .875em;
+        display: block;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &.is-active {
+        a {
+          opacity: 1;
+        }
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+
+      &.is-logout {
+        float: right;
+
+        @include mobile() {
+          float: none;
+        }
+      }
+    }
+  }
+}

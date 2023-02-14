@@ -1,0 +1,11 @@
+a {
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  color: $color-text-regular;
+  text-decoration: none;
+  outline: 0;
+  @include transition();
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+}

@@ -1,0 +1,77 @@
+#app {
+  height: 100%;
+}
+
+.module-auth {
+  height: 100%;
+
+  .container {
+    height: 100%;
+  }
+
+  .wrapper {
+    height: 100%;
+    width: 100%;
+    display: table;
+
+    .content {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  .block {
+    padding: 2em;
+    margin: 2em auto;
+    max-width: 440px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, .08);
+
+    @include mobile() {
+      max-width: 100%;
+      padding: 1.5em;
+      margin: 2em 0;
+    }
+
+    .field {
+      margin: 0 0 1em 0;
+
+      input {
+        padding: 1em;
+      }
+    }
+
+    .btn {
+      display: block;
+      padding: 1em;
+      width: 100%;
+    }
+  }
+
+  .brand {
+    .logotype {
+      color: $color-primary;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.5em;
+
+      span {
+        color: rgba(0, 0, 0, .24)
+      }
+    }
+  }
+
+  .copyright {
+    color: rgba(0, 0, 0, .32);
+    text-align: center;
+    font-size: .875em;
+
+    a {
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      color: rgba(0, 0, 0, .32);
+
+      &:hover {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}

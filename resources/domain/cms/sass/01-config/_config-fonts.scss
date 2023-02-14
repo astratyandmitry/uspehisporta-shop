@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500&display=swap&subset=greek-ext');
+@import "./../../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "./../../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "./../../../../node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import "./../../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+
+body {
+  font-family: $font;
+  color: $color-text-regular;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+input,
+textarea,
+select,
+button {
+  line-height: 1.4;
+  font-size: 1em;
+}
+
+input,
+textarea,
+select {
+  font-family: $font;
+}
+
+button {
+  font-family: $font;
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font, sans-serif;
+  color: $color-text-primary;
+  font-weight: 500;
+  margin: 0;
+}

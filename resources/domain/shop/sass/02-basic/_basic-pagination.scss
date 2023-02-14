@@ -1,0 +1,54 @@
+.pagination {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+
+  .page-item {
+    display: inline-block;
+
+    .page-link {
+      padding: 8px 16px;
+      color: $color-gray-dark;
+      background: transparent;
+      cursor: pointer;
+      display: block;
+      border-bottom: none;
+      font-family: $font-default;
+      @include transition();
+      @include radius();
+
+      @include mobile() {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+    }
+
+    &:hover {
+      .page-link {
+        background: #fafafa;
+        color: $color-secondary;
+      }
+    }
+
+    &.active {
+      .page-link {
+        background: $color-primary;
+        color: $color-white;
+        font-weight: 700;
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+
+    &.disabled {
+      .page-link {
+        cursor: not-allowed;
+        color: $color-gray-light;
+        background: transparent;
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+nav {
+  background: transparent;
+  z-index: 50;
+
+  @include mobile() {
+    background: $color-primary;
+  }
+
+  @include mobile-tablet() {
+    position: static;
+    top: 0;
+  }
+
+  ul.menu {
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    white-space: nowrap;
+    overflow-x: auto;
+    list-style: none;
+    padding: 1em 0 0 0;
+    margin: 0;
+
+    @include mobile() {
+      padding-bottom: 8px;
+      margin-bottom: -8px;
+    }
+
+    li {
+      display: inline-block;
+      margin: 0 1em 0 0;
+
+      @include mobile() {
+        margin-right: .5em;
+      }
+
+      a {
+        color: $color-white;
+        border-bottom: none;
+        font-size: .750em;
+        opacity: .64;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+
+      &.is-active {
+        a {
+          opacity: 1;
+        }
+      }
+
+      &.is-divider {
+        span {
+          color: $color-white;
+          font-size: .875em;
+          opacity: .64;
+        }
+      }
+    }
+  }
+}
