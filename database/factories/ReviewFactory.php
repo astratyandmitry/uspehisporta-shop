@@ -1,20 +1,28 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Domain\Shop\Models\Brand;
-use Domain\Shop\Models\Category;
+use Domain\Shop\Models\Product;
 use Domain\Shop\Models\Review;
 use Domain\Shop\Models\User;
-use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Review::class, function (Faker $faker) {
-    return [
-        'user_id' => User::query()->inRandomOrder()->value('id'),
-        'message' => $faker->sentence(20),
-        'username' => $faker->firstName,
-        'rating' => rand(3, 5),
-        'active' => true,
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Model>
+ */
+class ReviewFactory extends Factory
+{
+    protected $model = Review::class;
+
+    public function definition(): array
+    {
+        return [
+            'product_id' => Product::query()->inRandomOrder()->value('id'),
+            'user_id' => User::query()->inRandomOrder()->value('id'),
+            'message' => $this->faker->sentence(20),
+            'username' => $this->faker->firstName,
+            'rating' => rand(3, 5),
+            'active' => true,
+        ];
+    }
+}

@@ -15,9 +15,9 @@ use Domain\CMS\Mails\ManagerPasswordGeneratedMail;
 
 class ManagersController extends Controller
 {
-    protected string $section = SECTION_SYSTEM;
+    protected ?string $section = SECTION_SYSTEM;
 
-    protected string $model = 'managers';
+    protected ?string $model = 'managers';
 
     public function __construct()
     {

@@ -11,9 +11,9 @@ use Domain\CMS\Requests\CategoryRequest;
 
 class CategoriesController extends Controller
 {
-    protected string $section = SECTION_DICTIONARY;
+    protected ?string $section = SECTION_DICTIONARY;
 
-    protected string $model = 'categories';
+    protected ?string $model = 'categories';
 
     public function __construct()
     {

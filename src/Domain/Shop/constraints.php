@@ -12,6 +12,7 @@ const ORDER_STATUS_COMPLETED = 'completed';
 const ORDER_STATUS_CANCELED = 'canceled';
 
 const PAGE_HOME = 'home';
+const PAGE_FAQ = 'faq';
 const PAGE_CATALOG = 'catalog';
 const PAGE_SEARCH = 'search';
 const PAGE_BASKET = 'basket';
@@ -25,3 +26,10 @@ const PAGE_ACCOUNT_ORDER = 'account.order';
 const PAGE_ACCOUNT_SETTINGS_PERSONAL = 'account.settings.personal';
 const PAGE_ACCOUNT_SETTINGS_SECURITY = 'account.settings.security';
 const PAGE_PRODUCT_REVIEW = 'product.review';
+
+const SETTINGS_URL_FORUM_DO4A = 'url.forum.do4a';
+const SETTINGS_URL_FORUM_ANABOLICS = 'url.forum.anabolics';
+const SETTINGS_URL_TELEGRAM_GROUP = 'url.telegram.group';
+const SETTINGS_URL_TELEGRAM_PRICE = 'url.telegram.price';
+const SETTINGS_URL_TELEGRAM_OPERATOR = 'url.telegram.operator';
+const SETTINGS_URL_TELEGRAM_CONSULTING = 'url.telegram.consulting';

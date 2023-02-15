@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $hru
  * @property string $name
  * @property string $title
+ * @property string $about
  * @property string $image
  * @property string|null $meta_description
  * @property string|null $meta_keywords

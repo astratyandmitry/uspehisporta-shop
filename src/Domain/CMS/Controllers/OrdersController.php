@@ -9,9 +9,9 @@ use Illuminate\Http\RedirectResponse;
 
 class OrdersController extends Controller
 {
-    protected string $section = SECTION_MAIN;
+    protected ?string $section = SECTION_MAIN;
 
-    protected string $model = 'orders';
+    protected ?string $model = 'orders';
 
     protected bool $addable = false;
 

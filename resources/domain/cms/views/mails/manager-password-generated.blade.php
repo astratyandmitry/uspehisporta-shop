@@ -1,10 +1,10 @@
 @component('mail::message')
-# {{ env('APP_NAME') }}: CMS Access
+# {{ env('APP_NAME') }}: Доступы в админку
 
 * **Email:** {{ $manager->email }}
-* **Password:** {{ $password }}
+* **Пароль:** {{ $password }}
 
 @component('mail::button', ['url' => url('/cms')])
-  Login to CMS
+  Войти в админку
 @endcomponent
 @endcomponent

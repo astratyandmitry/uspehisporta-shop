@@ -12,7 +12,7 @@
           @if ($sortable)
             <th nowrap width="12"></th>
           @endif
-          <th nowrap width="64"></th>
+{{--          <th nowrap width="64"></th>--}}
           <th nowrap width="88">
             @lang('cms.field.id')
           </th>
@@ -26,9 +26,9 @@
           @if ($sortable)
             <th class="field"></th>
           @endif
-          <th class="field">
-            <div class="holder">&nbsp</div>
-          </th>
+{{--          <th class="field">--}}
+{{--            <div class="holder">&nbsp</div>--}}
+{{--          </th>--}}
           <th class="field">
             @include('cms::layouts.includes.form.filter.input', [
                 'placeholder' => __('cms.field.id'),
@@ -60,13 +60,13 @@
                   <i class="fas fa-bars js-sortable-handle"></i>
                 </td>
               @endif
-              <td nowrap class="cell--image text--center">
-                @if ($model->logotype)
-                  <img src="{{ $model->logotype }}">
-                @else
-                  <div class="holder"></div>
-                @endif
-              </td>
+{{--              <td nowrap class="cell--image text--center">--}}
+{{--                @if ($model->logotype)--}}
+{{--                  <img src="{{ $model->logotype }}">--}}
+{{--                @else--}}
+{{--                  <div class="holder"></div>--}}
+{{--                @endif--}}
+{{--              </td>--}}
               <td nowrap class="text--center">
                 <div class="text--label">
                   {{ hid($model->id) }}

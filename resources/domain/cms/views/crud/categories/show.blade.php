@@ -9,16 +9,16 @@
         <div class="table table--card">
           <table>
             @include('cms::layouts.includes.show.detail_id')
-            @if ($model->parent)
-              <tr>
-                <td class="cell--key">
-                  @lang('cms.field.parent_id')
-                </td>
-                <td>
-                  {{ $model->parent->name }}
-                </td>
-              </tr>
-            @endif
+{{--            @if ($model->parent)--}}
+{{--              <tr>--}}
+{{--                <td class="cell--key">--}}
+{{--                  @lang('cms.field.parent_id')--}}
+{{--                </td>--}}
+{{--                <td>--}}
+{{--                  {{ $model->parent->name }}--}}
+{{--                </td>--}}
+{{--              </tr>--}}
+{{--            @endif--}}
             <tr>
               <td class="cell--key">
                 @lang('cms.field.hru')
@@ -41,6 +41,14 @@
               </td>
               <td>
                 {{ $model->title }}
+              </td>
+            </tr>
+            <tr>
+              <td class="cell--key">
+                @lang('cms.field.about')
+              </td>
+              <td>
+                {{ $model->about }}
               </td>
             </tr>
             @include('cms::layouts.includes.show.detail_active')

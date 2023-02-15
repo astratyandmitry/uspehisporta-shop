@@ -69,7 +69,8 @@
               </td>
               <td nowrap class="text--center has--icon">
                 @include('cms::layouts.includes.index.actions', [
-                    'delete' => $model->id !== 1,
+                  'edit' => $model->id !== 1,
+                  'delete' => $model->id !== 1,
                 ])
               </td>
             </tr>

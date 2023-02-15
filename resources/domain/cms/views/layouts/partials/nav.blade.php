@@ -52,6 +52,11 @@
       @break
       @case('system')
       <ul class="menu">
+        <li {{ isActive($model == 'settings') }}>
+          <a href="{{ route('cms::setting.index') }}">
+            @lang('cms.model.setting')
+          </a>
+        </li>
         <li {{ isActive($model == 'managers') }}>
           <a href="{{ route('cms::managers.index') }}">
             @lang('cms.model.managers')

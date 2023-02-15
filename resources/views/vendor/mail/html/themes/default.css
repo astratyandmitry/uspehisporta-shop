@@ -8,7 +8,7 @@ body *:not(html):not(style):not(br):not(tr):not(code) {
 }
 
 body {
-  background-color: #111;
+  background-color: #fff;
   color: rgba(255, 255, 255, 0.80);
   height: 100%;
   hyphens: auto;
@@ -32,7 +32,7 @@ blockquote {
 }
 
 a {
-  color: #1E4B6F;
+  color: #1D4ED8;
 }
 
 a img {
@@ -42,7 +42,7 @@ a img {
 /* Typography */
 
 h1 {
-  color: #fff;
+  color: #000;
   font-size: 19px;
   font-weight: bold;
   margin-top: 0;
@@ -50,7 +50,7 @@ h1 {
 }
 
 h2 {
-  color: #fff;
+  color: #000;
   opacity: .80;
   font-size: 16px;
   font-weight: bold;
@@ -59,7 +59,7 @@ h2 {
 }
 
 h3 {
-  color: #fff;
+  color: #000;
   opacity: .64;
   font-size: 14px;
   font-weight: bold;
@@ -68,7 +68,7 @@ h3 {
 }
 
 p {
-  color: #fff;
+  color: #000;
   font-size: 16px;
   line-height: 1.5em;
   margin-top: 0;
@@ -86,7 +86,7 @@ img {
 /* Layout */
 
 .wrapper {
-  background-color: #222;
+  background-color: #fff;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -109,21 +109,21 @@ img {
 .header {
   padding: 24px 0;
   text-align: center;
-  background: #111;
+  background: #fff;
 }
 
 .header a {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
+  color: #1D4ED8;
+  font-weight: 700;
+  font-size: 24px;
   text-decoration: none;
 }
 
 /* Body */
 
 .body {
-  background-color: #222;
-  border-bottom: 1px solid #333;
+  background-color: #fafafa;
+  border-bottom: 1px solid #e0e0e0;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -133,7 +133,8 @@ img {
 }
 
 .inner-body {
-  background-color: #222;
+  background-color: #fafafa;
+  color: #000;
   margin: 0 auto;
   padding: 0;
   width: 580px;
@@ -148,7 +149,7 @@ img {
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid #333;
-  color: #fff;
+  color: #000;
   opacity: .64;
 }
 
@@ -160,7 +161,8 @@ img {
 /* Footer */
 
 .footer {
-  background: #111;
+  border-top: 1px solid #f0f0f0;
+  background: #fff;
   margin: 0 auto;
   padding: 0;
   text-align: center;
@@ -171,7 +173,7 @@ img {
 }
 
 .footer p {
-  color: #fff;
+  color: rgba(0, 0, 0, .64);
   opacity: .40;
   font-size: 12px;
   text-align: center;
@@ -196,7 +198,7 @@ img {
 }
 
 .table td {
-  color: #fff;
+  color: #000;
   font-size: 14px;
   line-height: 18px;
   padding: 12px 0;
@@ -230,11 +232,11 @@ img {
 
 .button-blue,
 .button-primary {
-  background-color: #E40613;
-  border-top: 10px solid #E40613;
-  border-right: 18px solid #E40613;
-  border-bottom: 10px solid #E40613;
-  border-left: 18px solid #E40613;
+  background-color: #1D4ED8;
+  border-top: 10px solid #1D4ED8;
+  border-right: 18px solid #1D4ED8;
+  border-bottom: 10px solid #1D4ED8;
+  border-left: 18px solid #1D4ED8;
 }
 
 .button-green,
@@ -280,7 +282,7 @@ img {
 }
 
 .panel-item p {
-  color: #fff;
+  color: #000;
 }
 
 .panel-content-pink {
@@ -299,7 +301,7 @@ img {
 /* Promotions */
 
 .promotion {
-  background-color: #312883;
+  background-color: #1D4ED8;
   margin: 0;
   margin-bottom: 24px;
   margin-top: 24px;
@@ -308,7 +310,7 @@ img {
   -premailer-cellpadding: 0;
   -premailer-cellspacing: 0;
   -premailer-width: 100%;
-  color: #fff;
+  color: #ffffff;
 }
 
 .promotion h1 {

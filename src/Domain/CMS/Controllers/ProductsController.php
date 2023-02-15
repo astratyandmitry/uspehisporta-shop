@@ -13,9 +13,9 @@ use Domain\CMS\Requests\ProductRequest;
 
 class ProductsController extends Controller
 {
-    protected string $section = SECTION_MAIN;
+    protected ?string $section = SECTION_MAIN;
 
-    protected string $model = 'products';
+    protected ?string $model = 'products';
 
     public function __construct()
     {

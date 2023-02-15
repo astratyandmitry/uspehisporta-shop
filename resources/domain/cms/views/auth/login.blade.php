@@ -7,7 +7,7 @@
         <section class="content">
           <div class="brand">
             <div class="logotype">
-              BESTORE
+               <span>УСПЕХИ</span>СПОРТА
             </div>
           </div>
 

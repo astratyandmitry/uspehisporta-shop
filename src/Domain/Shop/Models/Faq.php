@@ -8,11 +8,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property string $position_key
- * @property string $title
- * @property string $image
- * @property string $image_mobile
- * @property string $url
+ * @property string $question
+ * @property string $answer
  */
 class Faq extends Model
 {
@@ -34,8 +31,8 @@ class Faq extends Model
     {
         $builder->when(request('info'), function (Builder $builder): Builder {
             return $builder
-                ->where('name', 'LIKE', '%'.request()->get('info').'%')
-                ->orWhere('about', 'LIKE', '%'.request()->get('info').'%');
+                ->where('answer', 'LIKE', '%'.request()->get('info').'%')
+                ->orWhere('question', 'LIKE', '%'.request()->get('info').'%');
         });
 
         return parent::scopeFilter($builder, false);

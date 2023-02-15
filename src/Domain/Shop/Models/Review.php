@@ -4,6 +4,7 @@ namespace Domain\Shop\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Domain\Shop\Models\Traits\HasActiveState;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Review extends Model
 {
-    use HasActiveState;
+    use HasActiveState, HasFactory;
 
     protected $guarded = [];
 

@@ -1,7 +1,7 @@
 @php /** @var \Domain\CMS\Models\Manager $model */ @endphp
 
-@empty($model))
-<div class="message is-sm is-warning">
+@empty($model)
+<div class="message message--warning">
   <p>@lang('cms.password-generated-mail')</p>
 </div>
 @endempty

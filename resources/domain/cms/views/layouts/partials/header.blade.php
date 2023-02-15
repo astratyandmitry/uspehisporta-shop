@@ -4,7 +4,7 @@
   <div class="container">
     <div class="brand">
       <div class="logotype">
-        BESTORE
+        <span>УСПЕХИ</span>СПОРТА
       </div>
     </div>
 
@@ -20,7 +20,7 @@
         </a>
       </li>
       <li {{ isActive($section == 'system') }}>
-        <a href="{{ route('cms::managers.index') }}">
+        <a href="{{ route('cms::setting.index') }}">
           Система
         </a>
       </li>

@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSystemSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(FaqSeeder::class);
         $this->call(BrandSeeder::class);
+        $this->call(SettingsSeeder::class);
         $this->call(UserSeeder::class);
 
         // Manager

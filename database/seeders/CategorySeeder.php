@@ -53,17 +53,17 @@ class CategorySeeder extends Seeder
             /** @var \Domain\Shop\Models\Category $category */
             $category = Category::query()->create($data);
 
-            for ($i = 1; $i <= 4; $i++) {
-                Category::query()->create([
-                    'parent_id' => $category->id,
-                    'hru' => "{$category->hru}_child-{$i}",
-                    'name' => "{$category->name} дочерняя {$i}",
-                    'title' => "{$category->name} дочерняя {$i}",
-                    'about' => 'Some about text',
-                    'active' => true,
-                    'sort' => "{$index}{$i}",
-                ]);
-            }
+            //for ($i = 1; $i <= 4; $i++) {
+            //    Category::query()->create([
+            //        'parent_id' => $category->id,
+            //        'hru' => "{$category->hru}_child-{$i}",
+            //        'name' => "{$category->name} дочерняя {$i}",
+            //        'title' => "{$category->name} дочерняя {$i}",
+            //        'about' => 'Some about text',
+            //        'active' => true,
+            //        'sort' => "{$index}{$i}",
+            //    ]);
+            //}
         }
     }
 }

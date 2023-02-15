@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $content
  * @property string|null $meta_description
  * @property string|null $meta_keywords
- * @property boolean $nav
  * @property boolean $system
  * @property boolean $active
  */
@@ -26,7 +25,6 @@ class Page extends Model implements HasUrl
     protected $guarded = [];
 
     protected $casts = [
-        'nav' => 'boolean',
         'system' => 'boolean',
         'active' => 'boolean',
     ];

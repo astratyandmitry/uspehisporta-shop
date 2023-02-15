@@ -1,4 +1,4 @@
-@php /** @var \Domain\Shop\Models\Faq[] $models */ @endphp
+@php /** @var \Domain\Shop\Models\Settings[] $models */ @endphp
 @php /** @var boolean $sortable */ @endphp
 
 @extends('cms::layouts.master', $globals)
@@ -12,23 +12,18 @@
           @if ($sortable)
             <th nowrap width="12"></th>
           @endif
-{{--          <th nowrap width="64"></th>--}}
           <th nowrap width="88">
             @lang('cms.field.id')
           </th>
           <th nowrap>
             @lang('cms.field.info')
           </th>
-          <th nowrap width="54"></th>
           <th nowrap width="80"></th>
         </tr>
         <tr class="row--filter form">
           @if ($sortable)
             <th class="field"></th>
           @endif
-{{--          <th class="field">--}}
-{{--            <div class="holder">&nbsp</div>--}}
-{{--          </th>--}}
           <th class="field">
             @include('cms::layouts.includes.form.filter.input', [
                 'placeholder' => __('cms.field.id'),
@@ -40,9 +35,6 @@
                'placeholder' => __('cms.field.info'),
                'attribute' => 'info',
            ])
-          </th>
-          <th class="field">
-            <div class="holder">&nbsp</div>
           </th>
           <th>
             <button type="button" class="btn btn--primary btn--sm js-filter">
@@ -60,13 +52,6 @@
                   <i class="fas fa-bars js-sortable-handle"></i>
                 </td>
               @endif
-{{--              <td nowrap class="cell--image text--center">--}}
-{{--                @if ($model->logotype)--}}
-{{--                  <img src="{{ $model->logotype }}">--}}
-{{--                @else--}}
-{{--                  <div class="holder"></div>--}}
-{{--                @endif--}}
-{{--              </td>--}}
               <td nowrap class="text--center">
                 <div class="text--label">
                   {{ hid($model->id) }}
@@ -74,14 +59,15 @@
               </td>
               <td nowrap>
                 <div class="text--label">
-                  {{ $model->question }}
+                  {{ $model->label }}
+                </div>
+
+                <div class="text--detail">
+                  {{ $model->key }}
                 </div>
               </td>
-              <td>
-                @include('cms::layouts.includes.index.switch')
-              </td>
               <td nowrap class="text--center has--icon">
-                @include('cms::layouts.includes.index.actions')
+                @include('cms::layouts.includes.index.actions', ['delete' => false])
               </td>
             </tr>
           @endforeach

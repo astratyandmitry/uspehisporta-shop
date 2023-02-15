@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('faqs', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('question', 120)->unique();
-            $table->text('answer');
-            $table->boolean('active')->default(false);
-            $table->integer('sort')->default(0)->index();
+            $table->string('label', 120);
+            $table->string('key', 80)->unique();
+            $table->string('value', 500);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faqs');
+        Schema::dropIfExists('settings');
     }
 };

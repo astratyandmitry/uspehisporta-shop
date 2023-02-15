@@ -6,6 +6,7 @@ use Domain\Shop\Models\Interfaces\HasUrl;
 use Domain\Shop\Models\Traits\HasActiveState;
 use Domain\Shop\Requests\CatalogRequest;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
@@ -14,13 +15,11 @@ use Illuminate\Support\Facades\Session;
 /**
  * @property integer $category_id
  * @property integer $brand_id
- * @property integer $badge_id
  * @property string $hru
  * @property string $url
  * @property string $name
  * @property string $image
  * @property string|null $about
- * @property string|null $characteristics
  * @property string|null $badges
  * @property array $variations
  * @property array $gallery
@@ -31,7 +30,7 @@ use Illuminate\Support\Facades\Session;
  * @property string|null $meta_description
  * @property string|null $meta_keywords
  * @property boolean $active
- * @property boolean $featured
+ * @property boolean $hot_sale
  * @property integer $count_views
  *
  * @property \Domain\Shop\Models\Category $category
@@ -43,7 +42,7 @@ use Illuminate\Support\Facades\Session;
  */
 class Product extends Model implements HasUrl
 {
-    use HasActiveState;
+    use HasActiveState, HasFactory;
 
     protected $guarded = [];
 
@@ -59,7 +58,7 @@ class Product extends Model implements HasUrl
         'quantity' => 'integer',
         'price' => 'integer',
         'price_sale' => 'integer',
-        'featured' => 'boolean',
+        'hot_sale' => 'boolean',
     ];
 
     public function category(): BelongsTo

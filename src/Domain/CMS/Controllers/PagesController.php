@@ -12,9 +12,9 @@ use Illuminate\Http\RedirectResponse;
 
 class PagesController extends Controller
 {
-    protected string $section = SECTION_MAIN;
+    protected ?string $section = SECTION_MAIN;
 
-    protected string $model = 'pages';
+    protected ?string $model = 'pages';
 
     public function show(int $id): View
     {

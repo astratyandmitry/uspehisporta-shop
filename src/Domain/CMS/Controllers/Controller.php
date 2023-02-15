@@ -13,9 +13,9 @@ class Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected string $model;
+    protected ?string $model = null;
 
-    protected string $section;
+    protected ?string $section = null;
 
     protected int $paginationSize = 50;
 

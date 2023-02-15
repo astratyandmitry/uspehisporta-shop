@@ -14,72 +14,77 @@ class PageSystemSeeder extends Seeder
         [
             'name' => 'Главная',
             'title' => 'Главная страница',
-            'hru' => 'home',
+            'hru' => PAGE_HOME,
         ],
         [
             'name' => 'Каталог',
             'title' => 'Каталог товаров',
-            'hru' => 'catalog',
+            'hru' => PAGE_CATALOG,
+        ],
+        [
+            'name' => 'Вопросы и ответы',
+            'title' => 'Вопросы и ответы',
+            'hru' => PAGE_FAQ,
         ],
         [
             'name' => 'Поиск',
             'title' => 'Поиск товаров',
-            'hru' => 'search',
+            'hru' => PAGE_SEARCH,
         ],
         [
             'name' => 'Корзина',
             'title' => 'Ваша корзина',
-            'hru' => 'basket',
+            'hru' => PAGE_BASKET,
         ],
         [
             'name' => 'Вход',
             'title' => 'Вход',
-            'hru' => 'auth.login',
+            'hru' => PAGE_AUTH_LOGIN,
         ],
         [
             'name' => 'Регистрация',
             'title' => 'Регистрация',
-            'hru' => 'auth.register',
+            'hru' => PAGE_AUTH_REGISTER,
         ],
         [
             'name' => 'Восстановление пароля',
             'title' => 'Восстановление пароля',
-            'hru' => 'auth.password.recovery',
+            'hru' => PAGE_AUTH_PASSWORD_RECOVERY,
         ],
         [
             'name' => 'Запрос пароля',
             'title' => 'Запрос пароля',
-            'hru' => 'auth.password.reset',
+            'hru' => PAGE_AUTH_PASSWORD_RESET,
         ],
         [
             'name' => 'Текущие заказы',
             'title' => 'Текущие заказы',
-            'hru' => 'account.orders.current',
+            'hru' => PAGE_ACCOUNT_ORDERS_CURRENT,
         ],
         [
             'name' => 'История заказов',
             'title' => 'История заказов',
-            'hru' => 'account.orders.history',
+            'hru' => PAGE_ACCOUNT_ORDERS_HISTORY,
         ],
         [
             'name' => 'Детали заказа',
             'title' => 'Детали заказа',
-            'hru' => 'account.order',
+            'hru' => PAGE_ACCOUNT_ORDER,
         ],
         [
             'name' => 'Настройки',
             'title' => 'Личные настройки',
-            'hru' => 'account.settings.personal',
+            'hru' => PAGE_ACCOUNT_SETTINGS_PERSONAL,
         ],
         [
             'name' => 'Безопасность',
             'title' => 'Настройки безопасности',
-            'hru' => 'account.settings.security',
+            'hru' => PAGE_ACCOUNT_SETTINGS_SECURITY,
         ],
         [
             'name' => 'Отзыв о товаре',
             'title' => 'Оставить отзыв о товаре',
-            'hru' => 'product.review',
+            'hru' => PAGE_PRODUCT_REVIEW,
         ],
     ];
 

@@ -11,9 +11,9 @@ use Illuminate\Http\RedirectResponse;
 
 class ReviewsController extends Controller
 {
-    protected string $section = SECTION_MAIN;
+    protected ?string $section = SECTION_MAIN;
 
-    protected string $model = 'reviews';
+    protected ?string $model = 'reviews';
 
     protected bool $addable = false;
 

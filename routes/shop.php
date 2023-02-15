@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('mail', function() {
+    return new \Domain\CMS\Mails\ManagerPasswordGeneratedMail(\Domain\CMS\Models\Manager::first(), 'test');
+});
+
 Route::get('/', 'HomeController')->name('home');
 Route::get('/page/{page}', 'PageController')->name('page');
 

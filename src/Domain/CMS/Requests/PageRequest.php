@@ -9,7 +9,6 @@ use Domain\Shop\Models\Page;
  * @property string $name
  * @property string $title
  * @property string $content
- * @property boolean $nav
  * @property boolean $active
  */
 class PageRequest extends Request
@@ -24,7 +23,6 @@ class PageRequest extends Request
                 'name' => 'required|max:120',
                 'title' => 'required|max:200',
                 'content' => 'required',
-                'nav' => 'boolean',
                 'active' => 'boolean',
             ]);
     }

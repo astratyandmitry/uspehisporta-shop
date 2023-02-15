@@ -12,13 +12,13 @@
     @include('cms::layouts.includes.form.field.hru')
   </div>
 
-  <div class="section">
-    @include('cms::layouts.includes.form.field.file-image', [
-        'label' => __('cms.field.logotype'),
-        'attribute' => 'logotype',
-        'path' => 'brands',
-    ])
-  </div>
+{{--  <div class="section">--}}
+{{--    @include('cms::layouts.includes.form.field.file-image', [--}}
+{{--        'label' => __('cms.field.logotype'),--}}
+{{--        'attribute' => 'logotype',--}}
+{{--        'path' => 'brands',--}}
+{{--    ])--}}
+{{--  </div>--}}
 </section>
 
 @include('cms::layouts.includes.form.meta')

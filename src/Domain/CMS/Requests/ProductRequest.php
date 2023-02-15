@@ -44,7 +44,7 @@ class ProductRequest extends Request
                 'about' => 'required',
                 'badges' => 'nullable',
                 'active' => 'boolean',
-                'featured' => 'boolean',
+                'hot_sale' => 'boolean',
             ]);
     }
 }

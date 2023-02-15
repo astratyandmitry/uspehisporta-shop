@@ -25,28 +25,18 @@
                 {{ $model->name }}
               </td>
             </tr>
-            @if ($model->about)
-              <tr>
-                <td class="cell--key">
-                  @lang('cms.field.about')
-                </td>
-                <td>
-                  {{ $model->about }}
-                </td>
-              </tr>
-            @endif
-            @if ($model->logotype)
-              <tr>
-                <td class="cell--key">
-                  @lang('cms.field.logotype')
-                </td>
-                <td class="cell--image">
-                  <a href="{{ $model->logotype }}" target="_blank">
-                    <img src="{{ $model->logotype }}">
-                  </a>
-                </td>
-              </tr>
-            @endif
+{{--            @if ($model->logotype)--}}
+{{--              <tr>--}}
+{{--                <td class="cell--key">--}}
+{{--                  @lang('cms.field.logotype')--}}
+{{--                </td>--}}
+{{--                <td class="cell--image">--}}
+{{--                  <a href="{{ $model->logotype }}" target="_blank">--}}
+{{--                    <img src="{{ $model->logotype }}">--}}
+{{--                  </a>--}}
+{{--                </td>--}}
+{{--              </tr>--}}
+{{--            @endif--}}
             @include('cms::layouts.includes.show.detail_active')
             @include('cms::layouts.includes.show.detail_dates')
           </table>

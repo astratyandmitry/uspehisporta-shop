@@ -12,34 +12,14 @@ class PageSeeder extends Seeder
      */
     protected $data = [
         [
-            'name' => 'О нас',
+            'name' => 'О компании',
             'title' => 'О компании',
             'hru' => 'about',
         ],
         [
-            'name' => 'Конаткты',
-            'title' => 'Контактная информация',
-            'hru' => 'contacts',
-        ],
-        [
-            'name' => 'Магазины',
-            'title' => 'Адреса магазинов',
-            'hru' => 'stores',
-        ],
-        [
-            'name' => 'Оплата',
-            'title' => 'Оплата товаров',
-            'hru' => 'payment',
-        ],
-        [
-            'name' => 'Доставка',
-            'title' => 'Способы доставки',
-            'hru' => 'delivery',
-        ],
-        [
-            'name' => 'Франшиза',
-            'title' => 'Франшиза',
-            'hru' => 'franchise',
+            'name' => 'Оплата и доставка',
+            'title' => 'Оплата и доставка',
+            'hru' => 'payment-and-delivery',
         ],
         [
             'name' => 'Пользовательское соглашение',

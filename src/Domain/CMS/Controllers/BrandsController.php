@@ -11,9 +11,9 @@ use Domain\CMS\Requests\BrandRequest;
 
 class BrandsController extends Controller
 {
-    protected string $section = SECTION_DICTIONARY;
+    protected ?string $section = SECTION_DICTIONARY;
 
-    protected string $model = 'brands';
+    protected ?string $model = 'brands';
 
     protected bool $sortable = true;
 

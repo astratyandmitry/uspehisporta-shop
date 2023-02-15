@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\ProductFactory;
+use Database\Factories\ReviewFactory;
 use Domain\Shop\Models\Packing;
 use Domain\Shop\Models\Product;
 use Domain\Shop\Models\ProductPacking;
@@ -24,21 +26,8 @@ class ProductSeeder extends Seeder
         Product::query()->truncate();
         Review::query()->truncate();
 
-        /** @var \Domain\Shop\Models\Product[] $products */
-        $products = Product::query()->get();
-
-        Taste::query()->create(['name' => 'Обычный', 'hru' => 'def']);
-        Packing::query()->create(['name' => 'Обычный', 'hru' => 'def']);
-
-        foreach ($products as $product) {
-            $product->packing()->create(['packing_id' => 1, 'price' => $price = rand(1000, 10000)]);
-            $product->tastes()->create(['taste_id' => 1]);
-
-
-            factory(Review::class, rand(1, 10))->create([
-                'product_id' => $product->id,
-            ]);
-        }
+        ProductFactory::new()->count(50)->create();
+        ReviewFactory::new()->count(100)->create();
 
         Schema::enableForeignKeyConstraints();
     }

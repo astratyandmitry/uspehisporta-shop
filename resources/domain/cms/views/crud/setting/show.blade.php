@@ -1,4 +1,4 @@
-@php /** @var \Domain\CMS\Models\Manager $model */ @endphp
+@php /** @var \Domain\Shop\Models\Settings $model */ @endphp
 
 @extends('cms::layouts.master', $globals)
 
@@ -11,18 +11,26 @@
             @include('cms::layouts.includes.show.detail_id')
             <tr>
               <td class="cell--key">
-                @lang('cms.field.email')
+                @lang('cms.field.label')
               </td>
               <td>
-                {{ $model->email }}
+                {{ $model->label }}
               </td>
             </tr>
             <tr>
               <td class="cell--key">
-                @lang('cms.field.role_id')
+                @lang('cms.field.key')
               </td>
               <td>
-                {{ $model->role->name }}
+                {{ $model->key }}
+              </td>
+            </tr>
+            <tr>
+              <td class="cell--key">
+                @lang('cms.field.value')
+              </td>
+              <td>
+                {{ $model->value }}
               </td>
             </tr>
             @include('cms::layouts.includes.show.detail_dates')
@@ -33,10 +41,7 @@
 
     <div class="page-grid__right">
       <div class="block aside">
-        @include('cms::layouts.includes.show.actions', [
-          'edit' => $model->id !== 1,
-          'delete' => $model->id !== 1,
-        ])
+        @include('cms::layouts.includes.show.actions', ['delete' => false])
       </div>
     </div>
   </div>

@@ -2,11 +2,6 @@
 
 <div class="section">
   @include('cms::layouts.includes.form.field.checkbox', [
-      'label' => __('cms.field.nav'),
-      'attribute' => 'nav',
-  ])
-
-  @include('cms::layouts.includes.form.field.checkbox', [
       'label' => __('cms.field.active'),
       'attribute' => 'active',
   ])

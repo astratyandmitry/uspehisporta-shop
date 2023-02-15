@@ -21,8 +21,8 @@
 
 <div class="section">
   @include('cms::layouts.includes.form.field.checkbox', [
-      'label' => __('cms.field.featured'),
-      'attribute' => 'featured',
+      'label' => __('cms.field.hot_sale'),
+      'attribute' => 'hot_sale',
   ])
 
   @include('cms::layouts.includes.form.field.checkbox', [

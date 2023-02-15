@@ -11,9 +11,9 @@ use Illuminate\Http\RedirectResponse;
 
 class FaqsController extends Controller
 {
-    protected string $section = SECTION_MAIN;
+    protected ?string $section = SECTION_MAIN;
 
-    protected string $model = 'faqs';
+    protected ?string $model = 'faqs';
 
     protected bool $sortable = true;
 

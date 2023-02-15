@@ -3,7 +3,8 @@
 namespace Domain\CMS\Requests;
 
 /**
- *
+ * @property string $question
+ * @property string $answer
  */
 class FaqRequest extends Request
 {
@@ -11,11 +12,8 @@ class FaqRequest extends Request
     {
         $this->rulesBuilder
             ->addRules([
-                'position_key' => 'required|exists:banner_positions,key',
-                'title' => 'required|max:500',
-                'url' => 'required|url',
-                'image' => 'required',
-                'image_mobile' => 'required',
+                'question' => 'required|max:120',
+                'answer' => 'required',
                 'active' => 'boolean',
             ]);
     }
