@@ -8,25 +8,12 @@
 @section('content')
   <div class="home">
 
-    @include('shop::home.partials.banners')
-
     @include('shop::home.partials.categories')
-
-    @if ($featuredProducts->isNotEmpty())
-      @include('shop::home.partials.products', [
-          'title' => 'Рекомендованные товары',
-          'products' => $featuredProducts,
-      ])
-
-      @include('shop::home.partials.banners-split')
-    @endif
 
     @include('shop::home.partials.products', [
         'title' => 'Популярные товары',
         'products' => $popularProducts,
     ])
-
-    @include('shop::home.partials.banners-split')
 
     @include('shop::home.partials.products', [
         'title' => 'Новые товары',

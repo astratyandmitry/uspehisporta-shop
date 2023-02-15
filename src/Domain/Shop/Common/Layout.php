@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class Layout
 {
-    public string $title;
+    public ?string $title = null;
 
     public ?string $meta_description = null;
 

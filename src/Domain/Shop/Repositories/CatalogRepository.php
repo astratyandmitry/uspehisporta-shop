@@ -18,4 +18,9 @@ class CatalogRepository
     {
         return Product::catalog()->orderByDesc('created_at')->limit(8)->get();
     }
+
+    public function popular(): Collection
+    {
+        return Product::catalog()->orderByDesc('count_views')->limit(8)->get();
+    }
 }

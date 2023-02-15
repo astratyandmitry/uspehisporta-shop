@@ -23,7 +23,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
         return (new $class)->getTable();
     }
 
-    protected function asJson(array $value): string
+    protected function asJson($value)
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }

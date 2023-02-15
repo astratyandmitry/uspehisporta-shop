@@ -18,6 +18,7 @@ class HomeController extends Controller
 
         return $this->view('home.index', [
             'latestProducts' => $catalogRepository->latest(),
+            'popularProducts' => $catalogRepository->popular(),
             'categories' => $categoriesRepository->parents(),
         ]);
     }
