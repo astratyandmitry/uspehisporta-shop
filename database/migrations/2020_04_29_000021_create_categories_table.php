@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('hru', 80)->unique()->index();
             $table->string('name', 120)->unique();
             $table->string('title', 120)->unique();
+            $table->text('about');
             $table->string('image', 500)->nullable();
             $table->string('meta_description', 1000)->nullable();
             $table->string('meta_keywords', 1000)->nullable();

@@ -3,30 +3,18 @@
 namespace Domain\CMS\Controllers;
 
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Domain\Shop\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Domain\CMS\Requests\CategoryRequest as Request;
+use Domain\CMS\Requests\CategoryRequest;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class CategoriesController extends Controller
 {
-    /**
-     * @var string
-     */
-    protected $section = SECTION_DICTIONARY;
+    protected string $section = SECTION_DICTIONARY;
 
-    /**
-     * @var string
-     */
-    protected $model = 'categories';
+    protected string $model = 'categories';
 
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $parentCategories = Category::query()->whereNull('parent_id')->pluck('name', 'id')->toArray();
@@ -35,11 +23,6 @@ class CategoriesController extends Controller
         $this->with('parents', $parentCategories);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function show(int $id): View
     {
         $model = Category::query()->findOrFail($id);
@@ -49,9 +32,6 @@ class CategoriesController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         $this->sortable = ! is_null(request('parent_id'));
@@ -61,9 +41,6 @@ class CategoriesController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function create(): View
     {
         return $this->view([
@@ -71,11 +48,7 @@ class CategoriesController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\CMS\Requests\CategoryRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(CategoryRequest $request): RedirectResponse
     {
         /** @var \Domain\Shop\Models\Category $model */
         $model = Category::query()->create($request->validated());
@@ -83,28 +56,18 @@ class CategoriesController extends Controller
         return $this->redirectSuccess('show', ['category' => $model->id]);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function edit(int $id): View
     {
         /** @var \Domain\Shop\Models\Category $model */
         $model = Category::query()->findOrFail($id);
 
         return $this->view([
-            'action' => $this->route('update', $model->id),
+            'action' => $this->route('update', ['category' => $model->id]),
             'model' => $model,
         ]);
     }
 
-    /**
-     * @param int $id
-     * @param \Domain\CMS\Requests\CategoryRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(int $id, Request $request): RedirectResponse
+    public function update(int $id, CategoryRequest $request): RedirectResponse
     {
         /** @var \Domain\Shop\Models\Category $model */
         $model = Category::query()->findOrFail($id);
@@ -113,13 +76,7 @@ class CategoriesController extends Controller
         return $this->redirectSuccess('show', ['category' => $model->id]);
     }
 
-    /**
-     * @param int $id
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy(int $id, \Illuminate\Http\Request $request)
+    public function destroy(int $id, Request $request): RedirectResponse|JsonResponse
     {
         /** @var \Domain\Shop\Models\Category $model */
         $model = Category::query()->findOrFail($id);

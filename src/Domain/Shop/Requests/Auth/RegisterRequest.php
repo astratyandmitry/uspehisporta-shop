@@ -14,9 +14,6 @@ use Illuminate\Validation\Rule;
  */
 class RegisterRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

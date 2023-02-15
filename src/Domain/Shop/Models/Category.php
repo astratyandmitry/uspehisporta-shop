@@ -25,14 +25,8 @@ class Category extends Model implements HasUrl
 {
     use HasSorting, HasActiveState;
 
-    /**
-     * @var array
-     */
     protected $guarded = [];
 
-    /**
-     * @var array
-     */
     protected $hidden = [
         'parent_id',
         'title',
@@ -45,49 +39,31 @@ class Category extends Model implements HasUrl
         'updated_at',
     ];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'parent_id' => 'integer',
         'active' => 'boolean',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function children(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    /**
-     * @return string
-     */
     public function getRouteKeyName(): string
     {
         return 'hru';
     }
 
-    /**
-     * @return array
-     */
     public static function options(): array
     {
         return Category::query()->whereNull('parent_id')->pluck('name', 'id')->toArray();
     }
 
-    /**
-     * @return array
-     */
     public static function groupedOptions(): array
     {
         /** @var \Domain\Shop\Models\Category[] $parentCategories */
@@ -108,11 +84,6 @@ class Category extends Model implements HasUrl
         return $options;
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $builder
-     * @param bool $applyOrder
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         $builder->when(request('info'), function (Builder $builder): Builder {
@@ -133,9 +104,6 @@ class Category extends Model implements HasUrl
         return parent::scopeFilter($builder, false);
     }
 
-    /**
-     * @return string
-     */
     public function url(): string
     {
         if ($this->parent) {

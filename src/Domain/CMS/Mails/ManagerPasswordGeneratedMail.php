@@ -7,31 +7,16 @@ use Domain\CMS\Models\Manager;
 
 class ManagerPasswordGeneratedMail extends Mailable
 {
-    /**
-     * @var \Domain\CMS\Models\Manager
-     */
-    public $manager;
+    public Manager $manager;
 
-    /**
-     * @var string
-     */
-    public $password;
+    public string $password;
 
-    /**
-     * @param \Domain\CMS\Models\Manager $manager
-     * @param string $password
-     *
-     * @return void
-     */
     public function __construct(Manager $manager, string $password)
     {
         $this->manager = $manager;
         $this->password = $password;
     }
 
-    /**
-     * @return \Domain\CMS\Mails\ManagerPasswordGeneratedMail
-     */
     public function build(): ManagerPasswordGeneratedMail
     {
         return $this

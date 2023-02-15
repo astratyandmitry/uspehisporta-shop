@@ -19,25 +19,16 @@ class Basket extends Model
 {
     use Compoships;
 
-    /**
-     * @var array
-     */
     protected $guarded = [
         'total',
     ];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'user_id' => 'integer',
         'product_id' => 'integer',
         'count' => 'integer',
     ];
 
-    /**
-     * @var array
-     */
     protected $hidden = [
         'user_id',
         'session_key',
@@ -46,23 +37,13 @@ class Basket extends Model
         'updated_at',
     ];
 
-    /**
-     * @var array
-     */
     protected $appends = ['total'];
 
-    /**
-     *
-     * @return int
-     */
     public function getTotalAttribute(): int
     {
         return $this->product->price() * $this->count;
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);

@@ -21,7 +21,6 @@ class CreatePagesTable extends Migration
             $table->text('content')->nullable();
             $table->string('meta_description', 1000)->nullable();
             $table->string('meta_keywords', 1000)->nullable();
-            $table->boolean('nav')->default(false)->index();
             $table->boolean('system')->default(false)->index();
             $table->boolean('active')->default(false)->index();
             $table->timestamps();

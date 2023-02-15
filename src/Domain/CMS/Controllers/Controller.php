@@ -7,88 +7,42 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    /**
-     * @var string
-     */
-    protected $model;
+    protected string $model;
 
-    /**
-     * @var
-     */
-    protected $section;
+    protected string $section;
 
-    /**
-     * @var int
-     */
-    protected $paginationSize = 50;
+    protected int $paginationSize = 50;
 
-    /**
-     * @var array
-     */
-    protected $data = [];
+    protected array $data = [];
 
-    /**
-     * @var array
-     */
-    protected $counts = [];
+    protected array $counts = [];
 
-    /**
-     * @var array
-     */
-    protected $filters = [];
+    protected array $filters = [];
 
-    /**
-     * @var bool
-     */
-    protected $addable = true;
+    protected bool $addable = true;
 
-    /**
-     * @var bool
-     */
-    protected $sortable = false;
+    protected bool $sortable = false;
 
-    /**
-     * @var bool
-     */
-    protected $exportable = false;
+    protected bool $exportable = false;
 
-    /**
-     * @var bool
-     */
-    protected $form_page = false;
+    protected bool $form_page = false;
 
-    /**
-     * @return int
-     */
     protected function paginationSize(): int
     {
         return $this->sortable ? 99999 : $this->paginationSize;
     }
 
-    /**
-     * @param string $key
-     * @param mixed $data
-     */
-    protected function with(string $key, $data): void
+    protected function with(string $key, mixed $data): void
     {
         $this->data[$key] = $data;
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     protected function getData(array $data = []): array
     {
         if ($this->filters) {
@@ -122,9 +76,6 @@ class Controller
         return array_merge($data, $_data);
     }
 
-    /**
-     * @return null|string
-     */
     protected function getTitle(): ?string
     {
         $action = request()->route()->getActionMethod();
@@ -147,9 +98,6 @@ class Controller
         return __("cms.title.custom.{$action}");
     }
 
-    /**
-     * @return null|string
-     */
     protected function getMessage(): ?string
     {
         $action = request()->route()->getActionMethod();
@@ -157,13 +105,7 @@ class Controller
         return (Lang::has("cms.message.{$action}")) ? __("cms.message.{$action}") : __("cms.message.custom.{$action}");
     }
 
-    /**
-     * @param array $data
-     * @param string|null $view
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    protected function view(array $data = [], ?string $view = null)
+    protected function view(array $data = [], ?string $view = null): View
     {
         if (is_null($view)) {
             $action = request()->route()->getActionMethod();
@@ -180,13 +122,7 @@ class Controller
         return view("cms::crud.{$view}", $this->getData($data));
     }
 
-    /**
-     * @param string $route
-     * @param mixed $params
-     *
-     * @return string
-     */
-    protected function route(string $route, $params = []): string
+    protected function route(string $route, array $params = []): string
     {
         if (! $this->model) {
             return route("cms::{$route}", $params);
@@ -195,47 +131,23 @@ class Controller
         return route("cms::{$this->model}.{$route}", $params);
     }
 
-    /**
-     * @param string $route
-     * @param mixed $params
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    protected function redirect(string $route, $params = []): RedirectResponse
+    protected function redirect(string $route, array $params = []): RedirectResponse
     {
         return redirect()->to($this->route($route, $params));
     }
 
-    /**
-     * @param string $route
-     * @param array $params
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     protected function redirectSuccess(string $route = 'index', array $params = []): RedirectResponse
     {
         return redirect()->to($this->route($route, $params))
             ->with('success', $this->getMessage());
     }
 
-    /**
-     * @param string $route
-     * @param array $params
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     protected function redirectWarning(string $route = 'index', array $params = []): RedirectResponse
     {
         return redirect()->to($this->route($route, $params))
             ->with('warning', $this->getMessage());
     }
 
-    /**
-     * @param string $route
-     * @param array $params
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     protected function redirectDanger(string $route = 'index', array $params = []): RedirectResponse
     {
         return redirect()->to($this->route($route, $params))

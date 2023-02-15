@@ -3,37 +3,20 @@
 namespace Domain\CMS\Controllers;
 
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Domain\Shop\Models\Brand;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Domain\CMS\Requests\BrandRequest as Request;
+use Domain\CMS\Requests\BrandRequest;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class BrandsController extends Controller
 {
-    /**
-     * @var string
-     */
-    protected $section = SECTION_DICTIONARY;
+    protected string $section = SECTION_DICTIONARY;
 
-    /**
-     * @var string
-     */
-    protected $model = 'brands';
+    protected string $model = 'brands';
 
-    /**
-     * @var bool
-     */
-    protected $sortable = true;
+    protected bool $sortable = true;
 
-    /**
-     * @param int $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function show(int $id): View
     {
         $model = Brand::query()->findOrFail($id);
@@ -43,9 +26,6 @@ class BrandsController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return $this->view([
@@ -53,9 +33,6 @@ class BrandsController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function create(): View
     {
         return $this->view([
@@ -63,11 +40,7 @@ class BrandsController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\CMS\Requests\BrandRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(BrandRequest $request): RedirectResponse
     {
         /** @var \Domain\Shop\Models\Brand $model */
         $model = Brand::query()->create($request->validated());
@@ -75,28 +48,18 @@ class BrandsController extends Controller
         return $this->redirectSuccess('show', ['brand' => $model->id]);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function edit(int $id): View
     {
         /** @var \Domain\Shop\Models\Brand $model */
         $model = Brand::query()->findOrFail($id);
 
         return $this->view([
-            'action' => $this->route('update', $model->id),
+            'action' => $this->route('update', ['brand' => $model->id]),
             'model' => $model,
         ]);
     }
 
-    /**
-     * @param int $id
-     * @param \Domain\CMS\Requests\BrandRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(int $id, Request $request): RedirectResponse
+    public function update(int $id, BrandRequest $request): RedirectResponse
     {
         /** @var \Domain\Shop\Models\Brand $model */
         $model = Brand::query()->findOrFail($id);
@@ -105,13 +68,7 @@ class BrandsController extends Controller
         return $this->redirectSuccess('show', ['brand' => $model->id]);
     }
 
-    /**
-     * @param int $id
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy(int $id, \Illuminate\Http\Request $request)
+    public function destroy(int $id, Request $request): RedirectResponse|JsonResponse
     {
         /** @var \Domain\Shop\Models\Brand $model */
         $model = Brand::query()->findOrFail($id);

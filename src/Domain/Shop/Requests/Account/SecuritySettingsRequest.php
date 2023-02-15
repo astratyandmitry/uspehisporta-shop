@@ -11,9 +11,6 @@ use Domain\Shop\Requests\Request;
  */
 class SecuritySettingsRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

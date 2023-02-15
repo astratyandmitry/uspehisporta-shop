@@ -2,31 +2,17 @@
 
 namespace Domain\Shop\Controllers;
 
-use Domain\Shop\Repositories\BrandsRepository;
-use Domain\Shop\Repositories\CategoriesRepository;
-use Domain\Shop\Repositories\ProductsRepository;
-use Domain\Shop\Requests\CatalogRequest;
 use Illuminate\View\View;
+use Domain\Shop\Requests\CatalogRequest;
+use Domain\Shop\Repositories\CategoriesRepository;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class CatalogController extends Controller
 {
-    /**
-     * @param string $parentHru
-     * @param string|null $childHru
-     * @param \Domain\Shop\Requests\CatalogRequest $request
-     * @param \Domain\Shop\Repositories\CategoriesRepository $categoryRepository
-     * @return \Illuminate\View\View
-     */
     public function __invoke(
+        CatalogRequest $request,
+        CategoriesRepository $categoryRepository,
         string $parentHru,
         ?string $childHru = null,
-        CatalogRequest $request,
-        CategoriesRepository $categoryRepository
     ): View {
         $parentCategory = $categoryRepository->findByHru($parentHru);
         $childCategory = null;

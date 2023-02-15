@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @param bool $boolean
- * @param bool $asParameter
- * @return string
- */
 function isActive(bool $boolean, bool $asParameter = true): void
 {
     if ($boolean) {
@@ -14,11 +9,6 @@ function isActive(bool $boolean, bool $asParameter = true): void
     echo '';
 }
 
-/**
- * Return array of  not empty $_GET parameters
- *
- * @return array
- */
 function getNotEmptyQueryParameters(): array
 {
     $parameters = [];
@@ -34,11 +24,6 @@ function getNotEmptyQueryParameters(): array
     return $parameters;
 }
 
-/**
- * @param string $str
- * @param int $limit
- * @return string|null
- */
 function shorten(?string $str, int $limit = 50): ?string
 {
     if (is_null($str)) {
@@ -52,20 +37,11 @@ function shorten(?string $str, int $limit = 50): ?string
     return $str;
 }
 
-/**
- * @param int $id
- * @return string
- */
 function hid(int $id): string
 {
     return str_pad($id, 7, '0', STR_PAD_LEFT);
 }
 
-/**
- * @param string $class
- * @param bool $boolean
- * @return string
- */
 function apply_class_when(string $class, bool $boolean): string
 {
     return $boolean ? $class : '';

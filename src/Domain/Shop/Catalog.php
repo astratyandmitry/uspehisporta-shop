@@ -3,11 +3,12 @@
 namespace Domain\Shop;
 
 use Domain\Shop\Models\Category;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
+use Domain\Shop\Requests\CatalogRequest;
 use Domain\Shop\Repositories\BrandsRepository;
 use Domain\Shop\Repositories\CatalogRepository;
 use Domain\Shop\Repositories\CategoriesRepository;
-use Domain\Shop\Requests\CatalogRequest;
-use Illuminate\Support\Facades\DB;
 
 /**
  * @version 1.0.1
@@ -16,30 +17,18 @@ use Illuminate\Support\Facades\DB;
  */
 class Catalog
 {
-    /**
-     * @var \Domain\Shop\Requests\CatalogRequest
-     */
-    protected $request;
+    protected CatalogRequest $request;
+
+    protected ?Category $category = null;
 
     /**
-     * @var \Domain\Shop\Models\Category
-     */
-    protected $category;
-
-    /**
-     * @var array|\Domain\Shop\Models\Product[]
+     * @var \Illuminate\Database\Eloquent\Collection|\Domain\Shop\Models\Product[]
      */
     public $products = [];
 
-    /**
-     * @var string
-     */
-    public $sorting = 'views.desc';
+    public string $sorting = 'views.desc';
 
-    /**
-     * @var array
-     */
-    public $sortingOptions = [
+    public array $sortingOptions = [
         'views.desc' => 'По популярности',
         'date.desc' => 'Сначала новые',
         'date.asc' => 'Сначала старые',
@@ -47,61 +36,26 @@ class Catalog
         'price.desc' => 'Сначала дорогие',
     ];
 
-    /**
-     * @var array
-     */
-    public $brands = [];
+    public Collection $brands;
 
-    /**
-     * @var array
-     */
-    public $categories = [];
+    public Collection $categories;
 
-    /**
-     * @var array
-     */
-    public $categoriesQuery = [];
+    public array $categoriesQuery = [];
 
-    /**
-     * @var array
-     */
-    public $brandsQuery = [];
+    public array $brandsQuery = [];
 
-    /**
-     * @var boolean
-     */
-    public $saleOnly = false;
+    public bool $saleOnly = false;
 
-    /**
-     * @var int
-     */
-    public $total = 0;
+    public int $total = 0;
 
-    /**
-     * @var int
-     */
-    public $priceFrom = 0;
+    public int $priceFrom = 0;
 
-    /**
-     * @var int
-     */
-    public $priceTo = 0;
+    public int $priceTo = 0;
 
-    /**
-     * @var int
-     */
-    public $priceMin = 0;
+    public int $priceMin = 0;
 
-    /**
-     * @var int
-     */
-    public $priceMax = 0;
+    public int $priceMax = 0;
 
-    /**
-     * @param \Domain\Shop\Requests\CatalogRequest $request
-     * @param \Domain\Shop\Models\Category|null $category
-     * @return \Domain\Shop\Catalog
-     */
     public function init(CatalogRequest $request, Category $category = null): Catalog
     {
         $this->request = $request;
@@ -116,18 +70,12 @@ class Catalog
         return $this;
     }
 
-    /**
-     * @return void
-     */
     protected function setupProducts(): void
     {
         $this->products = (new CatalogRepository)->find($this->request);
         $this->total = $this->products->total();
     }
 
-    /**
-     * @return void
-     */
     protected function setupSorting(): void
     {
         if ($sorting = request()->query('sort')) {
@@ -137,12 +85,10 @@ class Catalog
         }
     }
 
-    /**
-     * @return void
-     */
     protected function setupFilters(): void
     {
         $this->brands = (new BrandsRepository())->all();
+
         if ($this->request->brand) {
             $this->brandsQuery = explode(',', $this->request->brand);
         }
@@ -184,9 +130,6 @@ class Catalog
         }
     }
 
-    /**
-     * @return void
-     */
     protected function setupPrice(): void
     {
         $stats = DB::table('products')->selectRaw('min(price) as min, max(price) as max')->first();
@@ -204,33 +147,21 @@ class Catalog
         }
     }
 
-    /**
-     * @return void
-     */
     protected function setupOther(): void
     {
         $this->saleOnly = $this->request->discount;
     }
 
-    /**
-     * @return string
-     */
     public function sortingLabel(): string
     {
         return $this->sortingOptions[$this->sorting];
     }
 
-    /**
-     * @return string
-     */
     public function resetUrl(): string
     {
         return trim(explode('?', url()->current())[0], '/');
     }
 
-    /**
-     * @return string
-     */
     public function sortingUrl(): string
     {
         $params = request()->all();

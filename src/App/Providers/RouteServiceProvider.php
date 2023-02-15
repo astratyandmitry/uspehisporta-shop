@@ -8,19 +8,10 @@ use Illuminate\Support\Str;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * @var string
-     */
-    protected $shopControllersNamespace = 'Domain\Shop\Controllers';
+    protected string $shopControllersNamespace = 'Domain\Shop\Controllers';
 
-    /**
-     * @var string
-     */
-    protected $cmsControllersNamespace = 'Domain\CMS\Controllers';
+    protected string $cmsControllersNamespace = 'Domain\CMS\Controllers';
 
-    /**
-     * @return void
-     */
     public function map(): void
     {
         $this->removeIndexPhpFromUrl();
@@ -28,9 +19,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapShopRoutes();
         $this->mapCMSRoutes();
     }
-    /**
-     * @return void
-     */
+
     protected function removeIndexPhpFromUrl(): void
     {
         if (Str::contains(request()->getRequestUri(), '/index.php/')) {
@@ -44,9 +33,6 @@ class RouteServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * @return void
-     */
     protected function mapShopRoutes(): void
     {
         Route::middleware(['web', 'shop'])
@@ -55,9 +41,6 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/shop.php'));
     }
 
-    /**
-     * @return void
-     */
     protected function mapCMSRoutes(): void
     {
         Route::middleware('web')

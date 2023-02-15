@@ -2,8 +2,6 @@
 
 namespace Domain\Shop\Requests;
 
-use Illuminate\Validation\Rule;
-
 /**
  * @property string $username
  * @property string $message
@@ -11,9 +9,6 @@ use Illuminate\Validation\Rule;
  */
 class ReviewRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

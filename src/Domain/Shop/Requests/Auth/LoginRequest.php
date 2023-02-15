@@ -10,9 +10,6 @@ use Domain\Shop\Requests\Request;
  */
 class LoginRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

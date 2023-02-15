@@ -25,9 +25,6 @@ use Ramsey\Uuid\Uuid;
  */
 class Order extends Model
 {
-    /**
-     * @var array
-     */
     protected $fillable = [
         'client_name',
         'client_phone',
@@ -36,17 +33,11 @@ class Order extends Model
         'comment',
     ];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'user_id' => 'integer',
         'delivery_price' => 'integer',
     ];
 
-    /**
-     * @return void
-     */
     public static function boot(): void
     {
         parent::boot();
@@ -56,35 +47,21 @@ class Order extends Model
         });
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function status(): BelongsTo
     {
         return $this->belongsTo(OrderStatus::class, 'status_key', 'key');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $builder
-     * @param bool $applyOrder
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         $builder->when(request('client'), function (Builder $builder): Builder {
@@ -101,35 +78,22 @@ class Order extends Model
         return parent::scopeFilter($builder);
     }
 
-    /**
-     * @param string $status_key
-     * @return void
-     */
     public function changeStatus(string $status_key): void
     {
         $this->status_key = $status_key;
         $this->save();
     }
 
-    /**
-     * @return bool
-     */
     public function current(): bool
     {
         return $this->status_key === ORDER_STATUS_CREATED;
     }
 
-    /**
-     * @return string
-     */
     public function url(): string
     {
         return route('shop::account.order', $this->id);
     }
 
-    /**
-     * @return string
-     */
     public function detailUrl(): string
     {
         return route('shop::order', [

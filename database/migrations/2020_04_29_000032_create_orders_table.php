@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->uuid('uuid')->index();
             $table->string('status_key', 40)->index();
-            $table->foreignId('city_id')->constrained('cities');
             $table->foreignId('user_id')->constrained('users')->nullable();
             $table->string('client_name', 80);
             $table->string('client_phone', 14);

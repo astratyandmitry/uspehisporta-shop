@@ -7,17 +7,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class CRUDController extends Controller
 {
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function activeSwitch(Request $request): JsonResponse
     {
         $request->validate([
@@ -33,10 +24,6 @@ class CRUDController extends Controller
         return response()->json(['status' => $request->all()]);
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function updateSorting(Request $request): Response
     {
         $request->validate([

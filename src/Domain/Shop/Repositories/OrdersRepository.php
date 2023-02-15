@@ -7,18 +7,11 @@ use Domain\Shop\Models\Basket as BasketModel;
 use Domain\Shop\Models\Order;
 use Domain\Shop\Models\OrderItem;
 use Domain\Shop\Requests\OrderRequest;
+use Illuminate\Pagination\LengthAwarePaginator;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class OrdersRepository
 {
-    /**
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function current()
+    public function current(): LengthAwarePaginator
     {
         return Order::query()
             ->where('status_key', ORDER_STATUS_CREATED)
@@ -26,10 +19,7 @@ class OrdersRepository
             ->paginate(12);
     }
 
-    /**
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function history()
+    public function history(): LengthAwarePaginator
     {
         return Order::query()
             ->where('status_key', '!=', ORDER_STATUS_CREATED)
@@ -37,35 +27,19 @@ class OrdersRepository
             ->paginate(12);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return \Domain\Shop\Models\Order
-     */
     public function findById(int $id): Order
     {
         return Order::query()->where('id', $id)->with('items')->firstOrFail();
     }
 
-    /**
-     * @param int $id
-     * @param string|null $uuid
-     *
-     * @return \Domain\Shop\Models\Order|null
-     */
     public function findByUuidAndId(int $id, ?string $uuid = null): ?Order
     {
-        return Order::query()
-            ->where('uuid', $uuid)
-            ->where('id', $id)
-            ->first();
+        return Order::query()->where([
+            'uuid' => $uuid,
+            'id' => $id,
+        ])->first();
     }
 
-    /**
-     * @param \Domain\Shop\Requests\OrderRequest $request
-     * @param \Domain\Shop\Basket $basket
-     * @return \Domain\Shop\Models\Order
-     */
     public function create(OrderRequest $request, Basket $basket): Order
     {
         $order = new Order;
@@ -91,12 +65,6 @@ class OrdersRepository
         return $order;
     }
 
-    /**
-     * @param \Domain\Shop\Models\Order $order
-     * @param \Domain\Shop\Models\Basket $basket
-     *
-     * @return \Domain\Shop\Models\OrderItem
-     */
     public function addItem(Order $order, BasketModel $basket): OrderItem
     {
         return $order->items()->create([
@@ -108,9 +76,6 @@ class OrdersRepository
         ]);
     }
 
-    /**
-     * @return \Domain\Shop\Models\Order|null
-     */
     public function last(): ?Order
     {
         return Order::query()

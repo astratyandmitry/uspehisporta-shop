@@ -2,11 +2,11 @@
 
 namespace Domain\CMS\Requests;
 
+/**
+ * @property integer $status_id
+ */
 class OrderRequest extends Request
 {
-    /**
-     * @return void
-     */
     protected function buildRules(): void
     {
         $this->rulesBuilder->addRules([

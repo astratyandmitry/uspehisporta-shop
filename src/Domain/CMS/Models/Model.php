@@ -17,8 +17,5 @@ class Model extends AppModel
 {
     use Filterable;
 
-    /**
-     * @var array
-     */
     protected $guarded = [];
 }

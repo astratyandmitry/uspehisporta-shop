@@ -10,18 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Domain\Shop\Models\Page;
 use Illuminate\View\View;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class PasswordResetController extends Controller
 {
-    /**
-     * @param string $code
-     * @param \Domain\Shop\Repositories\VerificationRepository $repository
-     * @return \Illuminate\View\View
-     */
     public function form(string $code, VerificationRepository $repository): View
     {
         abort_if($repository->findPasswordRecoveryByCode($code) === null, 403);
@@ -35,14 +25,6 @@ class PasswordResetController extends Controller
         ]);
     }
 
-    /**
-     * @param string $code
-     * @param \Domain\Shop\Requests\Auth\PasswordResetRequest $request
-     * @param \Domain\Shop\Repositories\VerificationRepository $verificationRepository
-     * @param \Domain\Shop\Repositories\UsersRepository $usersRepository
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function process(
         string $code,
         PasswordResetRequest $request,

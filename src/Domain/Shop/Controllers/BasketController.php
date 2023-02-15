@@ -10,17 +10,8 @@ use Domain\Shop\Repositories\OrdersRepository;
 use Domain\Shop\Repositories\BasketRepository;
 use Domain\Shop\Repositories\ProductsRepository;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class BasketController extends Controller
 {
-    /**
-     * @param \Domain\Shop\Repositories\OrdersRepository $repository
-     * @return \Illuminate\View\View
-     */
     public function index(OrdersRepository $repository): View
     {
         $this->setup(PAGE_BASKET);
@@ -31,12 +22,6 @@ class BasketController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\Shop\Requests\BasketRequest $request
-     * @param \Domain\Shop\Repositories\ProductsRepository $productsRepository
-     * @param \Domain\Shop\Repositories\BasketRepository $basketRepository
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function decrease(
         BasketRequest $request,
         ProductsRepository $productsRepository,
@@ -55,12 +40,6 @@ class BasketController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\Shop\Requests\BasketRequest $request
-     * @param \Domain\Shop\Repositories\ProductsRepository $productsRepository
-     * @param \Domain\Shop\Repositories\BasketRepository $basketRepository
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function increase(
         BasketRequest $request,
         ProductsRepository $productsRepository,
@@ -80,12 +59,6 @@ class BasketController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\Shop\Requests\BasketRequest $request
-     * @param \Domain\Shop\Repositories\ProductsRepository $productsRepository
-     * @param \Domain\Shop\Repositories\BasketRepository $basketRepository
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function store(
         BasketRequest $request,
         ProductsRepository $productsRepository,
@@ -108,12 +81,6 @@ class BasketController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\Shop\Requests\BasketRequest $request
-     * @param \Domain\Shop\Repositories\ProductsRepository $productsRepository
-     * @param \Domain\Shop\Repositories\BasketRepository $basketRepository
-     * @return array
-     */
     protected function prepareUpdate(
         BasketRequest $request,
         ProductsRepository $productsRepository,
@@ -126,11 +93,6 @@ class BasketController extends Controller
         return [$basket, $product];
     }
 
-    /**
-     * @param int $id
-     * @param \Domain\Shop\Repositories\BasketRepository $repository
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(int $id, BasketRepository $repository): Response
     {
         $repository->deleteById($id);

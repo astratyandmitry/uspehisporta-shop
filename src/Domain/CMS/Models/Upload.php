@@ -17,14 +17,8 @@ use Illuminate\Http\UploadedFile;
  */
 class Upload extends Model
 {
-    /**
-     * @var bool
-     */
     public $timestamps = false;
 
-    /**
-     * @return void
-     */
     public static function boot(): void
     {
         parent::boot();
@@ -38,27 +32,16 @@ class Upload extends Model
         });
     }
 
-    /**
-     * @return string
-     */
     public function getFilePathAttribute(): string
     {
         return "/storage/{$this->file_folder}/{$this->file_name}.{$this->file_extension}";
     }
 
-    /**
-     * @return string
-     */
     public function getFileUrlAttribute(): string
     {
         return url($this->file_path);
     }
 
-    /**
-     * @param \Illuminate\Http\UploadedFile $file
-     * @param string $uploadPath
-     * @return \Domain\CMS\Models\Upload
-     */
     public static function fromRequestFile(UploadedFile $file, string $uploadPath): Upload
     {
         $generatedName = date('Ymd-Hi').'_'.uniqid();

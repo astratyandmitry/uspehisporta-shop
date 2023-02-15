@@ -12,9 +12,6 @@ use Domain\Shop\Models\Scopes\SortingScope;
  */
 trait HasSorting
 {
-    /**
-     * @return void
-     */
     public static function bootHasSorting(): void
     {
         static::addGlobalScope(new SortingScope);

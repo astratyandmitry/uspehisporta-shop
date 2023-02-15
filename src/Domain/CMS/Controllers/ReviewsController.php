@@ -3,44 +3,25 @@
 namespace Domain\CMS\Controllers;
 
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Domain\Shop\Models\Review;
 use Domain\Shop\Models\Product;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class ReviewsController extends Controller
 {
-    /**
-     * @var string
-     */
-    protected $section = SECTION_MAIN;
+    protected string $section = SECTION_MAIN;
 
-    /**
-     * @var string
-     */
-    protected $model = 'reviews';
+    protected string $model = 'reviews';
 
-    /**
-     * @var bool
-     */
-    protected $addable = false;
+    protected bool $addable = false;
 
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->with('products', Product::query()->where('active', true)->pluck('name', 'id')->toArray());
     }
 
-    /**
-     * @param int $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function show(int $id): View
     {
         $model = Review::query()->findOrFail($id);
@@ -50,9 +31,6 @@ class ReviewsController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return $this->view([
@@ -60,13 +38,7 @@ class ReviewsController extends Controller
         ]);
     }
 
-    /**
-     * @param int $id
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy(int $id, \Illuminate\Http\Request $request)
+    public function destroy(int $id, Request $request): RedirectResponse|JsonResponse
     {
         /** @var \Domain\Shop\Models\Page $model */
         $model = Review::query()->findOrFail($id);

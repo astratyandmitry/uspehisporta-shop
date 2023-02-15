@@ -2,7 +2,8 @@
 
 namespace Domain\Shop\Controllers;
 
-use Domain\Shop\Models\Page;
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use Domain\Shop\Requests\CatalogRequest;
 use Domain\Shop\Repositories\ProductsRepository;
 use Domain\Shop\Repositories\CategoriesRepository;
@@ -14,17 +15,11 @@ use Domain\Shop\Repositories\CategoriesRepository;
  */
 class SearchController extends Controller
 {
-    /**
-     * @param \Domain\Shop\Requests\CatalogRequest $request
-     * @param \Domain\Shop\Repositories\ProductsRepository $productsRepository
-     * @param \Domain\Shop\Repositories\CategoriesRepository $categoriesRepository
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
-     */
     public function __invoke(
         CatalogRequest $request,
         ProductsRepository $productsRepository,
         CategoriesRepository $categoriesRepository
-    ) {
+    ): JsonResponse|View {
         if ($request->wantsJson()) {
             return response()->json([
                 'products' => $productsRepository->catalog($request),

@@ -6,26 +6,12 @@ use Domain\Shop\Models\Basket;
 use Domain\Shop\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class BasketRepository
 {
-    /**
-     * @var string
-     */
-    private $owner_column;
+    private string $owner_column;
 
-    /**
-     * @var string
-     */
-    private $owner_value;
+    private string|int $owner_value;
 
-    /**
-     * @return void
-     */
     public function __construct()
     {
         if (auth(SHOP_GUARD)->check()) {
@@ -37,9 +23,6 @@ class BasketRepository
         }
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
     public function all(): Collection
     {
         return Basket::query()
@@ -49,10 +32,6 @@ class BasketRepository
             ->get();
     }
 
-    /**
-     * @param int $id
-     * @return \Domain\Shop\Models\Basket
-     */
     public function findById(int $id): Basket
     {
         return Basket::query()
@@ -61,10 +40,6 @@ class BasketRepository
             ->firstOrFail();
     }
 
-    /**
-     * @param int $id
-     * @return bool
-     */
     public function deleteById(int $id): bool
     {
         return Basket::query()
@@ -73,11 +48,6 @@ class BasketRepository
             ->delete();
     }
 
-    /**
-     * @param \Domain\Shop\Models\Product $product
-     * @param string|null $variation
-     * @return \Domain\Shop\Models\Basket
-     */
     public function findByProduct(Product $product, ?string $variation = null): Basket
     {
         return Basket::query()->firstOrCreate([
@@ -87,11 +57,6 @@ class BasketRepository
         ]);
     }
 
-    /**
-     * @param int $id
-     * @param int $count
-     * @return bool
-     */
     public function updateCount(int $id, int $count): bool
     {
         return Basket::query()
@@ -100,9 +65,6 @@ class BasketRepository
             ->update(['count' => $count]);
     }
 
-    /**
-     * @return bool
-     */
     public function clear(): bool
     {
         return Basket::query()
@@ -110,10 +72,6 @@ class BasketRepository
             ->delete();
     }
 
-    /**
-     * @param int $user_id
-     * @return bool
-     */
     public function migrateFromGuest(int $user_id): bool
     {
         return Basket::query()

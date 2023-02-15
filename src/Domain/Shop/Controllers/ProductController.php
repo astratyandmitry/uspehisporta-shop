@@ -5,18 +5,8 @@ namespace Domain\Shop\Controllers;
 use Illuminate\View\View;
 use Domain\Shop\Repositories\ProductsRepository;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class ProductController extends Controller
 {
-    /**
-     * @param string $hru
-     * @param \Domain\Shop\Repositories\ProductsRepository $repository
-     * @return \Illuminate\View\View
-     */
     public function __invoke(string $hru, ProductsRepository $repository): View
     {
         $product = $repository->findByHru($hru);

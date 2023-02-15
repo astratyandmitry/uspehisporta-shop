@@ -24,47 +24,29 @@ class User extends Model implements
     use \Illuminate\Auth\Authenticatable,
         \Illuminate\Foundation\Auth\Access\Authorizable;
 
-    /**
-     * @var array
-     */
     protected $guarded = [];
 
-    /**
-     * @var array
-     */
     protected $dates = [
         'created_at',
         'updated_at',
         'activated_at',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function baskets(): HasMany
     {
         return $this->hasMany(Basket::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    /**
-     * @return bool
-     */
     public function activated(): bool
     {
         return $this->activated_at !== null;
     }
 
-    /**
-     * @param \Domain\Shop\Models\Verification $verification
-     */
     public function sendVerification(Verification $verification): void
     {
         if (app()->environment('production')) {

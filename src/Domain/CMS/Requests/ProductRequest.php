@@ -4,6 +4,22 @@ namespace Domain\CMS\Requests;
 
 use Domain\Shop\Models\Product;
 
+/**
+ * @property string $hru
+ * @property integer $category_id
+ * @property integer $brand_id
+ * @property integer|null $quantity
+ * @property integer $price
+ * @property integer|null $price_sale
+ * @property string|null $gallery
+ * @property string|null $variations
+ * @property string $name
+ * @property string $image
+ * @property string $about
+ * @property string|null $badges
+ * @property boolean $active
+ * @property boolean $featured
+ */
 class ProductRequest extends Request
 {
     /**
@@ -26,7 +42,6 @@ class ProductRequest extends Request
                 'name' => 'required|max:120',
                 'image' => 'required',
                 'about' => 'required',
-                'characteristics' => 'nullable',
                 'badges' => 'nullable',
                 'active' => 'boolean',
                 'featured' => 'boolean',

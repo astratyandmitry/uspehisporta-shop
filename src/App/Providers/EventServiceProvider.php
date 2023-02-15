@@ -6,16 +6,10 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 class EventServiceProvider extends ServiceProvider
 {
-    /**
-     * @var array
-     */
     protected $listen = [
         //
     ];
 
-    /**
-     * @return void
-     */
     public function boot(): void
     {
         parent::boot();

@@ -9,36 +9,22 @@ use Domain\Shop\Requests\Account\PersonalSettingsRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class PersonalSettingsController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
     public function form(): View
     {
         $this->layout->addBreadcrumb('Личный кабинет', route('shop::account.redirect'));
         $this->setup(PAGE_ACCOUNT_SETTINGS_PERSONAL);
 
         return $this->view('account.settings.personal', [
-            'entity' => auth('shop')->user(),
+            'entity' => auth(SHOP_GUARD)->user(),
         ]);
     }
 
-    /**
-     * @param \Domain\Shop\Requests\Account\PersonalSettingsRequest $request
-     * @param \Domain\Shop\Repositories\UsersRepository $repository
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function process(PersonalSettingsRequest $request, UsersRepository $repository): RedirectResponse
     {
         /** @var \Domain\Shop\Models\User $user */
-        $user = auth('shop')->user();
+        $user = auth(SHOP_GUARD)->user();
 
         $repository->updatePersonalInformation($user, $request);
 

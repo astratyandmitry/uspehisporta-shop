@@ -7,17 +7,8 @@ use Domain\Shop\Models\Page;
 use Domain\Shop\Repositories\OrdersRepository;
 use Illuminate\View\View;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class OrdersController extends Controller
 {
-    /**
-     * @param \Domain\Shop\Repositories\OrdersRepository $repository
-     * @return \Illuminate\View\View
-     */
     public function current(OrdersRepository $repository): View
     {
         $this->layout->addBreadcrumb('Личный кабинет', route('shop::account.redirect'));
@@ -28,10 +19,6 @@ class OrdersController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\Shop\Repositories\OrdersRepository $repository
-     * @return \Illuminate\View\View
-     */
     public function history(OrdersRepository $repository): View
     {
         $this->layout->addBreadcrumb('Личный кабинет', route('shop::account.redirect'));
@@ -42,11 +29,6 @@ class OrdersController extends Controller
         ]);
     }
 
-    /**
-     * @param int $id
-     * @param \Domain\Shop\Repositories\OrdersRepository $repository
-     * @return \Illuminate\View\View
-     */
     public function show(int $id, OrdersRepository $repository): View
     {
         $order = $repository->findById($id);

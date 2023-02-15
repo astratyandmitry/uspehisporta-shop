@@ -4,11 +4,14 @@ namespace Domain\CMS\Requests;
 
 use Domain\Shop\Models\Brand;
 
+/**
+ * @property string $hru
+ * @property string $name
+ * @property string|null $logotype
+ * @property boolean $active
+ */
 class BrandRequest extends Request
 {
-    /**
-     * @return void
-     */
     protected function buildRules(): void
     {
         $this->rulesBuilder

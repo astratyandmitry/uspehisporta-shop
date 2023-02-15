@@ -23,23 +23,14 @@ class Page extends Model implements HasUrl
 {
     use HasActiveState;
 
-    /**
-     * @var array
-     */
     protected $guarded = [];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'nav' => 'boolean',
         'system' => 'boolean',
         'active' => 'boolean',
     ];
 
-    /**
-     * @return void
-     */
     public static function boot(): void
     {
         parent::boot();
@@ -47,19 +38,11 @@ class Page extends Model implements HasUrl
         static::addGlobalScope(new SystemScope);
     }
 
-    /**
-     * @return string
-     */
     public function getRouteKeyName(): string
     {
         return 'hru';
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $builder
-     * @param bool $applyOrder
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         $builder->when(request('info'), function (Builder $builder): Builder {
@@ -72,9 +55,6 @@ class Page extends Model implements HasUrl
         return parent::scopeFilter($builder);
     }
 
-    /**
-     * @return string
-     */
     public function url(): string
     {
         return route('shop::page', $this->hru);

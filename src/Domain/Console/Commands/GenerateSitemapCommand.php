@@ -12,14 +12,8 @@ use Spatie\Sitemap\Tags\Url;
 
 class GenerateSitemapCommand extends Command
 {
-    /**
-     * @var string
-     */
-    protected $signature = 'sexstore:sitemap';
+    protected $signature = 'sitemap:generate';
 
-    /**
-     * @return int
-     */
     public function handle(): int
     {
         $sitemap = Sitemap::create();

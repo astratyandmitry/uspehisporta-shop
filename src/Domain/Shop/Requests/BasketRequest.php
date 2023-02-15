@@ -8,9 +8,6 @@ namespace Domain\Shop\Requests;
  */
 class BasketRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

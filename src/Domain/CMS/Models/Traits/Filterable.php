@@ -9,11 +9,6 @@ use Illuminate\Database\Eloquent\Builder;
  */
 trait Filterable
 {
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $builder
-     * @param bool $applyOrder
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         if ($applyOrder === true) {

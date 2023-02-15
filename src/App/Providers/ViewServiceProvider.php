@@ -6,9 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {
-    /**
-     * @return void
-     */
     public function boot(): void
     {
         $this->loadViewsFrom(resource_path('domain/cms/views'), 'cms');

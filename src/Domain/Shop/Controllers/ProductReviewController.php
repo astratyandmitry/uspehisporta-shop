@@ -8,18 +8,8 @@ use Domain\Shop\Requests\ReviewRequest;
 use Domain\Shop\Repositories\ReviewsRepository;
 use Domain\Shop\Repositories\ProductsRepository;
 
-/**
- * @version 1.0.1
- * @author Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2020, ArmenianBros. <i@armenianbros.com>
- */
 class ProductReviewController extends Controller
 {
-    /**
-     * @param string $hru
-     * @param \Domain\Shop\Repositories\ProductsRepository $repository
-     * @return \Illuminate\View\View
-     */
     public function form(string $hru, ProductsRepository $repository): View
     {
         $product = $repository->findByHru($hru);
@@ -31,13 +21,6 @@ class ProductReviewController extends Controller
         ]);
     }
 
-    /**
-     * @param string $hru
-     * @param \Domain\Shop\Requests\ReviewRequest $request
-     * @param \Domain\Shop\Repositories\ProductsRepository $productsRepository
-     * @param \Domain\Shop\Repositories\ReviewsRepository $reviewsRepository
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function process(
         string $hru,
         ReviewRequest $request,
@@ -45,7 +28,7 @@ class ProductReviewController extends Controller
         ReviewsRepository $reviewsRepository
     ): RedirectResponse {
         /** @var \Domain\Shop\Models\User $user */
-        $user = auth('shop')->user();
+        $user = auth(SHOP_GUARD)->user();
 
         $product = $productsRepository->findByHru($hru);
 

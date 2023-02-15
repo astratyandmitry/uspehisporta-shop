@@ -6,20 +6,8 @@ use Illuminate\Http\RedirectResponse;
 use Domain\Shop\Controllers\Controller;
 use Domain\Shop\Repositories\VerificationRepository;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class VerificationController extends Controller
 {
-    /**
-     * @param string $email
-     * @param string $code
-     * @param \Domain\Shop\Repositories\VerificationRepository $repository
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function __invoke(string $email, string $code, VerificationRepository $repository): RedirectResponse
     {
         if ($verification = $repository->findByCode($code)) {
@@ -32,6 +20,6 @@ class VerificationController extends Controller
             }
         }
 
-        return $this->view('home');
+        return $this->redirect('home');
     }
 }

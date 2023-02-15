@@ -4,6 +4,12 @@ namespace Domain\CMS\Requests;
 
 use Domain\CMS\Models\Manager;
 
+/**
+ * @property string $email
+ * @property string $role_key
+ * @property string|null $telegram_id
+ * @property string|null $new_password
+ */
 class ManagerRequest extends Request
 {
     /**

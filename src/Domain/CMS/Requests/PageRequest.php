@@ -4,11 +4,16 @@ namespace Domain\CMS\Requests;
 
 use Domain\Shop\Models\Page;
 
+/**
+ * @property string $hru
+ * @property string $name
+ * @property string $title
+ * @property string $content
+ * @property boolean $nav
+ * @property boolean $active
+ */
 class PageRequest extends Request
 {
-    /**
-     * @return void
-     */
     protected function buildRules(): void
     {
         $this->rulesBuilder

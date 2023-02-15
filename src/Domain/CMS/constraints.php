@@ -1,8 +1,8 @@
 <?php
 
-define('MANAGER_ROLE_ADMIN', 'admin');
-define('MANAGER_ROLE_MANAGER', 'manager');
+const MANAGER_ROLE_ADMIN = 'admin';
+const MANAGER_ROLE_MANAGER = 'manager';
 
-define('SECTION_MAIN', 'main');
-define('SECTION_DICTIONARY', 'dictionary');
-define('SECTION_SYSTEM', 'system');
+const SECTION_MAIN = 'main';
+const SECTION_DICTIONARY = 'dictionary';
+const SECTION_SYSTEM = 'system';

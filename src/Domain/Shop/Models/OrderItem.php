@@ -16,14 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class OrderItem extends Model
 {
-    /**
-     * @var array
-     */
     protected $guarded = [];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'order_id' => 'integer',
         'product_id' => 'integer',
@@ -32,17 +26,11 @@ class OrderItem extends Model
         'total' => 'integer',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    /**
-     * @return string
-     */
     public function title(): string
     {
         return "{$this->product->name}";

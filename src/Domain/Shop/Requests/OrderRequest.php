@@ -11,9 +11,6 @@ namespace Domain\Shop\Requests;
  */
 class OrderRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

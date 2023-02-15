@@ -9,9 +9,6 @@ use Domain\Shop\Requests\Request;
  */
 class PasswordRecoveryRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

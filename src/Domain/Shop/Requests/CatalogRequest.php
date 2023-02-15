@@ -13,9 +13,6 @@ namespace Domain\Shop\Requests;
  */
 class CatalogRequest extends Request
 {
-    /**
-     * @return array
-     */
     public function rules(): array
     {
         return [

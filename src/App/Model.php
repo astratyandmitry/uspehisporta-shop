@@ -16,9 +16,6 @@ class Model extends \Illuminate\Database\Eloquent\Model
 {
     use Filterable;
 
-    /**
-     * @return string
-     */
     public static function getTableName(): string
     {
         $class = get_called_class();
@@ -26,12 +23,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
         return (new $class)->getTable();
     }
 
-    /**
-     * @param array $value
-     *
-     * @return string
-     */
-    protected function asJson($value): string
+    protected function asJson(array $value): string
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }

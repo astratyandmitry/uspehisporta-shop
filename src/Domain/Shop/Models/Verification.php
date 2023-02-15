@@ -16,33 +16,21 @@ use Illuminate\Http\RedirectResponse;
  */
 class Verification extends Model
 {
-    /**
-     * @var array
-     */
     protected $guarded = [
         'code',
         'expired_at',
     ];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'user_id' => 'integer',
     ];
 
-    /**
-     * @var array
-     */
     protected $dates = [
         'created_at',
         'updated_at',
         'expired_at',
     ];
 
-    /**
-     * @return void
-     */
     public static function boot(): void
     {
         parent::boot();
@@ -53,25 +41,16 @@ class Verification extends Model
         });
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function type(): BelongsTo
     {
         return $this->belongsTo(VerificationType::class, 'type_key', 'key');
     }
 
-    /**
-     * @return string
-     */
     public function url(): string
     {
         return route('shop::auth.verification', [
@@ -80,30 +59,19 @@ class Verification extends Model
         ]);
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function redirect(): RedirectResponse
     {
-        switch ($this->type_key) {
-            case VERIFICATION_ACTIVATION:
-                return redirect()->route('shop::auth.login')
-                    ->with('message', 'Ваш код подтверждения успешно использован');
-                break;
-            case VERIFICATION_PASSWORD_RECOVERY:
-                return redirect()->route('shop::auth.password.reset', [
-                    'email' => $this->user->email,
-                    'code' => $this->code,
-                ]);
-                break;
-            default:
-                return redirect()->route('shop::home');
-        }
+        return match ($this->type_key) {
+            VERIFICATION_ACTIVATION => redirect()->route('shop::auth.login')
+                ->with('message', 'Ваш код подтверждения успешно использован'),
+            VERIFICATION_PASSWORD_RECOVERY => redirect()->route('shop::auth.password.reset', [
+                'email' => $this->user->email,
+                'code' => $this->code,
+            ]),
+            default => redirect()->route('shop::home'),
+        };
     }
 
-    /**
-     * @throws \Exception
-     */
     public function handle(): void
     {
         switch ($this->type_key) {
@@ -115,9 +83,6 @@ class Verification extends Model
         $this->delete();
     }
 
-    /**
-     * @return bool
-     */
     public function custom(): bool
     {
         return in_array($this->type_key, [

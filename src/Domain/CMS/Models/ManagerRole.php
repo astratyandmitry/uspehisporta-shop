@@ -8,19 +8,13 @@ namespace Domain\CMS\Models;
  */
 class ManagerRole extends Model
 {
-    /**
-     * @return bool
-     */
     public function admin(): bool
     {
-        return $this->id === MANAGER_ROLE_ADMIN;
+        return $this->key === MANAGER_ROLE_ADMIN;
     }
 
-    /**
-     * @return bool
-     */
     public function manager(): bool
     {
-        return $this->id === MANAGER_ROLE_MANAGER;
+        return $this->key === MANAGER_ROLE_MANAGER;
     }
 }

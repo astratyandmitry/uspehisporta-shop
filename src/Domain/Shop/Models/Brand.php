@@ -17,14 +17,8 @@ class Brand extends Model
 {
     use HasSorting, HasActiveState;
 
-    /**
-     * @var array
-     */
     protected $guarded = [];
 
-    /**
-     * @var array
-     */
     protected $hidden = [
         'logotype',
         'meta_description',
@@ -35,19 +29,11 @@ class Brand extends Model
         'updated_at',
     ];
 
-    /**
-     * @return string
-     */
     public function getRouteKeyName(): string
     {
         return 'hru';
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $builder
-     * @param bool $applyOrder
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         $builder->when(request('info'), function (Builder $builder): Builder {

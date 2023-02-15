@@ -22,37 +22,20 @@ class Manager extends Model implements
         \Illuminate\Foundation\Auth\Access\Authorizable,
         Notifiable;
 
-    /**
-     * @var array
-     */
     protected $guarded = ['old_new_password'];
 
-    /**
-     * @var array
-     */
     protected $hidden = ['password', 'remember_token'];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'telegram_id' => 'integer',
         'role_id' => 'integer',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function role(): BelongsTo
     {
         return $this->belongsTo(ManagerRole::class, 'role_key', 'key');
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $builder
-     * @param bool $applyOrder
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         $builder->when(request('role_key'), function (Builder $builder): Builder {
@@ -62,10 +45,6 @@ class Manager extends Model implements
         return parent::scopeFilter($builder, $applyOrder);
     }
 
-
-    /**
-     * @return int
-     */
     public function routeNotificationForTelegram(): int
     {
         return $this->telegram_id;

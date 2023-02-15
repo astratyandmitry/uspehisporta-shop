@@ -4,11 +4,16 @@ namespace Domain\CMS\Requests;
 
 use Domain\Shop\Models\Category;
 
+/**
+ * @property string $hru
+ * @property integer|null $parent_id
+ * @property string $name
+ * @property string $title
+ * @property string|null $image
+ * @property boolean $active
+ */
 class CategoryRequest extends Request
 {
-    /**
-     * @return void
-     */
     protected function buildRules(): void
     {
         $this->rulesBuilder

@@ -20,12 +20,18 @@ class CreateProductsTable extends Migration
             $table->string('hru', 80)->unique()->index();
             $table->string('name', 120)->unique();
             $table->string('image', 500);
+            $table->json('gallery')->nullable();
             $table->double('rating', 10, 2)->default(0.0);
             $table->text('about')->nullable();
             $table->string('badges', 1000)->nullable();
+            $table->json('variations');
             $table->string('meta_description', 1000)->nullable();
             $table->string('meta_keywords', 1000)->nullable();
+            $table->unsignedInteger('price_sale')->nullable()->index();
+            $table->unsignedInteger('price')->index();
+            $table->foreignId('quantity')->default(0)->index();
             $table->unsignedInteger('count_views')->default(0);
+            $table->boolean('hot_sale')->default(false)->index();
             $table->boolean('active')->default(false)->index();
             $table->timestamps();
         });

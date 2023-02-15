@@ -24,14 +24,14 @@
         <li class="is-divider">
           <span>&middot;</span>
         </li>
-        <li {{ isActive($model == 'banners') }}>
-          <a href="{{ route('cms::banners.index') }}">
-            @lang('cms.model.banners')
-          </a>
-        </li>
         <li {{ isActive($model == 'pages') }}>
           <a href="{{ route('cms::pages.index') }}">
             @lang('cms.model.pages')
+          </a>
+        </li>
+        <li {{ isActive($model == 'faqs') }}>
+          <a href="{{ route('cms::faqs.index') }}">
+            @lang('cms.model.faqs')
           </a>
         </li>
       </ul>

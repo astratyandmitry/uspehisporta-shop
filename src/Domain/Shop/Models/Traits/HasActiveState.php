@@ -11,17 +11,11 @@ use Domain\Shop\Models\Scopes\ActiveScope;
  */
 trait HasActiveState
 {
-    /**
-     * @return void
-     */
     public static function bootHasActiveState(): void
     {
         static::addGlobalScope(new ActiveScope);
     }
 
-    /**
-     * @return bool
-     */
     public function isActive(): bool
     {
         return $this->active || auth('manager')->check();

@@ -9,39 +9,19 @@ use Illuminate\Notifications\Notification;
 
 class TelegramNewOrderNotification extends Notification
 {
-    /**
-     * @var \Domain\Shop\Models\Order
-     */
-    protected $order;
+    protected Order $order;
 
-    /**
-     * @param \Domain\Shop\Models\Order $order
-     */
     public function __construct(Order $order)
     {
         $this->order = $order;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param mixed $notifiable
-     *
-     * @return array
-     */
-    public function via($notifiable)
+    public function via(mixed $notifiable): array
     {
         return [TelegramChannel::class];
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param mixed $notifiable
-     *
-     * @return array
-     */
-    public function toTelegram($notifiable)
+    public function toTelegram(mixed $notifiable): array
     {
         $message = "<b>Новый заказ #{$this->order->id}</b>\n";
 

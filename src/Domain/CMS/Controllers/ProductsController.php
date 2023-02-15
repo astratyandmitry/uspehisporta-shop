@@ -2,45 +2,27 @@
 
 namespace Domain\CMS\Controllers;
 
-use Domain\CMS\Requests\ProductRequest;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Domain\Shop\Models\Brand;
 use Domain\Shop\Models\Product;
 use Domain\Shop\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Domain\CMS\Requests\ProductRequest as Request;
+use Domain\CMS\Requests\ProductRequest;
 
-/**
- * @version   1.0.1
- * @author    Astratyan Dmitry <astratyandmitry@gmail.com>
- * @copyright 2018, ArmenianBros. <i@armenianbros.com>
- */
 class ProductsController extends Controller
 {
-    /**
-     * @var string
-     */
-    protected $section = SECTION_MAIN;
+    protected string $section = SECTION_MAIN;
 
-    /**
-     * @var string
-     */
-    protected $model = 'products';
+    protected string $model = 'products';
 
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->with('categories', Category::groupedOptions());
         $this->with('brands', Brand::query()->pluck('name', 'id')->toArray());
     }
 
-    /**
-     * @param int $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function show(int $id): View
     {
         $model = Product::query()->findOrFail($id);
@@ -50,9 +32,6 @@ class ProductsController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return $this->view([
@@ -60,9 +39,6 @@ class ProductsController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function create(): View
     {
         return $this->view([
@@ -70,11 +46,7 @@ class ProductsController extends Controller
         ]);
     }
 
-    /**
-     * @param \Domain\CMS\Requests\ProductRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(ProductRequest $request): RedirectResponse
     {
         /** @var \Domain\Shop\Models\Product $model */
         $model = Product::query()->create(
@@ -84,28 +56,18 @@ class ProductsController extends Controller
         return $this->redirectSuccess('show', ['product' => $model->id]);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function edit(int $id): View
     {
         /** @var \Domain\Shop\Models\Product $model */
         $model = Product::query()->findOrFail($id);
 
         return $this->view([
-            'action' => $this->route('update', $model->id),
+            'action' => $this->route('update', ['product' => $model->id]),
             'model' => $model,
         ]);
     }
 
-    /**
-     * @param int $id
-     * @param \Domain\CMS\Requests\ProductRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(int $id, Request $request): RedirectResponse
+    public function update(int $id, ProductRequest $request): RedirectResponse
     {
         /** @var \Domain\Shop\Models\Product $model */
         $model = Product::query()->findOrFail($id);;
@@ -116,13 +78,7 @@ class ProductsController extends Controller
         return $this->redirectSuccess('show', ['product' => $model->id]);
     }
 
-    /**
-     * @param int $id
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy(int $id, \Illuminate\Http\Request $request)
+    public function destroy(int $id, Request $request): RedirectResponse|JsonResponse
     {
         /** @var \Domain\Shop\Models\Product $model */
         $model = Product::query()->findOrFail($id);
@@ -135,10 +91,6 @@ class ProductsController extends Controller
         return $this->redirectDanger();
     }
 
-    /**
-     * @param \Domain\CMS\Requests\ProductRequest $request
-     * @return array
-     */
     protected function getAttributesFromRequest(ProductRequest $request): array
     {
         $gallery = $request->get('gallery') ? json_decode($request->get('gallery'), true) : [];
@@ -152,13 +104,10 @@ class ProductsController extends Controller
 
         $quantity = count($variations) ? array_sum(array_column($variations, 'quantity')) : $request->get('quantity');
 
-        return array_merge(
-            $request->validated(),
-            [
-                'quantity' => $quantity,
-                'variations' => $variations,
-                'gallery' => $gallery,
-            ]
-        );
+        return array_merge($request->validated(), [
+            'quantity' => $quantity,
+            'variations' => $variations,
+            'gallery' => $gallery,
+        ]);
     }
 }

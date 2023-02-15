@@ -20,23 +20,14 @@ class Review extends Model
 {
     use HasActiveState;
 
-    /**
-     * @var array
-     */
     protected $guarded = [];
 
-    /**
-     * @var array
-     */
     protected $casts = [
         'product_id' => 'integer',
         'user_id' => 'integer',
         'active' => 'boolean',
     ];
 
-    /**
-     * @return void
-     */
     public static function boot(): void
     {
         parent::boot();
@@ -50,27 +41,16 @@ class Review extends Model
         });
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $builder
-     * @param bool $applyOrder
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         $builder->when(request('message'), function (Builder $builder): Builder {
