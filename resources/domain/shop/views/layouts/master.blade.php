@@ -17,11 +17,11 @@
 <body class="preload">
 
 <section id="shop" class="app">
+  @include('shop::layouts.partials.nav')
+
   @include('shop::layouts.partials.header')
 
   <main>
-    @include('shop::layouts.partials.heading')
-
     @yield('content')
   </main>
 

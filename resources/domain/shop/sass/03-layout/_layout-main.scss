@@ -9,7 +9,7 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
-  background: #222;
+  background: #fff;
 
   &.fixed {
     overflow: hidden;
@@ -205,78 +205,49 @@ main {
   }
 }
 
-.floating-contacts {
-  position: fixed;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.i-button {
+  border: 1px solid $color-primary;
+  margin-right: 8px;
 
-  .floating-contact {
-    margin: 0 .5rem;
-    width: 48px;
-    height: 48px;
-    box-shadow: 0 4px 8px rgba($color-secondary, .16), 0 8px 16px rgba($color-secondary, .24);
-    background: $color-secondary;
-    display: flex;
+  &:hover {
+    background: $color-primary;
     color: $color-white;
-    align-items: center;
-    justify-content: center;
-    @include radius(100%);
-    @include transition();
+  }
 
-    svg {
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.i-button--icon {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    padding: 8px 16px;
+    @include radius(24px);
+
+    .i-button__icon {
       fill: currentColor;
+      width: 20px;
+      height: 20px;
+      margin-left: 8px;
     }
+  }
+
+  &.i-button--fill {
+    background: $color-primary;
+    color: $color-white;
 
     &:hover {
-      transform: scale(1.1, 1.1);
+      background: darken($color-primary, 10%);
     }
   }
-}
 
-.age-confirm {
-  z-index: 9999999;
-  position: fixed;
-  background: rgba(0, 0, 0, .80);
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(10px);
+  &.i-button--circle {
+    padding: 4px;
+    @include radius(50%);
 
-  .age-confirm-content {
-    padding: 0 2rem;
-    max-width: 480px;
-    text-align: center;
-  }
-
-  .age-confirm-title {
-    margin-bottom: 1rem;
-    font-size: 20px;
-    font-weight: 600;
-    color: $color-white;
-  }
-
-  .age-confirm-about {
-    color: rgba(255, 255, 255, .80);
-  }
-
-  .age-confirm-actions {
-    margin-top: 2rem;
-
-    .form-button {
-      box-shadow: 0 8px 16px rgba($color-secondary, .16), 0 16px 32px rgba($color-secondary, .32);
-
-      &.--secondary {
-        box-shadow: 0 8px 16px rgba($color-primary, .16), 0 16px 32px rgba($color-primary, .32);
-
-      }
+    &:hover {
+      background: #F1F5F9;
     }
   }
 }

@@ -5,6 +5,7 @@ namespace Domain\Shop\Common;
 use Domain\Shop\Models\Model;
 use Domain\Shop\Models\Category;
 use Domain\Shop\Models\Page;
+use Domain\Shop\Models\Settings;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Session;
 
@@ -32,6 +33,7 @@ class Layout
     private function setupData(): void
     {
         $this->data['categories'] = Category::query()->whereNull('parent_id')->with('children')->get();
+        $this->data['settings'] = Settings::options();
     }
 
     public function setTitle(?string $title = null): Layout
@@ -95,5 +97,10 @@ class Layout
     public function hasBreadcrumbs(): bool
     {
         return count($this->breadcrumbs) > 0;
+    }
+
+    public function getSettings(string $key): ?string
+    {
+        return $this->data['settings'][$key] ?? null;
     }
 }

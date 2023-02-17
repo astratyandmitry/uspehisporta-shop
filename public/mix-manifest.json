@@ -1,13 +1,8 @@
 {
-    "/assets/cms/js/app.js": "/assets/cms/js/app.js?id=bf1df52842d05ee66e41",
-    "/assets/cms/css/app.css": "/assets/cms/css/app.css?id=6eb89489be31b4d8152b",
-    "/assets/shop/css/app.css": "/assets/shop/css/app.css?id=da00e3337686cd30dbc7",
-    "/assets/shop/css/error.css": "/assets/shop/css/error.css?id=26121f91a866ad11208c",
-    "/assets/cms/js/libs/fixable.js": "/assets/cms/js/libs/fixable.js?id=5aa2ddbc2ed5297164c3",
-    "/assets/cms/js/libs/onleave.js": "/assets/cms/js/libs/onleave.js?id=b8e30529deda3b49ff39",
-    "/assets/shop/js/app.js": "/assets/shop/js/app.js?id=8e38c6cd999df6c31169",
-    "/assets/shop/js/basket.js": "/assets/shop/js/basket.js?id=c32c11cbf5bae7617311",
-    "/assets/shop/js/filter.js": "/assets/shop/js/filter.js?id=feeb126364528c2e69db",
-    "/assets/shop/js/product.js": "/assets/shop/js/product.js?id=b3b0922724981b0e554f",
-    "/assets/cms/js/libs/jquery.form.js": "/assets/cms/js/libs/jquery.form.js?id=4fa896f615af66c3d7ef"
+    "/assets/shop/js/app.js": "/assets/shop/js/app.js?id=45013647297ad2886d79",
+    "/assets/shop/css/app.css": "/assets/shop/css/app.css?id=be8b9841309364deb057",
+    "/assets/shop/css/error.css": "/assets/shop/css/error.css?id=0baa3051e91096667dd4",
+    "/assets/shop/js/basket.js": "/assets/shop/js/basket.js?id=389e88810de909382c4e",
+    "/assets/shop/js/filter.js": "/assets/shop/js/filter.js?id=e8c9f95cf570e52b3660",
+    "/assets/shop/js/product.js": "/assets/shop/js/product.js?id=ec8e7c5c69c18580e071"
 }

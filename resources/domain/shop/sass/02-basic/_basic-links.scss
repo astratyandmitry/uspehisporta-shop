@@ -1,12 +1,12 @@
 a {
   text-decoration: none !important;
-  color: $color-secondary;
+  color: $color-primary;
   outline: 0;
   @include transition();
 
   &:hover,
   &:focus {
-    color: lighten($color-secondary, 10%);
+    color: lighten($color-primary, 10%);
   }
 }
 

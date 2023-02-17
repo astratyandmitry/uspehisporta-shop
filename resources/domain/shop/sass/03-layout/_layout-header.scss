@@ -1,394 +1,74 @@
 .header {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
-  background: #111;
-  padding: .750rem 0;
-
-  @include mobile() {
-    padding: .5rem 0;
-  }
-
-  .header__main {
-    display: flex;
-    align-items: center;
-
-    @include mobile() {
-      display: grid;
-      grid-template-columns: 1fr 1fr 3fr;
-    }
-  }
+  border-bottom: 1px solid #E2E8F0;
+  background: #fff;
+  padding: 1rem 0;
 
   .header__content {
     display: flex;
     align-items: center;
-
-    @include mobile() {
-      display: grid;
-      grid-template-columns: 5fr 2fr;
-    }
+    justify-content: space-between;
   }
 
-  .logotype {
-    order: 1;
-
-    @include mobile() {
-      text-align: center;
-      order: 3;
-    }
-
-    .logotype__img {
-      height: 96px;
-    }
-
-    .logotype__link {
-      font-size: 32px;
-      color: $color-white;
-      border-bottom: none;
-      line-height: 1;
-      font-weight: 600;
-
-      @include mobile() {
-        font-size: 24px;
-      }
-    }
-  }
-
-  .nav {
-    order: 2;
-
-    @include mobile() {
-      order: 1;
-    }
-
-    .hamburger {
-      margin-left: 1.5rem;
-      padding: 8px;
-      border: 1px solid rgba(255, 255, 255, .32);
-      cursor: pointer;
-      @include nonSelect();
-      @include radius();
-      @include transition();
-
-      @include mobile() {
-        margin-right: 1.5rem;
-        margin-left: 0;
-        padding: 0;
-        border: none;
-      }
-
-      .hamburger__icon {
-        color: rgba(255, 255, 255, .64);
-        margin-bottom: -2px;
-        height: 32px;
-        width: 32px;
-        @include transition();
-
-
-        @include mobile() {
-          height: 32px;
-          width: 32px;
-        }
-
-        &.hamburger__icon--opened {
-          display: none;
-        }
-      }
-
-      &:hover {
-        border-color: rgba(255, 255, 255, .64);
-
-        .hamburger__icon {
-          color: $color-white;
-        }
-      }
-    }
-
-    .dropdown {
-      display: none;
-      visibility: hidden;
-      position: absolute;
-      background: #333;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
-      margin-left: 26px;
-      margin-top: .5rem;
-      z-index: 100;
-      overflow: hidden;
-      @include transition();
-      @include radius();
-
-      @include mobile() {
-        left: 8px;
-        right: 8px;
-        margin-left: 0;
-      }
-
-      &.dropdown--active {
-        display: grid;
-        grid-template-columns: auto auto;
-        visibility: visible;
-
-        @include mobile() {
-          display: block;
-        }
-      }
-
-      .menu {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-
-        &.menu--child {
-          border-left: 1px solid #444;
-          display: none;
-        }
-
-        &.menu--active {
-          display: block !important;
-        }
-
-        .menu__item {
-          .menu__link {
-            font-weight: 500;
-            display: block;
-            border-bottom: none;
-            color: rgba($color-white, 64%);
-            padding: 1rem;
-
-            @include mobile() {
-              padding: .750rem;
-              font-size: 14px;
-            }
-
-
-            &:hover {
-              background: #444;
-              color: $color-white;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .search {
-    margin: 0 1.5rem;
-    background: #222;
+  .header__left {
     display: flex;
     align-items: center;
-    padding: 0 .5rem;
-    flex-grow: 1;
-    position: relative;
-    z-index: 50;
-    @include radius();
-    @include transition();
-
-    @include mobile() {
-      display: none;
-    }
-
-    .search__input {
-      border: none;
-      background: transparent;
-      padding: 1rem .5rem;
-      font-size: 18px;
-      flex-grow: 1;
-      color: rgba(255, 255, 255, .80);
-      @include transition();
-
-      &::-webkit-input-placeholder {
-        color: rgba(255, 255, 255, .80);
-      }
-
-      &::-moz-placeholder {
-        color: rgba(255, 255, 255, .80);
-      }
-
-      &:-moz-placeholder {
-        color: rgba(255, 255, 255, .80);
-      }
-
-      &:-ms-input-placeholder {
-        color: rgba(255, 255, 255, .80);
-      }
-    }
-
-    .search__button {
-      color: rgba(255, 255, 255, .80);
-      background: transparent;
-      border: none;
-      outline: none;
-      width: 32px;
-      height: 32px;
-      @include transition();
-    }
-
-    &:hover {
-      background: #333;
-    }
-
-    &:focus-within {
-      background: $color-white;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, .24);
-
-      .search__button {
-        color: rgba(0, 0, 0, .40);
-      }
-
-      .search__input {
-        color: $color-dark;
-
-        &::-webkit-input-placeholder {
-          color: rgba(0, 0, 0, .64);
-        }
-
-        &::-moz-placeholder {
-          color: rgba(0, 0, 0, .64);
-        }
-
-        &:-moz-placeholder {
-          color: rgba(0, 0, 0, .64);
-        }
-
-        &:-ms-input-placeholder {
-          color: rgba(0, 0, 0, .64);
-        }
-      }
-    }
   }
 
-  .actions {
+  .header__right {
     display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: end;
+  }
 
-    &.actions--mobile {
-      display: none;
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
 
-      @include mobile() {
-        display: block;
-        order: 2;
-      }
+
+  .header-basket {
+    margin-left: 1.5rem;
+    display: flex;
+    align-items: center;
+    border: 1px solid #E2E8F0;
+    padding: 8px;
+    min-width: 160px;
+    @include radius(8px);
+
+    .header-basket__icon {
+      height: 24px;
+      padding: 8px;
+      background: #F1F5F9;
+      @include radius(50%);
     }
 
-    &.actions--desktop {
-      @include mobile() {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .button {
+    .header-basket__info {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-right: 1.5rem;
-      color: rgba($color-white, .64);
-      border-bottom: none;
-      @include transition();
-      @include nonSelect();
+      margin-left: 8px;
 
-      @include mobile() {
-        text-align: center;
-      }
-
-      &:hover {
-        color: lighten($color-secondary, 10%);
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      &.button--mobile {
-        display: none;
-
-        @include mobile() {
-          display: block;
-        }
-      }
-
-      .button__icon {
-        width: 24px;
-        height: 24px;
-        color: rgba(255, 255, 255, .64);
-
-        @include mobile() {
-          height: 32px;
-          width: 32px;
-        }
-      }
-
-      .button__label {
-        margin-top: 4px;
-        font-size: 12px;
+      .header-basket__label {
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #94A3B8;
         font-weight: 500;
+        line-height: 1;
+      }
 
-        @include mobile() {
-          display: none;
-        }
+      .header-basket__value {
+        color: #334155;
+        font-weight: 500;
+        line-height: 1;
       }
     }
-  }
-}
-
-.telegram {
-  background: $color-primary;
-  padding: .5rem 0;
-
-  svg {
-    margin-right: 12px;
-    height: 32px;
-    width: 32px;
-    color: rgba(255, 255, 255, .64);
-    fill: currentColor;
-
-    @include mobile() {
-        display: none;
-    }
-  }
-
-  .telegram-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @include mobile() {
-        display: block;
-    }
-  }
-
-  .telegram-message {
-    display: flex;
-    align-items: center;
-
-    .telegram-title {
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .telegram-about {
-      color: rgba(255, 255, 255, .80);
-      font-size: 12px;
-      margin-top: 4px;
-
-      @include mobile() {
-          line-height: 12px;
-      }
-    }
-  }
-
-  .telegram-link {
-    @include mobile() {
-        margin-top: 1rem;
-    }
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    background: rgba(0, 0, 0, .16);
-    color: $color-white;
-    padding: .5rem 1rem;
-    @include radius();
 
     &:hover {
-      background: rgba(0, 0, 0, .32);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, .08);
+
+      .header-basket__value {
+        color: $color-primary;
+      }
     }
   }
 }

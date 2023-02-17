@@ -7,6 +7,7 @@ Route::get('mail', function() {
 });
 
 Route::get('/', 'HomeController')->name('home');
+Route::get('/page/faq', 'PageController')->name('page.faq');
 Route::get('/page/{page}', 'PageController')->name('page');
 
 Route::get('/search', 'SearchController')->name('search');

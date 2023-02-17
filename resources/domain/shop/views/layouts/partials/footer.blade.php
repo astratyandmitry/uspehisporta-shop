@@ -12,7 +12,7 @@
               </a>
             </li>
             <li class="menu__item">
-              <a href="{{ route('shop::page', 'contacts') }}" class="menu__link">
+              <a href="{{ route('shop::page', 'cÏontacts') }}" class="menu__link">
                 Контакты
               </a>
             </li>
