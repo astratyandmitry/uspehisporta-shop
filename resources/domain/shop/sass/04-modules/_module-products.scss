@@ -1,53 +1,16 @@
-.media-gallery {
-  .media-gallery__main {
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @include mobile() {
-        height: 240px;
-    }
-  }
-
-  .media-gallery__list {
-    display: flex;
-    margin-top: 1rem;
-
-    .media-gallery__item {
-      @include radius();
-      @include transition();
-      cursor: pointer;
-      margin: 4px;
-      padding: 8px;
-
-      @include mobile() {
-          padding: 4px;
-      }
-
-      .media-gallery__image {
-        height: 40px !important;
-        @include radius();
-      }
-
-      &:hover {
-        background: #e0e0e0;
-      }
-
-      &.media-gallery__item--active {
-        background: $color-primary;
-      }
-    }
-  }
-}
-
 .products {
   .products__title {
-    font-size: 24px;
-    font-weight: 700;
+    font-family: $font-heading;
+    font-size: 28px;
+    font-weight: 600;
     margin-bottom: 1rem;
     margin-top: 2rem;
-    color: rgba($color-white, .64);
+    color: $color-black;
+    text-transform: uppercase;
+
+    span {
+      color: $color-primary;
+    }
   }
 
   .products__list {
@@ -70,32 +33,24 @@
 }
 
 .product-item {
-  box-shadow: 0 8px 16px rgba($color-primary, .16), 0 16px 32px rgba($color-primary, .32);
-  background: #111;
+  background: $color-white;
+  border: 1px solid #E2E8F0;
   flex-direction: column;
   display: flex;
-  border-bottom: none;
-  @include boxShadow();
-  @include radius();
-  color: $color-white;
+  @include radius(8px);
+  @include transition();
 
   &:hover {
-    box-shadow: 0 16px 32px rgba($color-primary, .32), 0 32px 64px rgba($color-primary, .40);
-    background: $color-primary;
-
-    .product__price {
-      color: $color-white !important;;
-    }
+    box-shadow: 0 16px 32px #E2E8F0;
   }
 
   .product__media {
-    margin: 1.5rem;
     height: 200px;
     text-align: center;
     position: relative;
     background: $color-white;
+    margin-bottom: 1rem;
     @include transition();
-    @include radius();
 
     @include mobile() {
       padding: 1px;
@@ -104,8 +59,8 @@
     }
 
     .product__badge {
-      left: .5rem;
-      bottom: .5rem;
+      top: 1rem;
+      left: 1rem;
       position: absolute;
       display: flex;
       z-index: 50;
@@ -119,7 +74,7 @@
         padding: 4px 8px;
         font-weight: 500;
         color: $color-white;
-        @include radius(6px);
+        @include radius(12px);
 
         @include mobile() {
           display: none;
@@ -158,51 +113,32 @@
     }
 
     .product__name {
-      font-family: $font-default;
-      line-height: 1;
+      font-family: $font-heading;
+      font-size: 20px;
       font-weight: 500;
+      line-height: 1;
+      color: $color-black;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $color-primary;
+      }
 
       @include mobile() {
         font-size: 14px;
       }
     }
 
-    .product__detail {
-      font-size: 14px;
-      color: $color-gray;
-      margin-top: .250rem;
-
-      @include mobile() {
-        font-size: 12px;
-      }
-    }
-
-    .product__rating {
-      margin-top: .750rem;
-      display: flex;
-      align-items: center;
-
-      .product__rating__icon {
-        height: 16px;
-        width: 16px;
-        color: rgba($color-white, .32);
-
-        &.product__rating__icon--fill {
-          color: darken($color-secondary, 10%);
-        }
-      }
-    }
-
     .product__info {
       display: flex;
-      margin-bottom: 1rem;
-      align-items: center;
+      margin-bottom: .5rem;
+      align-items: start;
 
       .product__price {
-        color: lighten($color-secondary, 10%);
+        color: rgba($color-black, .64);
         font-family: $font-default;
         line-height: 1;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 18px;
 
         @include mobile() {
@@ -222,5 +158,9 @@
         }
       }
     }
+  }
+
+  .product__basket {
+    margin-top: 1rem;
   }
 }

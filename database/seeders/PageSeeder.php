@@ -22,14 +22,9 @@ class PageSeeder extends Seeder
             'hru' => 'payment-and-delivery',
         ],
         [
-            'name' => 'Пользовательское соглашение',
-            'title' => 'Пользовательское соглашение',
-            'hru' => 'agreement',
-        ],
-        [
-            'name' => 'Правила',
-            'title' => 'Правила пользования сайтом',
-            'hru' => 'rules',
+            'name' => 'Вопросы и ответ',
+            'title' => 'Вопросы и ответ',
+            'hru' => 'faq',
         ],
     ];
 

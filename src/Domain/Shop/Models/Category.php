@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property \Domain\Shop\Models\Category $parent
  * @property \Domain\Shop\Models\Category[]|\Illuminate\Database\Eloquent\Collection $children
+ * @property \Domain\Shop\Models\Product[]|\Illuminate\Database\Eloquent\Collection $products
  */
 class Category extends Model implements HasUrl
 {
@@ -53,6 +54,11 @@ class Category extends Model implements HasUrl
     public function children(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
     }
 
     public function getRouteKeyName(): string

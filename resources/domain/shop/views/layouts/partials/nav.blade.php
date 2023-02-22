@@ -15,7 +15,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="{{ route('shop::page.faq') }}" class="menu-link">
+          <a href="{{ route('shop::page', 'faq') }}" class="menu-link">
             <span>Вопросы и ответы</span>
           </a>
         </li>

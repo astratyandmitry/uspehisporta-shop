@@ -16,6 +16,12 @@ class PageController extends Controller
             ->setMeta($page)
             ->addBreadcrumb($page->name);
 
+        if (view()->exists("shop::page.static.{$page->hru}")) {
+            return $this->view("page.static.{$page->hru}", [
+                'page' => $page,
+            ]);
+        }
+
         return $this->view('page.show', [
             'page' => $page,
         ]);

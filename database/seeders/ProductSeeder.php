@@ -4,13 +4,9 @@ namespace Database\Seeders;
 
 use Database\Factories\ProductFactory;
 use Database\Factories\ReviewFactory;
-use Domain\Shop\Models\Packing;
+use Database\Factories\TestimonialFactory;
 use Domain\Shop\Models\Product;
-use Domain\Shop\Models\ProductPacking;
-use Domain\Shop\Models\ProductStock;
-use Domain\Shop\Models\ProductTaste;
 use Domain\Shop\Models\Review;
-use Domain\Shop\Models\Taste;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -28,6 +24,7 @@ class ProductSeeder extends Seeder
 
         ProductFactory::new()->count(50)->create();
         ReviewFactory::new()->count(100)->create();
+        TestimonialFactory::new()->count(8)->create();
 
         Schema::enableForeignKeyConstraints();
     }

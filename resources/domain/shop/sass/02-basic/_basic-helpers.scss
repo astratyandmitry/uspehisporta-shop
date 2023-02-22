@@ -1,4 +1,10 @@
 .typography {
+  font-size: 18px;
+
+  @include tablet() {
+    font-size: 16px;
+  }
+
   @include mobile() {
     font-size: 14px;
   }
@@ -17,11 +23,15 @@
 
   ul li::before {
     content: "\2022";
-    color: $color-secondary;
+    color: $color-primary;
     font-weight: bold;
     display: inline-block;
     width: 1em;
     margin-left: -1em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-primary;
   }
 }
 

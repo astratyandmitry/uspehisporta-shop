@@ -44,11 +44,11 @@ input {
   -o-transition: none !important;
 }
 
-main {
-  padding: 3rem 0;
+.main__content {
+  padding: 4rem 0;
 
   @include mobile() {
-    padding: 1.5rem 0;
+    padding: 2rem 0;
   }
 }
 
@@ -249,5 +249,56 @@ main {
     &:hover {
       background: #F1F5F9;
     }
+  }
+
+  &.i-button--inverse {
+    border-color: rgba($color-white, .12);
+    background: rgba($color-white, .12);
+    color: $color-white;
+
+
+    &.i-button--fill {
+      border-color: $color-primary;
+      background: $color-primary;
+    }
+
+
+    &:hover {
+      background: $color-white;
+      border-color: $color-white;
+      color: $color-primary;
+    }
+
+    &.i-button--circle {
+      border-color: $color-white;
+      background: $color-white;
+    }
+  }
+
+  &.i-button--full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.heading {
+  border-bottom: 1px solid #E2E8F0;
+  background: #F1F5F9;
+  padding: 2rem 0;
+
+  .heading-content {
+      max-width: 880px;
+  }
+
+  .heading-title {
+    margin: 0;
+  }
+
+  .heading-body {
+    margin-top: 1rem;
+    font-size: 14px;
+    color: rgba($color-black, .80);
   }
 }

@@ -29,6 +29,11 @@
             @lang('cms.model.pages')
           </a>
         </li>
+        <li {{ isActive($model == 'testimonials') }}>
+          <a href="{{ route('cms::testimonials.index') }}">
+            @lang('cms.model.testimonials')
+          </a>
+        </li>
         <li {{ isActive($model == 'faqs') }}>
           <a href="{{ route('cms::faqs.index') }}">
             @lang('cms.model.faqs')

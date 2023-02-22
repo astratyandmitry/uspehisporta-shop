@@ -12,28 +12,34 @@ class CategorySeeder extends Seeder
      */
     protected $data = [
         [
-            'parent_id' => null,
-            'hru' => 'first',
-            'name' => 'Основная категория',
-            'title' => 'Основная категория',
+            'hru' => 'hgh',
+            'name' => 'Гормон роста',
+            'title' => 'Гормон роста',
         ],
         [
-            'parent_id' => null,
-            'hru' => 'second',
-            'name' => 'Второстепенная',
-            'title' => 'Дополнительная категория',
+            'hru' => 'anabolic-steroids',
+            'name' => 'Анаболические стероиды',
+            'title' => 'Анаболические стероиды',
         ],
         [
-            'parent_id' => null,
-            'hru' => 'third',
-            'name' => 'Еще третья категория',
-            'title' => 'И еще третья категория',
+            'hru' => 'methanol',
+            'name' => 'Метанол',
+            'title' => 'Метанол',
         ],
         [
-            'parent_id' => null,
-            'hru' => 'fourth',
-            'name' => 'Четвертая по счету',
-            'title' => 'И еще четвертая категория',
+            'hru' => 'sarms',
+            'name' => 'SARMS',
+            'title' => 'SARMS',
+        ],
+        [
+            'hru' => 'gonadotropin',
+            'name' => 'Гонадотропин (ХГЧ)',
+            'title' => 'Гонадотропин (ХГЧ)',
+        ],
+        [
+            'hru' => 'peptides',
+            'name' => 'Пептиды',
+            'title' => 'Пептиды',
         ],
     ];
 
@@ -45,9 +51,10 @@ class CategorySeeder extends Seeder
         Category::query()->truncate();
 
         foreach ($this->data as $index => $data) {
-            $data['image'] = "/images/categories/{$data['hru']}.jpeg";
+            $data['parent_id'] = null;
+            $data['image'] = "/images/img.png";
             $data['active'] = true;
-            $data['about'] = 'Some about test';
+            $data['about'] = 'Приглашаем клиентов в СПб и других городах воспользоваться услугами нашего магазина «Успехи спорта». Мы обеспечиваем своих покупателей лучшими условиями, соответствующими приобретению гормонов роста. Также вы можете познакомиться с фото анализов представленной продукции, прикрепленных в галерее. Мы гарантируем оперативную доставку, лучшую цену продукта, а также обеспечиваем высококачественной спортивной фармакологией в ассортименте, произведенной на проверенных зарубежных и отечественных производствах.';
             $data['sort'] = $index;
 
             /** @var \Domain\Shop\Models\Category $category */

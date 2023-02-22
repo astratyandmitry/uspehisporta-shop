@@ -32,7 +32,7 @@ class Layout
 
     private function setupData(): void
     {
-        $this->data['categories'] = Category::query()->whereNull('parent_id')->with('children')->get();
+        $this->data['categories'] = Category::query()->whereNull('parent_id')->withCount('products')->get();
         $this->data['settings'] = Settings::options();
     }
 
@@ -102,5 +102,47 @@ class Layout
     public function getSettings(string $key): ?string
     {
         return $this->data['settings'][$key] ?? null;
+    }
+
+    public function getOptionsPayment(): array
+    {
+        return  [
+            [
+                'icon' => 'crypto',
+                'title' => 'Криптовалюта',
+                'detail' => 'Оплата на любой крипто-кошелек',
+            ],
+            [
+                'icon' => 'sber',
+                'title' => 'СБЕРБАНК',
+                'detail' => 'Перевод на карту',
+            ],
+            [
+                'icon' => 'vtb',
+                'title' => 'ВТБ',
+                'detail' => 'Перевод на карту',
+            ],
+            [
+                'icon' => 'tinkoff',
+                'title' => 'ТИНЬКОФ',
+                'detail' => 'Перевод на карту',
+            ],
+        ];
+    }
+
+    public function getOptionsDelivery(): array
+    {
+        return  [
+            [
+                'icon' => 'post',
+                'title' => 'Почта России',
+                'detail' => '500 ₽, от 2 до 10 дней',
+            ],
+            [
+                'icon' => 'ems',
+                'title' => 'EMS',
+                'detail' => 'Срочная доставка, от 2 до 4 дней',
+            ],
+        ];
     }
 }

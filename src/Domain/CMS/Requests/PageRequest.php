@@ -8,6 +8,7 @@ use Domain\Shop\Models\Page;
  * @property string $hru
  * @property string $name
  * @property string $title
+ * @property string|null $about
  * @property string $content
  * @property boolean $active
  */
@@ -22,6 +23,7 @@ class PageRequest extends Request
                 'hru' => 'required|max:80|alpha_dash',
                 'name' => 'required|max:120',
                 'title' => 'required|max:200',
+                'about' => 'nullable',
                 'content' => 'required',
                 'active' => 'boolean',
             ]);

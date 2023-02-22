@@ -5009,55 +5009,58 @@ __webpack_require__(/*! ./scripts/mobile */ "./resources/domain/shop/js/scripts/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var hamburger = document.querySelector('.hamburger');
-var dropdown = document.querySelector('.header .dropdown');
-var loader = document.querySelector('.loader');
-var body = document.querySelector('body');
-var searchInput = document.querySelector('.search__input');
-hamburger.addEventListener('click', function () {
-  if (dropdown.classList.contains('dropdown--active')) {
-    dropdown.classList.remove('dropdown--active');
-    loader.classList.remove('loader--active');
-    body.classList.remove('fixed');
-  } else {
-    dropdown.classList.add('dropdown--active');
-    loader.classList.add('loader--active');
-    body.classList.add('fixed');
-  }
-});
-loader.addEventListener('click', function () {
-  dropdown.classList.remove('dropdown--active');
-  loader.classList.remove('loader--active');
-  body.classList.remove('fixed');
-});
-searchInput.addEventListener('focusin', function () {
-  loader.classList.add('loader--active');
-  body.classList.add('fixed');
-});
-searchInput.addEventListener('focusout', function () {
-  loader.classList.add('loader--active');
-  body.classList.add('fixed');
-});
-var mainMenuItem = document.querySelectorAll('.menu--main .menu__item');
-var activeChildMenu = null;
-
-if (!('ontouchstart' in document.documentElement)) {
-  var _loop = function _loop(i) {
-    var childMenu = document.getElementById("child-menu-".concat(mainMenuItem[i].dataset["for"]));
-    mainMenuItem[i].addEventListener('mouseover', function () {
-      if (activeChildMenu) {
-        activeChildMenu.classList.remove('menu--active');
-      }
-
-      activeChildMenu = childMenu;
-      childMenu.classList.add('menu--active');
-    });
-  };
-
-  for (var i = 0; i < mainMenuItem.length; i++) {
-    _loop(i);
-  }
-}
+// let hamburger = document.querySelector('.hamburger')
+// let dropdown = document.querySelector('.header .dropdown')
+// let loader = document.querySelector('.loader')
+// let body = document.querySelector('body')
+// let searchInput = document.querySelector('.search__input')
+//
+// hamburger.addEventListener('click', () => {
+//   if (dropdown.classList.contains('dropdown--active')) {
+//     dropdown.classList.remove('dropdown--active')
+//     loader.classList.remove('loader--active')
+//     body.classList.remove('fixed')
+//   } else {
+//     dropdown.classList.add('dropdown--active')
+//     loader.classList.add('loader--active')
+//     body.classList.add('fixed')
+//   }
+// })
+//
+// loader.addEventListener('click', () => {
+//   dropdown.classList.remove('dropdown--active')
+//   loader.classList.remove('loader--active')
+//   body.classList.remove('fixed')
+// })
+//
+// searchInput.addEventListener('focusin', () => {
+//   loader.classList.add('loader--active')
+//   body.classList.add('fixed')
+// })
+//
+// searchInput.addEventListener('focusout', () => {
+//   loader.classList.add('loader--active')
+//   body.classList.add('fixed')
+// })
+//
+// let mainMenuItem = document.querySelectorAll('.menu--main .menu__item')
+// let activeChildMenu = null
+//
+// if (!('ontouchstart' in document.documentElement)) {
+//   for (let i = 0; i < mainMenuItem.length; i++) {
+//     let childMenu = document.getElementById(`child-menu-${mainMenuItem[i].dataset.for}`)
+//
+//     mainMenuItem[i].addEventListener('mouseover', function () {
+//       if (activeChildMenu) {
+//         activeChildMenu.classList.remove('menu--active')
+//       }
+//
+//       activeChildMenu = childMenu
+//
+//       childMenu.classList.add('menu--active')
+//     })
+//   }
+// }
 
 /***/ }),
 

@@ -16,6 +16,11 @@
         'attribute' => 'title',
         'required' => true,
     ])
+
+    @include('cms::layouts.includes.form.field.textarea', [
+        'label' => __('cms.field.about'),
+        'attribute' => 'about',
+    ])
   </div>
 
   <div class="section">

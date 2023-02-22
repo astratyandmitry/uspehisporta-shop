@@ -1,15 +1,10 @@
 {
-    "name": "SexStore",
-    "short_name": "SexStore",
+    "name": "\u0423\u0421\u041f\u0415\u0425\u0418 \u0421\u041f\u041e\u0420\u0422\u0410",
+    "short_name": "\u0423\u0421\u041f\u0415\u0425\u0418 \u0421\u041f\u041e\u0420\u0422\u0410",
     "icons": [
         {
-            "src": "/app-icons/android-chrome-192x192.png",
+            "src": "android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/app-icons/android-chrome-256x256.png",
-            "sizes": "256x256",
             "type": "image/png"
         }
     ],

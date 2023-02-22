@@ -3,7 +3,6 @@
 <header class="header">
   <div class="container">
     <div class="header__content">
-
       <div class="header__left">
         <div class="logotype">
           <a href="{{ route('shop::home') }}">
@@ -42,7 +41,6 @@
           </a>
         </div>
       </div>
-
     </div>
   </div>
 </header>

@@ -1,7 +1,7 @@
 @php /** @var \Domain\Shop\Models\Product $product */ @endphp
 
-<a href="{{ $product->url() }}" class="product-item">
-  <div class="product__media">
+<div class="product-item">
+  <a href="{{ $product->url() }}" class="product__media">
     @if ($product->badges !== null && $badges = explode(',', $product->badges))
       <div class="product__badge">
         @foreach($badges as $badge)
@@ -13,7 +13,7 @@
     @endif
 
     <img src="{{ image_url($product->image) }}" alt="{{ $product->name }}" class="product__image">
-  </div>
+  </a>
 
   <div class="product__content">
     <div class="product__info">
@@ -29,25 +29,16 @@
     </div>
 
     <div class="product__main">
-      <div class="product__name">
+      <a href="{{ $product->url() }}" class="product__name">
         {{ $product->name }}
-      </div>
+      </a>
+    </div>
 
-      @if ($product->brand || $product->category)
-        <div class="product__detail">
-          {{ $product->brand ? $product->brand->name : $product->category->name }}
-        </div>
-      @endif
-
-      <div class="product__rating">
-        @for($i = 1; $i <= 5; $i++)
-          @if (round($product->rating) >= $i)
-            @include('shop::layouts.partials.svg.star', ['class' => 'product__rating__icon product__rating__icon--fill'])
-          @else
-            @include('shop::layouts.partials.svg.star', ['class' => 'product__rating__icon'])
-          @endif
-        @endfor
-      </div>
+    <div class="product__basket">
+      <button class="i-button i-button--icon i-button--full i-button--fill" type="button">
+        <span>В корзину</span>
+        @include('shop::layouts.partials.svg.basket', ['class' => 'i-button__icon'])
+      </button>
     </div>
   </div>
-</a>
+</div>

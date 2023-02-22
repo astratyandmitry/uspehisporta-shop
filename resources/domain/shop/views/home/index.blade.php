@@ -7,17 +7,25 @@
 
 @section('content')
   <div class="home">
-
     @include('shop::home.partials.categories')
 
-    @include('shop::home.partials.products', [
-        'title' => 'Популярные товары',
-        'products' => $popularProducts,
-    ])
+    <div class="home-main">
+      <div class="container">
+        <div class="home-main__grid">
+          @include('shop::layouts.includes.boxes', [
+            'title' => 'Способы <span>оплаты</span>',
+            'items' => $layout->getOptionsPayment(),
+          ])
 
-    @include('shop::home.partials.products', [
-        'title' => 'Новые товары',
-        'products' => $latestProducts,
-    ])
+          @include('shop::layouts.includes.boxes', [
+            'title' => 'Варианты <span>доставки</span>',
+            'items' => $layout->getOptionsDelivery(),
+            'home' => true,
+          ])
+        </div>
+      </div>
+    </div>
+
+    @include('shop::home.partials.testimonials')
   </div>
 @endsection

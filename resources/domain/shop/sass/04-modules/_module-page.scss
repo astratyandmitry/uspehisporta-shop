@@ -9,12 +9,11 @@
   }
 
   .page__content {
-    @extend .typography;
-    background: #111;
-    padding: 3rem;
-    color: $color-white;
     flex-grow: 1;
-    @include radius();
+  }
+
+  .page__typography {
+    @extend .typography;
 
     @include mobile() {
       font-size: 14px;
@@ -83,7 +82,7 @@
           border-bottom: none;
           font-size: 14px;
           display: block;
-          color: rgba($color-white, .64);
+          color: rgba($color-black, .80);
           white-space: nowrap;
           @include radius();
 
@@ -96,14 +95,14 @@
           }
 
           &:hover {
-            color: $color-white;
-            background: #333;
+            background: #F1F5F9;
+            color: $color-primary;
           }
         }
 
         &.page-nav__item--active {
           .page-nav__link {
-            background: #111;
+            background: $color-primary;
             color: $color-white;
             font-weight: 500;
           }

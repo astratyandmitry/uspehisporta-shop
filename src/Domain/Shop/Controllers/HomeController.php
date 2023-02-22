@@ -2,24 +2,18 @@
 
 namespace Domain\Shop\Controllers;
 
+use Domain\Shop\Models\Testimonial;
 use Illuminate\View\View;
-use Domain\Shop\Repositories\CatalogRepository;
-use Domain\Shop\Repositories\CategoriesRepository;
 
 class HomeController extends Controller
 {
-    public function __invoke(
-        CatalogRepository $catalogRepository,
-        CategoriesRepository $categoriesRepository,
-    ): View {
+    public function __invoke(): View {
         $this->setup(PAGE_HOME);
 
         $this->layout->setTitle()->hideTitle()->hideBreadcrumbs();
 
         return $this->view('home.index', [
-            'latestProducts' => $catalogRepository->latest(),
-            'popularProducts' => $catalogRepository->popular(),
-            'categories' => $categoriesRepository->parents(),
+            'testimonials' => Testimonial::query()->inRandomOrder()->limit(8)->get(),
         ]);
     }
 }

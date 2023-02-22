@@ -1,5 +1,5 @@
 @php /** @var \Domain\Shop\Common\Layout $layout */ @endphp
-<!doctype html>
+  <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
       {{ $title }} —
     @endif{{ env('APP_NAME') }}</title>
   <link rel="stylesheet" href="{{ mix('/assets/shop/css/app.css') }}">
-  <meta property="og:image" content="{{ url('/images/social.png') }}"/>
+  <meta property="og:image" content="{{ url('/images/social.png') }}" />
   @include('shared.head-icons')
   @stack('styles')
 </head>
@@ -21,8 +21,12 @@
 
   @include('shop::layouts.partials.header')
 
-  <main>
-    @yield('content')
+  <main class="main">
+    @yield('heading')
+
+    <div class="main__content">
+      @yield('content')
+    </div>
   </main>
 
   @include('shop::layouts.partials.footer')
@@ -32,6 +36,7 @@
 
 
 <script src="{{ mix('/assets/shop/js/app.js') }}"></script>
+@stack('scripts')
 
 </body>
 </html>

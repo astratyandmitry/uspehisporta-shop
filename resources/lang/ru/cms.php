@@ -37,6 +37,7 @@ return [
         'brands' => 'Бренды',
         'managers' => 'Менеджеры',
         'cities' => 'Города',
+        'testimonials' => 'Рекомендации',
         'packing' => 'Упаковки',
         'tastes' => 'Вкусы',
         'faqs' => 'Вопросы-ответы',

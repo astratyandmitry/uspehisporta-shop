@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $hru
  * @property string $name
  * @property string $title
+ * @property string|null $about
  * @property string $content
  * @property string|null $meta_description
  * @property string|null $meta_keywords
