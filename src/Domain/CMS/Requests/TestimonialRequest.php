@@ -15,7 +15,7 @@ class TestimonialRequest extends Request
         $this->rulesBuilder
             ->addRules([
                 'author' => 'required|max:80',
-                'url' => 'required|url|max|500',
+                'url' => 'required|url|max:500',
                 'active' => 'boolean',
             ]);
     }
