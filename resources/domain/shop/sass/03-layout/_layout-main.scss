@@ -162,7 +162,7 @@ input {
   flex-grow: 1;
 
   .loadable__loader {
-    background: rgba(0, 0, 0, .32);
+    background: rgba(0, 0, 0, .16);
     position: absolute;
     display: none;
     visibility: hidden;
@@ -211,6 +211,11 @@ input {
   color: $color-primary;
   background: transparent;
   margin-right: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 18px;
+  @include radius(24px);
+
 
   &:hover {
     background: $color-primary;
@@ -225,8 +230,6 @@ input {
     display: inline-flex;
     align-items: center;
     font-weight: 500;
-    padding: 8px 16px;
-    @include radius(24px);
 
     .i-button__icon {
       fill: currentColor;
@@ -281,8 +284,9 @@ input {
   &.i-button--full {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+    text-align: center;
   }
 }
 
@@ -297,6 +301,10 @@ input {
 
   .heading-title {
     margin: 0;
+
+    span {
+      color: $color-primary;
+    }
   }
 
   .heading-body {

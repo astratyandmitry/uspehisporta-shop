@@ -11,8 +11,8 @@
             {{ item.product.name }}
           </div>
 
-          <div class="product__detail" v-if="item.variation">
-            {{ item.product.variations[item.variation]['name'] }}
+          <div class="product__price">
+            ₽{{ price | formatPrice }}/шт.
           </div>
         </div>
       </a>
@@ -32,20 +32,16 @@
             +
           </button>
         </div>
-
-        <div class="count__label">
-          {{ price | formatPrice }} ₸/шт.
-        </div>
       </div>
     </td>
     <td nowrap>
       <div class="price">
         <div class="price__value">
-          {{ total | formatPrice }} ₸
+          ₽{{ total | formatPrice }}
         </div>
 
         <div class="price__prev" v-if="item.product.price_sale">
-          {{ totalPrev | formatPrice }} ₸
+          ₽{{ totalPrev | formatPrice }}
         </div>
       </div>
     </td>

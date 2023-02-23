@@ -42,7 +42,7 @@
 
                 @if ($model->delivery_price)
                   <div class="badge badge--sm" style="margin-left: .5rem">
-                    {{ number_format($model->delivery_price) }} ₸
+                    ₽{{ number_format($model->delivery_price) }}
                   </div>
                 @endif
               </td>
@@ -97,23 +97,23 @@
                     {{ $item->count }} шт.
                   </td>
                   <td width="100" style="text-align: right">
-                    {{ number_format($item->price) }} ₸
+                    ₽{{ number_format($item->price) }}
                   </td>
                   <td width="120" style="text-align: right">
-                    {{ number_format($item->total) }} ₸
+                    ₽{{ number_format($item->total) }}
                   </td>
                 </tr>
               @endforeach
               @if ($model->delivery_price)
                 <tr>
                   <td colspan="4" style="text-align: right; background: #fafafa">
-                    Доставка {{ number_format($model->delivery_price) }} ₸
+                    Доставка ₽{{ number_format($model->delivery_price) }}
                   </td>
                 </tr>
               @endif
               <tr>
                 <th colspan="4" style="text-align: right; font-size: 16px">
-                  Итого {{ number_format($model->total) }} ₸
+                  Итого ₽{{ number_format($model->total) }}
                 </th>
               </tr>
             </table>

@@ -20,7 +20,7 @@
       </h4>
 
       <div class="order__value">
-        {{ price($order->total) }} ₸
+        ₽{{ price($order->total) }}
       </div>
     </div>
 

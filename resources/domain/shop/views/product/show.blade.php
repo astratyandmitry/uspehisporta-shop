@@ -39,15 +39,15 @@
               <div class="price">
                 @if ($product->price_sale)
                   <div class="price__value">
-                    <span>{{ $product->price_sale }}</span> ₸
+                    ₽<span>{{ $product->price_sale }}</span>
                   </div>
 
                   <div class="price__prev">
-                    <span>{{ $product->price }}</span> ₸
+                    ₽<span>{{ $product->price }}</span>
                   </div>
                 @else
                   <div class="price__value">
-                    <span>{{ $product->price }}</span> ₸
+                    ₽<span>{{ $product->price }}</span>
                   </div>
                 @endif
               </div>

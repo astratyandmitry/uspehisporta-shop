@@ -21,7 +21,11 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+if ($_SERVER['SERVER_ADDR'] === '127.0.0.1') {
+    require __DIR__.'/../vendor/autoload.php';
+} else {
+    require __DIR__.'/../laravel/vendor/autoload.php';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +39,11 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+if ($_SERVER['SERVER_ADDR'] === '127.0.0.1') {
+    $app = require_once __DIR__.'/../bootstrap/app.php';
+} else {
+    $app = require_once __DIR__.'/../laravel/bootstrap/app.php';
+}
 
 /*
 |--------------------------------------------------------------------------

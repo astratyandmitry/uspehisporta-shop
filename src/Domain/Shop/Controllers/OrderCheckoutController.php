@@ -23,11 +23,7 @@ class OrderCheckoutController extends Controller
         $basketRepository->clear();
 
         Mail::to($request->email)->send(new OrderMail($order));
-        Mail::to(config('shop.contact.email'))->send(new OrderMail($order));
-
-        foreach (Manager::query()->whereNotNull('telegram_id')->get() as $manager) {
-            $manager->notify(new TelegramNewOrderNotification($order));
-        }
+        Mail::to(config('shop.email'))->send(new OrderMail($order));
 
         return redirect()->to(
             auth(SHOP_GUARD)->guest() ? $order->detailUrl() : $order->url()

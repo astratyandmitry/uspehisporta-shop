@@ -1,9 +1,6 @@
 .items-table {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
-  background: #111;
-  overflow: hidden;
   flex-grow: 1;
-  @include boxShadow();
+  border: 1px solid #E2E8F0;
   @include radius();
 
   @include mobile() {
@@ -13,7 +10,7 @@
   .items-table__icon {
     width: 24px;
     height: 24px;
-    color: rgba($color-white, .32);
+    color: rgba($color-black, .32);
     @include transition();
 
     @include mobile() {
@@ -30,7 +27,7 @@
 
   tr {
     @include mobile() {
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #E2E8F0;
       display: block;
       padding: 1.5rem;
       position: relative;
@@ -40,12 +37,18 @@
 
     td, th {
       padding: 1.5rem;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #E2E8F0;
 
       @include mobile() {
         display: block;
         border-bottom: none;
         padding: 0 !important;
+      }
+    }
+
+    &:last-child {
+      td {
+        border-bottom: none;
       }
     }
   }
@@ -55,7 +58,7 @@
 
     td {
       padding: 1rem 1.5rem;
-      background: #111;
+      background: #fff;
 
       @include mobile() {
         width: 100%;
@@ -68,12 +71,13 @@
     width: 100%;
 
     th {
-      background: #000;
-      color: $color-gray-light;
+      background: #F1F5F9;
+      color: #64748B;
       font-family: $font-default;
       font-weight: 500;
       text-transform: uppercase;
       font-size: 14px;
+      padding: 1rem 1.5rem;
     }
 
     @include mobile() {
@@ -86,8 +90,8 @@
 
     tr {
       @include mobile() {
-        background: #111;
-        border-bottom: 1px solid #333;
+        background: #fff;
+        border-bottom: 1px solid #E2E8F0;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -98,101 +102,85 @@
       }
 
       th {
-        background: #000;
-        border-bottom-color: #333;
+        background: #F1F5F9;
+        border-bottom-color: #E2E8F0;
         font-weight: 500;
         padding: 1rem 1.5rem;
         font-size: 14px;
         text-transform: uppercase;
-        color: $color-white;
+        color: $color-black;
 
         span {
-          color: rgba($color-white, .40);
+          color: rgba($color-black, .40);
         }
       }
     }
 
     tr:last-child {
       @include mobile() {
-        background: $color-dark;
+        background: #F1F5F9;
       }
 
       th {
-        background: #111;
-        color: $color-white;
+        background: #fff;
+        color: $color-black;
         border-bottom: none;
 
         span {
-          color: rgba($color-white, .40);
+          color: rgba($color-black, .40);
         }
       }
     }
   }
 
-  .count {
-    .count__config {
+  .count__config {
+    background: #1E293B;
+    padding: .5rem;
+    display: inline-flex;
+    @include radius(64px);
+
+    .count__value,
+    .count__button {
+      background: $color-white;
+      border: none;
+      font-weight: 500;
+      font-size: 20px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #1E293B;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
-
-      .count__value {
-        margin: 0 4px;
-      }
-    }
-
-    .count__button {
-      color: $color-white;
-      background: #333;
-      font-family: $font-default;
-      font-size: 18px;
-      font-weight: 700;
-      border: none;
-      display: inline-block;
-      padding: .5rem .750rem;
-      line-height: 1;
-
-      text-align: center;
-      @include nonSelect();
-      @include transition();
+      justify-content: center;
       @include radius();
+      @include nonSelect();
 
-      &:hover {
-        cursor: pointer;
-        background: #444;
-        color: $color-white;
-      }
-
-      &:disabled {
-        background: #000;
-        color: rgba($color-white, .40);
-        cursor: not-allowed;
+      @include mobile() {
+        font-size: 16px;
       }
     }
 
     .count__value {
-      font-family: $font-default;
-      font-size: 18px;
-      background: #333;
-      border: none;
-      display: inline-block;
-      padding: .5rem;
-      line-height: 1;
-      width: 48px;
-      text-align: center;
+      background: transparent;
       color: $color-white;
-      @include radius();
-      @include nonSelect();
     }
 
-    .count__label {
-      font-size: 14px;
-      color: rgba($color-white, .40);
-      margin-top: .5rem;
+    .count__button {
+      @include transition();
+      @include radius(50%);
+
+      &:hover {
+        background: $color-primary;
+        color: $color-white;
+        cursor: pointer;
+      }
     }
   }
 
   .price {
     text-align: right;
-    color: $color-white;
+    color: $color-black;
 
     @include mobile() {
       text-align: left;
@@ -201,12 +189,14 @@
     .price__value {
       font-family: $font-default;
       font-size: 20px;
+      font-weight: 500;
     }
 
     .price__prev {
       font-size: 14px;
       margin-top: .5rem;
       text-decoration: line-through;
+      color: rgba($color-black, .32);
 
       @include mobile() {
         margin-top: 0;
@@ -244,15 +234,17 @@
 
     .product__content {
       .product__name {
-        font-family: $font-default;
+        font-family: $font-heading;
+        text-transform: uppercase;
         font-weight: 500;
         line-height: 1;
-        color: $color-white;
+        color: $color-black;
       }
 
-      .product__detail {
-        color: $color-gray;
+      .product__price {
+        color: rgba($color-black, .64);
         font-size: 14px;
+        font-weight: 500;
         margin-top: 4px;
       }
     }

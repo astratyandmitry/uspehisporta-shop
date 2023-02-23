@@ -204,7 +204,6 @@
 
         @include mobile() {
           font-size: 16px;
-
         }
       }
 
@@ -214,12 +213,12 @@
       }
 
       .basket__count__button {
-
         @include transition();
         @include radius(50%);
 
         &:hover {
           background: $color-primary;
+          color: $color-white;
           cursor: pointer;
         }
       }

@@ -81,7 +81,7 @@
                 <div class="text--label">
 
                   <div class="badge">
-                    {{ number_format($model->total) }} ₸
+                    ₽{{ number_format($model->total) }}
                   </div>
 
                   <div class="badge">

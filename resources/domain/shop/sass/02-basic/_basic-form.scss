@@ -1,11 +1,15 @@
 .form-field {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 1rem;
+  grid-column-gap: 1.5rem;
+
+  &.form-grid--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
   @include mobile() {
     grid-template-columns: 1fr;
@@ -14,7 +18,7 @@
 }
 
 .form-label {
-  color: rgba($color-white, .40);
+  color: rgba($color-black, .64);
   font-family: $font-default;
   font-size: 14px;
   font-weight: 500;
@@ -30,7 +34,7 @@
 
   .form-help {
     margin: 0 0 0 1rem;
-    color: $color-gray;
+    color: rgb($color-black, .40);
   }
 }
 
@@ -45,10 +49,10 @@
 }
 
 .form-input {
-  border: 1px solid #444;
-  background: #333;
+  border: 1px solid #E2E8F0;
+  background: #fff;
   box-sizing: border-box;
-  color: $color-white;
+  color: $color-black;
   padding: 1rem;
   display: block;
   outline: none;
@@ -68,23 +72,23 @@
   }
 
   &:focus {
-    border-color: $color-white;
+    border-color: $color-primary;
   }
 
   &::-webkit-input-placeholder {
-    color: $color-gray;
+    color: rgba($color-black, .40);
   }
 
   &::-moz-placeholder {
-    color: $color-gray;
+    color: rgba($color-black, .40);
   }
 
   &:-moz-placeholder {
-    color: $color-gray;
+    color: rgba($color-black, .40);
   }
 
   &:-ms-input-placeholder {
-    color: $color-gray;
+    color: rgba($color-black, .40);
   }
 }
 

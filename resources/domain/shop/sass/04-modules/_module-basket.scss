@@ -1,44 +1,63 @@
 .basket {
-  .checkout {
-    width: 360px;
+  .basket-confirm {
     margin-left: 3rem;
+    max-width: 400px;
 
-    @include mobile-tablet() {
-      width: 100%;
-      margin-top: 2rem;
+    @include mobile() {
       margin-left: 0;
-    }
-
-    .heading {
-      display: none;
-
-      @include mobile() {
-        display: block;
-      }
-    }
-
-    .info {
-      font-size: 12px;
-      color: rgba($color-white, .40);
       margin-top: 1rem;
     }
+  }
 
-    form {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
-      background: #111;
-      padding: 3rem;
-      @include radius();
-      @include boxShadow();
+  .basket-info {
+    background: #F1F5F9;
+    padding: 2rem;
+    @include radius(8px);
 
-      @include mobile() {
-        padding: 1.5rem;
+    .basket-info__item {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+
+      &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+
+      .basket-info__content {
+        .basket-info__label {
+          color: rgba($color-black, .64);
+          text-transform: uppercase;
+        }
+
+        .basket-info__detail {
+          color: rgba($color-black, .40);
+          font-size: 12px;
+        }
+      }
+
+      .basket-info__value {
+        margin-left: 2rem;
+        white-space: nowrap;
+        font-weight: 500;
       }
     }
+  }
 
-    @include mobile_tablet-portrait() {
-      width: auto;
-      margin-left: 0;
-      margin-top: 3rem;
+  .basket-actions {
+    margin-top: 2rem;
+
+    .i-button {
+      padding: 1rem;
+      @include radius(32px);
     }
+  }
+
+
+  .checkout {
   }
 }

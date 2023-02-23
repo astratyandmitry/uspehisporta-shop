@@ -44,7 +44,7 @@
       ></catalog-filter>
     </section>
 
-    <div class="container">
+    <div class="container" id="product">
       @if (count($catalog->products))
         <div class="products__list">
           @each('shop::product.partials.item', $catalog->products, 'product')
@@ -60,5 +60,6 @@
     </div>
   </div>
 
+  <script src="{{ mix('/assets/shop/js/product.js') }}"></script>
   <script src="{{ mix('/assets/shop/js/filter.js') }}"></script>
 @endsection

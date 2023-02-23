@@ -83,10 +83,10 @@
 
                 <div class="text--detail">
                   @if ($model->price_sale)
-                    <strike>{{ price($model->price) }}₸</strike>
-                    {{ price($model->price_sale) }}₸
+                    <strike>₽{{ price($model->price) }}</strike>
+                    ₽{{ price($model->price_sale) }}
                   @else
-                    {{ price($model->price) }}₸
+                    ₽{{ price($model->price) }}
                   @endif
                 </div>
               </td>

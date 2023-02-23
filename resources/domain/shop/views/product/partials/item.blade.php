@@ -18,12 +18,12 @@
   <div class="product__content">
     <div class="product__info">
       <div class="product__price">
-        {{ price($product->price_sale ? (int)$product->price_sale : (int)$product->price) }} ₸
+        ₽{{ price($product->price_sale ? (int)$product->price_sale : (int)$product->price) }}
       </div>
 
       @if ($product->price_sale)
         <div class="product__sale">
-          {{ price($product->price) }} ₸
+          ₽{{ price($product->price) }}
         </div>
       @endif
     </div>
@@ -34,11 +34,6 @@
       </a>
     </div>
 
-    <div class="product__basket">
-      <button class="i-button i-button--icon i-button--full i-button--fill" type="button">
-        <span>В корзину</span>
-        @include('shop::layouts.partials.svg.basket', ['class' => 'i-button__icon'])
-      </button>
-    </div>
+    <product-item-basket :product_id="{{ $product->id }}"></product-item-basket>
   </div>
 </div>

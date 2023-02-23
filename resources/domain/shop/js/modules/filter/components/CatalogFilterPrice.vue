@@ -18,7 +18,7 @@
           <div class="filter-price-range__value">
             <input class="filter-price-range__input" id="from" type="number"
                    v-model="inputFrom" :min="min" :max="max">
-            <div class="filter-price-range__currency">₸</div>
+            <div class="filter-price-range__currency">₽</div>
           </div>
         </div>
 
@@ -28,7 +28,7 @@
           <div class="filter-price-range__value">
             <input class="filter-price-range__input" id="to" type="number"
                    v-model="inputTo" :min="min" :max="max">
-            <div class="filter-price-range__currency">₸</div>
+            <div class="filter-price-range__currency">₽</div>
           </div>
         </div>
       </div>

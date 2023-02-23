@@ -30,29 +30,23 @@
                         {{ $item->product->name }}
                       </div>
 
-                      @if ($item->variation)
-                        <div class="product__detail">
-                          {{ $item->variation }}
+                        <div class="product__price">
+                          ₽{{ price($item->price) }}/шт.
                         </div>
-                      @endif
                     </div>
                   </a>
                 </td>
                 <td nowrap>
-                  <div class="count">
-                    <div class="count__value">
+                  <div class="price">
+                    <div class="price__value">
                       {{ $item->count }}
-                    </div>
-
-                    <div class="count__label">
-                      {{ price($item->price) }} ₸/шт.
                     </div>
                   </div>
                 </td>
                 <td nowrap>
                   <div class="price">
                     <div class="price__value">
-                      {{ price($item->total) }} ₸
+                      ₽{{ price($item->total) }}
                     </div>
                   </div>
                 </td>
@@ -65,7 +59,7 @@
                 <span>Сумма</span>
               </th>
               <th nowrap align="right">
-                {{ price($order->total) }} ₸
+                ₽{{ price($order->total) }}
               </th>
             </tr>
             <tr>
@@ -73,7 +67,7 @@
                 <span>Итого</span>
               </th>
               <th nowrap align="right">
-                {{ price($order->total + $order->delivery_price) }} ₸
+                ₽{{ price($order->total + $order->delivery_price) }}
               </th>
             </tr>
             </tfoot>

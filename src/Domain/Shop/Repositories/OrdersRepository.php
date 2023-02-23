@@ -43,10 +43,10 @@ class OrdersRepository
     public function create(OrderRequest $request, Basket $basket): Order
     {
         $order = new Order;
-        $order->client_name = $request->name;
+        $order->client_name = "{$request->last_name} {$request->first_name}";
         $order->client_phone = $request->phone;
         $order->client_email = $request->email;
-        $order->delivery_address = $request->address;
+        $order->delivery_address = "{$request->postcode} | {$request->country}, {$request->region}, {$request->city}, {$request->street} ({$request->house})";
         $order->comment = $request->comment;
         $order->delivery_price = config('shop.delivery_price');
         $order->total = $basket->total();

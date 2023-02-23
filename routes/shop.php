@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('mail', function() {
-    return new \Domain\CMS\Mails\ManagerPasswordGeneratedMail(\Domain\CMS\Models\Manager::first(), 'test');
+    return new \Domain\Shop\Mails\OrderMail(\Domain\Shop\Models\Order::latest()->first());
 });
 
 Route::get('/', 'HomeController')->name('home');
@@ -19,6 +19,7 @@ Route::post('/basket', 'BasketController@store')->name('basket.store');
 Route::post('/basket/increase', 'BasketController@increase')->name('basket.increase');
 Route::post('/basket/decrease', 'BasketController@decrease')->name('basket.decrease');
 Route::delete('/basket/{id}', 'BasketController@destroy')->name('basket.destroy');
+Route::get('/checkout', 'OrderFormController')->name('order-form');
 Route::post('/order', 'OrderCheckoutController')->name('checkout');
 
 Route::middleware('shop.signed')->group(function (): void {

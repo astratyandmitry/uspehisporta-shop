@@ -16,6 +16,7 @@ const PAGE_FAQ = 'faq';
 const PAGE_CATALOG = 'catalog';
 const PAGE_SEARCH = 'search';
 const PAGE_BASKET = 'basket';
+const PAGE_CHECKOUT = 'checkout';
 const PAGE_AUTH_LOGIN = 'auth.login';
 const PAGE_AUTH_REGISTER = 'auth.register';
 const PAGE_AUTH_PASSWORD_RESET = 'auth.password.reset';

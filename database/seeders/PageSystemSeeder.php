@@ -37,6 +37,11 @@ class PageSystemSeeder extends Seeder
             'hru' => PAGE_BASKET,
         ],
         [
+            'name' => 'Оформление заказа',
+            'title' => 'Оформление заказа',
+            'hru' => PAGE_CHECKOUT,
+        ],
+        [
             'name' => 'Вход',
             'title' => 'Вход',
             'hru' => PAGE_AUTH_LOGIN,
