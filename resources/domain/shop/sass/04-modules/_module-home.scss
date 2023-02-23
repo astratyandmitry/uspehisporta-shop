@@ -11,10 +11,11 @@
       grid-template-columns: 2fr 1fr;
       grid-column-gap: 4rem;
 
-      @include mobile() {
+      @include mobile-tablet() {
         grid-template-columns: 1fr;
         grid-row-gap: 2rem;
       }
+
     }
   }
 
@@ -204,6 +205,13 @@
           height: 100%;
           max-height: none !important;
           max-width: none !important;
+        }
+
+        @include tablet() {
+          .category-image {
+            right: -140%;
+            top: -20%;
+          }
         }
 
         @include mobile() {
