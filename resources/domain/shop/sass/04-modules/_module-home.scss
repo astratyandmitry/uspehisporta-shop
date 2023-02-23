@@ -2,10 +2,19 @@
   .home-main {
     padding: 4rem 0;
 
+    @include mobile() {
+      padding: 2rem 0;
+    }
+
     .home-main__grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
       grid-column-gap: 4rem;
+
+      @include mobile() {
+        grid-template-columns: 1fr;
+        grid-row-gap: 2rem;
+      }
     }
   }
 
@@ -14,11 +23,24 @@
     padding: 4rem 0;
     margin-bottom: -4rem;
 
+    @include mobile() {
+      padding: 2rem 0;
+      margin-bottom: -2rem;
+    }
+
     .testimonials-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 2rem;
+
+      @include mobile() {
+        display: block;
+
+        .i-button {
+          display: none;
+        }
+      }
 
       .testimonial-title {
         font-family: $font-heading;
@@ -31,11 +53,17 @@
           color: $color-primary;
         }
       }
+
+
     }
 
     .testimonials-list {
       display: flex;
       flex-wrap: wrap;
+
+      @include mobile() {
+        display: block;
+      }
     }
 
     .testimonial {
@@ -47,6 +75,11 @@
       padding: 2rem;
       @include radius(8px);
       @include transition();
+
+      @include mobile() {
+        width: 100%;
+        margin: 0 0 1rem 0
+      }
 
       &:hover {
         box-shadow: 0 16px 32px #E2E8F0;
@@ -67,11 +100,24 @@
     margin-top: -4rem;
     padding: 4rem 0;
 
+    @include mobile() {
+      padding: 2rem 0;
+      margin-top: -2rem;
+    }
+
+    @include mobile() {
+        margin-top: -2rem;
+    }
+
     .categories__content {
       display: grid;
       grid-template-columns: 1fr 3fr;
       grid-column-gap: 1rem;
       grid-row-gap: 1rem;
+
+      @include mobile() {
+          grid-template-columns: 1fr;
+      }
     }
 
     .categories__grid {
@@ -79,9 +125,14 @@
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 1rem;
       grid-row-gap: 1rem;
+
+      @include mobile() {
+          grid-template-columns: 1fr 1fr;
+      }
     }
 
     .category {
+      align-items: end;
       overflow: hidden;
       display: block;
       border: none;
@@ -91,6 +142,10 @@
       background: $color-white;
       @include radius(8px);
       @include transition();
+
+      @include mobile() {
+          padding: 2rem .5rem .5rem .5rem;
+      }
 
       &:hover {
         box-shadow: 0 16px 32px rgba($color-black, .24);
@@ -149,6 +204,22 @@
           height: 100%;
           max-height: none !important;
           max-width: none !important;
+        }
+
+        @include mobile() {
+          height: 200px;
+
+          .category-label {
+            font-size: 16px;
+          }
+
+          .category-name {
+          font-size: 18px;
+          }
+
+          .category-image {
+            right: -25%;
+          }
         }
       }
     }

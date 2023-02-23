@@ -1,10 +1,18 @@
 .product-card {
   margin-top: -4rem;
 
+  @include mobile() {
+      margin-top: -2rem;
+  }
+
   .product {
     background: #F1F5F9;
     border-bottom: 1px solid #E2E8F0;
     padding: 4rem 0;
+
+    @include mobile() {
+        padding: 2rem 0;
+    }
 
     .product__grid {
       display: grid;
@@ -119,10 +127,12 @@
 
     .title {
       margin-top: 0;
-      font-size: 40px;
       margin-bottom: 1rem;
-    }
 
+      @include mobile() {
+          margin-top: 2rem;
+      }
+    }
 
     .price {
       display: flex;
@@ -278,6 +288,10 @@
   .reviews {
     margin-top: 4rem;
 
+    @include mobile() {
+        margin-top: 2rem;
+    }
+
     .empty {
       margin-top: 0;
     }
@@ -287,6 +301,10 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.5rem;
+
+      @include mobile() {
+          margin-bottom: 0rem;
+      }
     }
 
     .reviews__title {
@@ -295,6 +313,7 @@
       font-weight: 500;
       line-height: 1;
       margin-top: 0;
+
 
       span {
         color: $color-primary;

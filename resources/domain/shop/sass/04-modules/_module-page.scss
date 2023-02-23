@@ -16,11 +16,7 @@
     @extend .typography;
 
     @include mobile() {
-      font-size: 14px;
-    }
-
-    @include mobile-tablet() {
-      padding: 1.5rem;
+      font-size: 16px;
     }
   }
 

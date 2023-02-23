@@ -6,12 +6,12 @@
     @include transition();
     margin-bottom: 2rem;
 
-    &:last-child {
-      margin-bottom: 0;
+    @include mobile() {
+        margin-bottom: 1rem;
     }
 
-    &:hover {
-      box-shadow: 0 16px 32px #E2E8F0;
+    &:last-child {
+      margin-bottom: 0;
     }
 
     .faq-heading {
@@ -24,6 +24,10 @@
     .faq-question {
       font-size: 22px;
       font-weight: 500;
+
+      @include mobile() {
+          font-size: 16px;
+      }
     }
 
     .faq-icon {

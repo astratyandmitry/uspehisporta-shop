@@ -214,6 +214,7 @@ input {
   padding: 8px 16px;
   font-weight: 500;
   font-size: 18px;
+  box-sizing: border-box;
   @include radius(24px);
 
 
@@ -311,5 +312,9 @@ input {
     margin-top: 1rem;
     font-size: 14px;
     color: rgba($color-black, .80);
+
+    @include mobile() {
+        font-size: 12px;
+    }
   }
 }

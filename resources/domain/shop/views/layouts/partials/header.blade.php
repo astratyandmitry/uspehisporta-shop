@@ -20,6 +20,10 @@
         </a>
       </div>
 
+      <div class="header__hamburger">
+        @include('shop::layouts.partials.svg.menu', ['class' => 'header__hamburger-icon'])
+      </div>
+
       <div class="header__right">
         <div class="buttons">
           <a class="i-button i-button--circle" target="_blank" href="{{ $layout->getSettings(SETTINGS_URL_FORUM_DO4A) }}">
@@ -44,3 +48,9 @@
     </div>
   </div>
 </header>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function () {
+  document.getElementById('nav').classList.toggle('is-active')
+})
+</script>

@@ -3,6 +3,14 @@ nav {
   border-bottom: 1px solid #E2E8F0;
   padding: .750rem 0;
 
+  @include mobile() {
+      display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
   .nav__content {
     display: flex;
     align-items: center;
@@ -14,6 +22,11 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
+
+    @include mobile() {
+      flex-direction: column;
+      align-items: start;
+    }
 
     .menu-item {
       margin-right: 1.5rem;
@@ -27,6 +40,10 @@ nav {
         align-items: center;
         color: #64748B;
         font-size: 14px;
+
+        @include mobile() {
+            font-size: 16px;
+        }
 
         &.menu-link--icon {
           font-weight: 500;

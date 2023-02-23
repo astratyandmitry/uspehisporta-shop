@@ -12,7 +12,7 @@
   }
 
   @include mobile() {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     grid-row-gap: 1rem;
   }
 }

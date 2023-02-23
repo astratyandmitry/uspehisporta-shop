@@ -38,7 +38,7 @@
               <td nowrap>
                 <div class="price">
                   <div class="price__value">
-                    {{ $item->count }}
+                    {{ $item->count }} шт.
                   </div>
                 </div>
               </td>

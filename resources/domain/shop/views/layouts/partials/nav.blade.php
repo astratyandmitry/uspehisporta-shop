@@ -1,6 +1,6 @@
 @php /** @var \Domain\Shop\Common\Layout $layout */ @endphp
 
-<nav>
+<nav id="nav">
   <div class="container">
     <div class="nav__content">
       <ul class="menu">
