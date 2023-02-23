@@ -78,7 +78,7 @@ class Product extends Model implements HasUrl
 
     public function related(): HasMany
     {
-        return $this->hasMany(Product::class, 'category_id', 'category_id')->where('id', '!=', $this->id)->limit(4);
+        return $this->hasMany(Product::class, 'category_id', 'category_id')->where('id', '!=', $this->id)->inRandomOrder()->limit(5);
     }
 
     public function getRouteKeyName(): string
@@ -106,10 +106,14 @@ class Product extends Model implements HasUrl
             return $builder;
         });
 
+
         $builder->where('quantity', '>', 0);
 
         $builder->when($request->category_id, function (Builder $builder) use ($request): Builder {
             return $builder->whereIn('category_id', explode(',', $request->category_id));
+        });
+        $builder->when($request->category, function (Builder $builder) use ($request): Builder {
+            return $builder->whereIn('category_id', explode(',', $request->category));
         });
 
         $builder->when($request->brand, function (Builder $builder) use ($request): Builder {
@@ -126,6 +130,10 @@ class Product extends Model implements HasUrl
 
         $builder->when($request->discount, function (Builder $builder): Builder {
             return $builder->where('price_sale', '>', 0);
+        });
+
+        $builder->when(request('featured'), function (Builder $builder): Builder {
+            return $builder->where('hot_sale', true);
         });
 
         $builder->when($request->query('term'), function (Builder $builder): Builder {

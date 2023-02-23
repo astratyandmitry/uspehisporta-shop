@@ -1,8 +1,13 @@
 {
-    "/assets/shop/js/app.js": "/assets/shop/js/app.js?id=a3525d30cce501f9ac10",
-    "/assets/shop/css/app.css": "/assets/shop/css/app.css?id=5bede7439ae72c7f4c2d",
-    "/assets/shop/css/error.css": "/assets/shop/css/error.css?id=b70114c16323dfacdb0f",
-    "/assets/shop/js/basket.js": "/assets/shop/js/basket.js?id=389e88810de909382c4e",
-    "/assets/shop/js/filter.js": "/assets/shop/js/filter.js?id=e8c9f95cf570e52b3660",
-    "/assets/shop/js/product.js": "/assets/shop/js/product.js?id=ec8e7c5c69c18580e071"
+    "/assets/cms/js/app.js": "/assets/cms/js/app.js?id=bf1df52842d05ee66e41",
+    "/assets/cms/css/app.css": "/assets/cms/css/app.css?id=6eb89489be31b4d8152b",
+    "/assets/shop/css/app.css": "/assets/shop/css/app.css?id=4be68b2c9c0a84180e61",
+    "/assets/shop/css/error.css": "/assets/shop/css/error.css?id=85b9ca7308d048612301",
+    "/assets/cms/js/libs/fixable.js": "/assets/cms/js/libs/fixable.js?id=5aa2ddbc2ed5297164c3",
+    "/assets/cms/js/libs/onleave.js": "/assets/cms/js/libs/onleave.js?id=b8e30529deda3b49ff39",
+    "/assets/shop/js/app.js": "/assets/shop/js/app.js?id=66405a2991e97c129e2e",
+    "/assets/shop/js/basket.js": "/assets/shop/js/basket.js?id=c32c11cbf5bae7617311",
+    "/assets/shop/js/filter.js": "/assets/shop/js/filter.js?id=0026f71f1d375f2b0f45",
+    "/assets/shop/js/product.js": "/assets/shop/js/product.js?id=25d7171d527ad1b55017",
+    "/assets/cms/js/libs/jquery.form.js": "/assets/cms/js/libs/jquery.form.js?id=4fa896f615af66c3d7ef"
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="filter filter--static">
+  <div class="filter filter--inverse filter--static">
     <div class="filter__button">
       <div class="filter__label">
         Найдено:

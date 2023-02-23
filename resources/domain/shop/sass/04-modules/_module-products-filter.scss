@@ -1,4 +1,5 @@
 .products__filter {
+  margin-top: -4rem;
   margin-bottom: 2rem;
 
   @include mobile() {
@@ -6,8 +7,11 @@
   }
 
   .products__filter__main {
-    background: #333;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, .08), 0 16px 32px rgba(0, 0, 0, .16);
+    background: #1E293B;
+
+    @include mobile() {
+      padding: 1rem;
+    }
   }
 
   .products__filter__grid {
@@ -32,7 +36,7 @@
     align-items: center;
     font-family: $font-default;
     font-weight: 600;
-    color: $color-gray;
+    color: rgba($color-white, .80);
     cursor: pointer;
     padding: 1rem;
     @include transition();
@@ -64,12 +68,12 @@
   }
 
   .apply {
-    background: $color-secondary;
+    background: $color-primary;
     color: $color-white;
     font-style: normal;
 
     &:hover {
-      background: darken($color-secondary, 10%);
+      background: darken($color-primary, 10%);
     }
   }
 
@@ -128,15 +132,22 @@
       }
     }
 
+    &.filter--inverse {
+      .filter__label,
+      .filter__button {
+        color: rgba($color-black, .75) !important;
+      }
+    }
+
     &:not(.filter--static):hover .filter__button {
-      background: #444;
+      background: rgba($color-white, .08);
       color: $color-white;
       cursor: pointer;
     }
 
     .filter__dropdown {
-      background: #111;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, .16), 0 16px 32px rgba(0, 0, 0, .32);
+      background: darken(#1E293B, 4%);
+      box-shadow: 0 16px 32px rgba($color-black, .08);
       position: absolute;
       z-index: 80;
       display: none;
@@ -189,7 +200,7 @@
       .filter-price-range__value {
         display: flex;
         align-items: center;
-          background: #222;
+        background: rgba($color-white, .16);
         @include radius();
 
         .filter-price-range__input {
@@ -229,7 +240,7 @@
 
         .filter-menu__label {
           flex-grow: 1;
-          margin-right: .5rem;
+          margin-right: 1rem;
           padding: 1rem;
           border-bottom: none;
           color: rgba($color-white, 64%);
@@ -255,7 +266,7 @@
         }
 
         &:hover {
-          background: #222;
+          background: rgba($color-white, .16);
 
           .filter-menu__label {
             color: $color-white;

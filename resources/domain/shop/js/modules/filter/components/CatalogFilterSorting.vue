@@ -1,5 +1,5 @@
 <template>
-  <div class="filter">
+  <div class="filter filter--inverse">
     <div class="filter__button">
       <div class="filter__value">
         {{ label }}

@@ -22,7 +22,7 @@
               </div>
 
               <a href="{{ $testimonial->url }}" target="_blank" class="testimonial-author">
-                {{ $testimonial->author }}
+                {{ "@{$testimonial->author}" }}
               </a>
             </div>
           @endforeach

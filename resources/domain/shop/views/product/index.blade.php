@@ -1,6 +1,27 @@
 @php /** @var \Domain\Shop\Catalog $catalog */ @endphp
+@php /** @var \Domain\Shop\Models\Category|null $category */ @endphp
 
 @extends('shop::layouts.master')
+
+@if($category)
+  @section('heading')
+    <div class="heading">
+      <div class="container">
+        <div class="heading-content">
+          <h1 class="heading-title">
+            {{ $category->title }}
+          </h1>
+
+          @if ($category->about)
+            <div class="heading-body">
+              {{ $category->about }}
+            </div>
+          @endif
+        </div>
+      </div>
+    </div>
+  @endsection
+@endif
 
 @section('content')
   <div class="products">
@@ -29,7 +50,7 @@
           @each('shop::product.partials.item', $catalog->products, 'product')
         </div>
 
-        {{ $catalog->products->links() }}
+        {{ $catalog->products->links('shop::layouts.includes.pagination') }}
       @else
         @include('shop::layouts.partials.empty', [
             'title' => 'Товары не найдены',

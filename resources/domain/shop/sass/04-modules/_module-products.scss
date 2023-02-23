@@ -15,7 +15,7 @@
 
   .products__list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-column-gap: 1.5rem;
     grid-row-gap: 1.5rem;
     margin-top: 1.5rem;
@@ -36,6 +36,7 @@
   background: $color-white;
   border: 1px solid #E2E8F0;
   flex-direction: column;
+  overflow: hidden;
   display: flex;
   @include radius(8px);
   @include transition();
@@ -135,7 +136,7 @@
       align-items: start;
 
       .product__price {
-        color: rgba($color-black, .64);
+        color: $color-secondary;
         font-family: $font-default;
         line-height: 1;
         font-weight: 500;

@@ -82,7 +82,7 @@ class Layout
 
     public function addCatalogBreadcrumb(): Layout
     {
-        $this->breadcrumbs[route('shop::categories')] = 'Каталог';
+        $this->breadcrumbs[route('shop::catalog')] = 'Каталог';
 
         return $this;
     }

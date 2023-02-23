@@ -5,7 +5,7 @@
       <div class="container">
         <div class="products__filter__grid js-filter__form">
           <div>
-            <catalog-filter-dropdown :options="categories" :value="inputCategory" eng="category" label="Категория"/>
+            <catalog-filter-dropdown v-if="categories.length" :options="categories" :value="inputCategory" eng="category" label="Категория"/>
 
             <catalog-filter-dropdown :options="brands" :value="inputBrand" eng="brand" label="Бренд"/>
 

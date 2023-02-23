@@ -66,6 +66,8 @@
   </div>
 </section>
 
-<product-config :variations=@json(isset($model) ? $model->variations : []) />
+<input type="hidden" name="variations" value="[]">
+
+{{--<product-config :variations=@json(isset($model) ? $model->variations : []) />--}}
 
 @include('cms::layouts.includes.form.meta')

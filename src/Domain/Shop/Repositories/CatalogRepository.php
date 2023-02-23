@@ -11,7 +11,7 @@ class CatalogRepository
 {
     public function find(CatalogRequest $request): LengthAwarePaginator
     {
-        return Product::catalog($request)->paginate(24);
+        return Product::catalog($request)->paginate(25);
     }
 
     public function latest(): Collection

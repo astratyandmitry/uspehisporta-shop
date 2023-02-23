@@ -104,7 +104,7 @@ class Catalog
         if ($this->category) {
             $this->categories = optional($this->category->parent)->children ?? $this->category->children;
         } else {
-            $this->categories = (new CategoriesRepository())->children();
+            $this->categories = (new CategoriesRepository())->parents();
         }
 
         if ($this->request->category) {
@@ -149,7 +149,7 @@ class Catalog
 
     protected function setupOther(): void
     {
-        $this->saleOnly = $this->request->discount;
+        $this->saleOnly = (bool)$this->request->discount;
     }
 
     public function sortingLabel(): string

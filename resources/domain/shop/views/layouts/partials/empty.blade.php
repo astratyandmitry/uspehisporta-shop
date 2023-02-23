@@ -12,7 +12,7 @@
   </div>
 
   <div class="empty__action">
-    <a href="{{ isset($buttonUrl)  ?  $buttonUrl : route('shop::categories') }}" class="form-button empty__button">
+    <a href="{{ isset($buttonUrl)  ?  $buttonUrl : route('shop::catalog') }}" class="form-button empty__button">
       {{ isset($buttonLabel) ? $buttonLabel : 'Перейти в каталог' }}
     </a>
   </div>

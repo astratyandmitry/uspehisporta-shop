@@ -4,7 +4,7 @@
   <div class="related">
     <div class="container">
       <h3 class="related__title">
-        Похожие товары
+        Похожие <span>товары</span>
       </h3>
 
       <div class="related__content products">
