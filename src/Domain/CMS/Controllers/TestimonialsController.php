@@ -10,6 +10,7 @@ use Domain\CMS\Requests\TestimonialRequest;
 use Illuminate\Http\RedirectResponse;
 
 class TestimonialsController extends Controller
+{
     protected ?string $section = SECTION_MAIN;
 
     protected ?string $model = 'testimonials';
