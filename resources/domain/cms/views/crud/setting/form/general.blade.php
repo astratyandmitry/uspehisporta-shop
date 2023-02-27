@@ -13,7 +13,7 @@
         'label' => __('cms.field.key'),
         'attribute' => 'key',
         'required' => true,
-        'disabled' => true,
+        'disabled' => isset($model),
     ])
 
     @include('cms::layouts.includes.form.field.input', [

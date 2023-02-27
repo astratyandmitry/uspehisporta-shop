@@ -17,6 +17,7 @@ class SettingsRequest extends Request
             ->addRules([
                 'label' => 'required|max:80',
                 'value' => 'required|max:500',
+                'key' => 'sometimes',
             ]);
     }
 }

@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'AppController@home')->name('home');
 
+Route::get('settings', function(): \Illuminate\Http\JsonResponse {
+    return response()->json(['settings' =>\Domain\Shop\Models\Settings::options()]);
+});
+
 Route::prefix('auth')->namespace('Auth')->group(function (): void {
     Route::middleware('cms.guest')->group(function (): void {
         Route::get('/login', 'LoginController@form')->name('login');
@@ -29,7 +33,7 @@ Route::middleware('cms.signed')->group(function (): void {
     Route::post('/orders/{id}/complete', 'OrdersController@complete')->name('orders.complete');
     Route::post('/orders/{id}/cancel', 'OrdersController@cancel')->name('orders.cancel');
 
-    Route::resource('setting', 'SettingsController')->only(['index', 'show', 'edit', 'update']);
+    Route::resource('setting', 'SettingsController');
     Route::resource('reviews', 'ReviewsController')->only(['index', 'show', 'destroy']);
 
     // Resources

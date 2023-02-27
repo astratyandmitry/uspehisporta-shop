@@ -2,6 +2,7 @@
 
 namespace Domain\CMS\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Domain\Shop\Models\Settings;
@@ -45,6 +46,8 @@ class SettingsController extends Controller
         /** @var \Domain\Shop\Models\Settings $model */
         $model = Settings::query()->create($request->validated());
 
+        Cache::forget('settings.options');
+
         return $this->redirectSuccess('show', ['setting' => $model->id]);
     }
 
@@ -65,6 +68,8 @@ class SettingsController extends Controller
         $model = Settings::query()->findOrFail($id);
         $model->update($request->validated());
 
+        Cache::forget('settings.options');
+
         return $this->redirectSuccess('show', ['setting' => $model->id]);
     }
 
@@ -73,6 +78,8 @@ class SettingsController extends Controller
         /** @var \Domain\Shop\Models\Settings $model */
         $model = Settings::query()->findOrFail($id);
         $model->delete();
+
+        Cache::forget('settings.options');
 
         if ($request->ajax()) {
             return response()->json(['success' => true]);
