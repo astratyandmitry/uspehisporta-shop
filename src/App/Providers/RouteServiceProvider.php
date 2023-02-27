@@ -35,6 +35,10 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapShopRoutes(): void
     {
+        Route::get('api/settings', function(): \Illuminate\Http\JsonResponse {
+            return response()->json(['settings' =>\Domain\Shop\Models\Settings::options()]);
+        });
+
         Route::middleware(['web', 'shop'])
             ->as('shop::')
             ->namespace($this->shopControllersNamespace)
