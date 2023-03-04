@@ -4,6 +4,7 @@ namespace Domain\CMS\Models;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @property string $original_name
@@ -46,7 +47,9 @@ class Upload extends Model
     {
         $generatedName = date('Ymd-Hi').'_'.uniqid();
 
-        $file->storeAs($uploadPath, "{$generatedName}.{$file->getClientOriginalExtension()}", 'public');
+        $path = "{$uploadPath}/{$generatedName}.{$file->getClientOriginalExtension()}";
+
+        Storage::disk('public_uploads')->put($path, $file->getContent());
 
         $upload = new Upload;
         $upload->original_name = $file->getClientOriginalName();
