@@ -110,7 +110,8 @@
           }
 
           .media-gallery__image {
-            height: 40px !important;
+            height: 64px !important;
+            max-height: 100%;
             @include radius();
           }
 

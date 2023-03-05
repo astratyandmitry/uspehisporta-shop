@@ -133,7 +133,7 @@
     .product__info {
       display: flex;
       margin-bottom: .5rem;
-      align-items: start;
+      align-items: flex-start;
 
       .product__price {
         color: $color-secondary;

@@ -73,7 +73,7 @@
               </div>
             @endif
 
-            <div class="product-info product-info--desktop">
+            <div class="product-info">
               <div class="info">
                 <div class="info-body">
                   <div class="info-body-title">
