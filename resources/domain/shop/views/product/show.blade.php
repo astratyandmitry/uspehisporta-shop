@@ -89,7 +89,6 @@
       </div>
     </div>
 
-
     @include('shop::product.partials.show-reviews')
 
     @include('shop::product.partials.show-related')
@@ -98,3 +97,11 @@
     <script src="{{ mix('/assets/shop/js/product.js') }}"></script>
   </div>
 @endsection
+
+@push('styles')
+  <style>
+    .media-gallery__main img {
+      max-height: 100%;
+    }
+  </style>
+@endpush

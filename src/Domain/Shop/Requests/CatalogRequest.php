@@ -21,7 +21,6 @@ class CatalogRequest extends Request
             'brand' => 'sometimes|regex:/^\d+(,\d+)*$/i',
             'price_from' => 'sometimes|integer',
             'price_to' => 'sometimes|integer',
-            'image' => 'required',
             'sort' => 'sometimes|in:price.desc,price.asc,date.desc,date.asc,views.desc',
             'discount' => 'boolean',
         ];

@@ -30,7 +30,7 @@ class CategoryRequest extends Request
                 'name' => 'required|max:120',
                 'title' => 'required|max:200',
                 'about' => 'required|max:1000',
-                'image' => 'nullable',
+                'image' => 'required',
                 'active' => 'boolean',
             ]);
     }
