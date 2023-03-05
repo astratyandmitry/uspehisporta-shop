@@ -9,6 +9,7 @@ namespace Domain\Shop\Requests;
  * @property integer|null $price_from
  * @property integer|null $price_to
  * @property string|null $sort
+ * @property string $image
  * @property boolean $discount
  */
 class CatalogRequest extends Request
@@ -20,6 +21,7 @@ class CatalogRequest extends Request
             'brand' => 'sometimes|regex:/^\d+(,\d+)*$/i',
             'price_from' => 'sometimes|integer',
             'price_to' => 'sometimes|integer',
+            'image' => 'required',
             'sort' => 'sometimes|in:price.desc,price.asc,date.desc,date.asc,views.desc',
             'discount' => 'boolean',
         ];

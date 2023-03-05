@@ -30,13 +30,13 @@
     ])
   </div>
 
-{{--  <div class="section">--}}
-{{--    @include('cms::layouts.includes.form.field.file-image', [--}}
-{{--        'label' => __('cms.field.image'),--}}
-{{--        'attribute' => 'image',--}}
-{{--        'path' => 'categories',--}}
-{{--    ])--}}
-{{--  </div>--}}
+  <div class="section">
+    @include('cms::layouts.includes.form.field.file-image', [
+        'label' => __('cms.field.image'),
+        'attribute' => 'image',
+        'path' => 'categories',
+    ])
+  </div>
 </section>
 
 @include('cms::layouts.includes.form.meta')
