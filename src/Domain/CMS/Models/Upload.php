@@ -47,9 +47,14 @@ class Upload extends Model
     {
         $generatedName = date('Ymd-Hi').'_'.uniqid();
 
-        $path = "{$uploadPath}/{$generatedName}.{$file->getClientOriginalExtension()}";
-
-        Storage::disk('public_uploads')->put($path, $file->getContent());
+        if (app()->environment('local')) {
+            $file->storeAs($uploadPath, "{$generatedName}.{$file->getClientOriginalExtension()}", 'public');
+        } else {
+            Storage::disk('public_uploads')->put(
+                "{$uploadPath}/{$generatedName}.{$file->getClientOriginalExtension()}",
+                $file->getContent()
+            );
+        }
 
         $upload = new Upload;
         $upload->original_name = $file->getClientOriginalName();
