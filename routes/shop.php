@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('mail', function() {
-    return new \Domain\Shop\Mails\OrderMail(\Domain\Shop\Models\Order::latest()->first());
+    Mail::to(config('shop.email'))->send(new \Domain\Shop\Mails\OrderMail(\Domain\Shop\Models\Order::first()));
 });
 
 Route::get('/', 'HomeController')->name('home');
