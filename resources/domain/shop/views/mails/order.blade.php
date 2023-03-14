@@ -7,6 +7,11 @@
 
 Или перейдите по ссылке в браузере [https://t.me/Uspehisporta777](https://t.me/Uspehisporta777)
 
+* **ФИО:** {{ $order->client_name }}
+* **Телефон:** {{ $order->client_phone }}
+* **E-mail:** {{ $order->client_email }}
+* **Адрес:** {{ $order->delivery_address }}
+
 @component('mail::table')
 | Товар                       |  Кол.                               | Сумма                               |
 |:--------------------------- | -----------------------------------:| -----------------------------------:|

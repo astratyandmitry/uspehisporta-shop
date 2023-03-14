@@ -48,6 +48,7 @@
               @include('shop::layouts.includes.form.field.input', [
                 'attribute' => 'phone',
                 'label' => 'Телефон',
+                'helper' => '<strong>Объязательно привязка к Telegram</strong>',
                 'placeholder' => '+9(999)9999999',
                 'required' => true,
               ])
@@ -63,39 +64,16 @@
 
             <div class="form-grid form-grid--3">
               @include('shop::layouts.includes.form.field.input', [
-                'attribute' => 'country',
-                'label' => 'Старана',
-                'placeholder' => 'Россия',
-                'required' => true,
-              ])
-
-              @include('shop::layouts.includes.form.field.input', [
-                'attribute' => 'region',
-                'label' => 'Область / район',
-                'placeholder' => 'Московская',
-                'required' => true,
-              ])
-
-              @include('shop::layouts.includes.form.field.input', [
                 'attribute' => 'city',
                 'label' => 'Населенный пункт',
                 'placeholder' => 'Москва',
                 'required' => true,
               ])
-            </div>
 
-            <div class="form-grid form-grid--3">
               @include('shop::layouts.includes.form.field.input', [
                 'attribute' => 'street',
                 'label' => 'Адрес (улица и дом)',
                 'placeholder' => 'ул. Ленина',
-                'required' => true,
-              ])
-
-              @include('shop::layouts.includes.form.field.input', [
-                'attribute' => 'house',
-                'label' => 'КРЫЛО, ПОДЪЕЗД, ЭТАЖ',
-                'placeholder' => '3 подъезд, 4 этаж',
                 'required' => true,
               ])
 

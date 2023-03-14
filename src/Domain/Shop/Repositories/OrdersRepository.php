@@ -46,8 +46,7 @@ class OrdersRepository
         $order->client_name = "{$request->last_name} {$request->first_name}";
         $order->client_phone = $request->phone;
         $order->client_email = $request->email;
-        $order->delivery_address = "{$request->postcode} | {$request->country}, {$request->region}, {$request->city}, {$request->street} ({$request->house})";
-        $order->comment = $request->comment;
+        $order->delivery_address = "{$request->city}, {$request->street} (Индек: {$request->postcode})";
         $order->delivery_price = config('shop.delivery_price');
         $order->total = $basket->total();
         $order->status_key = ORDER_STATUS_CREATED;
