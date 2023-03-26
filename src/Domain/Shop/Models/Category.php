@@ -71,6 +71,11 @@ class Category extends Model implements HasUrl
         return Category::query()->whereNull('parent_id')->pluck('name', 'id')->toArray();
     }
 
+    public function productsCount(): int
+    {
+        return $this->children->isNotEmpty() ? $this->children->sum(fn(Category $child) => $child->products()->count()) : $this->products_count;
+    }
+
     public static function groupedOptions(): array
     {
         /** @var \Domain\Shop\Models\Category[] $parentCategories */

@@ -94,17 +94,13 @@ class Catalog
         }
 
         if ($this->category) {
-            $this->request->merge([
-                'category_id' => $this->category->children->isNotEmpty()
-                    ? implode(',', $this->category->children->pluck('id')->toArray() )
-                    : $this->category->id,
-            ]);
+            $this->request->merge(['category_id' => $this->category->id]);
         }
 
         if ($this->category) {
             $this->categories = optional($this->category->parent)->children ?? $this->category->children;
         } else {
-            $this->categories = (new CategoriesRepository())->parents();
+            $this->categories = (new CategoriesRepository())->children();
         }
 
         if ($this->request->category) {

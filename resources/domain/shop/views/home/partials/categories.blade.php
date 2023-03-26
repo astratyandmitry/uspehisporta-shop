@@ -26,7 +26,7 @@
 
             <div class="category-content">
               <div class="category-label">
-                {{ $category->products_count }} товаров
+                {{ $category->productsCount() }} товаров
               </div>
 
               <div class="category-name">
