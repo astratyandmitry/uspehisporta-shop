@@ -53,7 +53,7 @@ class Product extends Model implements HasUrl
         'brand_id' => 'integer',
         'active' => 'boolean',
         'count_views' => 'integer',
-        'gallery' => 'array',
+        'gallery' => 'json',
         'variations' => 'array',
         'quantity' => 'integer',
         'price' => 'integer',
@@ -108,10 +108,6 @@ class Product extends Model implements HasUrl
 
 
         $builder->where('quantity', '>', 0);
-
-        //$builder->when($request->category_id, function (Builder $builder) use ($request): Builder {
-        //    return $builder->whereIn('category_id', explode(',', $request->category_id));
-        //});
 
         $builder->when($request->category, function (Builder $builder) use ($request): Builder {
             return $builder->whereIn('category_id', explode(',', $request->category));

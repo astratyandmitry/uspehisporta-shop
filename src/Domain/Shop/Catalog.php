@@ -113,7 +113,7 @@ class Catalog
             if (optional($this->category)->parent) {
                 $this->categoriesQuery[] = $this->category->id;
             } else {
-                $this->categoriesQuery = $this->categories->pluck('id')->toArray();
+                $this->categoriesQuery = $this->categories->isNotEmpty() ? $this->categories->pluck('id')->toArray() : [$this->category->id];
 
                 $resetCategoriesQuery = true;
             }
@@ -145,7 +145,7 @@ class Catalog
 
     protected function setupOther(): void
     {
-        $this->saleOnly = (bool)$this->request->discount;
+        $this->saleOnly = (bool) $this->request->discount;
     }
 
     public function sortingLabel(): string

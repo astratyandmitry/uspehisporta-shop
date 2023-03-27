@@ -1,5 +1,5 @@
 @push('scripts')
-  <script src="/vendor/ckeditor5/ckeditor.js"></script>
+  <script src="/vendor/ckeditor5/ckeditor.js?1"></script>
   <script>
     var editorOptions = {
       toolbar: {
@@ -25,7 +25,9 @@
           'horizontalLine',
           '|',
           'undo',
-          'redo'
+          'redo',
+          '|',
+          'sourceEditing',
         ]
       },
       language: 'ru',
