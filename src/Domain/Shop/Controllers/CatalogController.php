@@ -9,9 +9,9 @@ use Domain\Shop\Repositories\CategoriesRepository;
 class CatalogController extends Controller
 {
     public function __invoke(
-        string $parentHru,
         CatalogRequest $request,
         CategoriesRepository $categoryRepository,
+        ?string $parentHru = null,
         ?string $childHru = null,
     ): View {
         $catalogCategory = null;
