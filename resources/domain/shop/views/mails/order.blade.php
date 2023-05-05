@@ -1,11 +1,12 @@
 @php /** @var \Domain\Shop\Models\Order $order */ @endphp
+@php /** @var string $operator */ @endphp
 
 @component('mail::message')
 # Подтверждение заказа №{{ $order->id }}
 
-Спасибо за заказ, для получения реквизитов оплаты вам необходимо написать нам в Telegram — [@Uspehisporta777](https://t.me/Uspehisporta777)
+Спасибо за заказ, для получения реквизитов оплаты вам необходимо написать нам в Telegram — [{{ '@'.$operator }}](https://t.me/{{ $operator }})
 
-Или перейдите по ссылке в браузере [https://t.me/Uspehisporta777](https://t.me/Uspehisporta777)
+Или перейдите по ссылке в браузере [https://t.me/{{ $operator }}](https://t.me/{{ $operator }})
 
 * **ФИО:** {{ $order->client_name }}
 * **Телефон:** {{ $order->client_phone }}

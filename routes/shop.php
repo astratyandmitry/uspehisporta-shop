@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('mail', function() {
-    Mail::to(config('shop.email'))->send(new \Domain\Shop\Mails\OrderMail(\Domain\Shop\Models\Order::first()));
+    return new \Domain\Shop\Mails\OrderMail(\Domain\Shop\Models\Order::first());
 });
 
 Route::get('/', 'HomeController')->name('home');

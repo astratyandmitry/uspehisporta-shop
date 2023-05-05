@@ -21,5 +21,5 @@ function clean_phone(string $phone): string
 
 function image_url(?string $image = null): ?string
 {
-    return $image ? env('APP_URL').'/'.trim($image, '/') : null;
+    return $image;
 }

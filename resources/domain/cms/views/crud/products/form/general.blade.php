@@ -57,13 +57,6 @@
         'required' => true,
     ])
   </div>
-
-  <div class="section section--last">
-    @include('cms::layouts.includes.form.field.ckeditor5', [
-        'label' => __('cms.field.characteristics'),
-        'attribute' => 'characteristics',
-    ])
-  </div>
 </section>
 
 <input type="hidden" name="variations" value="[]">
