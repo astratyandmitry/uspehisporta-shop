@@ -116,10 +116,9 @@
     .product__name {
       font-family: $font-heading;
       font-size: 20px;
-      font-weight: 500;
       line-height: 1;
       color: $color-black;
-      text-transform: uppercase;
+      text-transform: none;
 
       &:hover {
         color: $color-primary;

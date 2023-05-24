@@ -30,7 +30,7 @@
         </li>
         <li class="menu-item">
           <a href="{{ $layout->getSettings(SETTINGS_URL_TELEGRAM_GROUP) }}" class="menu-link menu-link--icon" target="_blank">
-            <span>Официальная группа</span>
+            <span>Отзывы магазина</span>
             @include('shop::layouts.partials.svg.telegram', ['class' => 'menu-item__icon'])
           </a>
         </li>

@@ -124,7 +124,7 @@ class Layout
             ],
             [
                 'icon' => 'tinkoff',
-                'title' => 'ТИНЬКОФ',
+                'title' => 'ТИНЬКОФФ',
                 'detail' => 'Перевод на карту',
             ],
         ];
