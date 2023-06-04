@@ -72,7 +72,7 @@
 
               @include('shop::layouts.includes.form.field.input', [
                 'attribute' => 'street',
-                'label' => 'Адрес (улица и дом)',
+                'label' => 'Адрес (улица, дом, квартира)',
                 'placeholder' => 'ул. Ленина',
                 'required' => true,
               ])
