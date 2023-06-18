@@ -12,7 +12,7 @@
       <div class="categories__grid">
         @foreach($layout->getCategories() as $category)
           <a href="{{ route('shop::catalog', $category) }}" class="category">
-            <img class="category-image" src="/images/home/{{ $category->hru }}.png" alt="{{ $category->title }}">
+            <img class="category-image" src="/images/home/{{ $category->hru }}.png?2" alt="{{ $category->title }}">
           </a>
         @endforeach
       </div>
