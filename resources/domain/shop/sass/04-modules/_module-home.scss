@@ -139,6 +139,8 @@
 
     .category {
       background: $color-white;
+      display: flex;
+      align-items: end;
       @include radius(8px);
       @include transition();
 
