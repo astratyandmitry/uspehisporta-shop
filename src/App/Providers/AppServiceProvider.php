@@ -14,12 +14,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('basket', Basket::class);
         $this->app->singleton('catalog', Catalog::class);
-
-        if (app()->environment('production')) {
-            $this->app->bind('path.public', function () {
-                return base_path().'/../public_html'; // GoDaddy Mix file issue
-            });
-        }
     }
 
     public function boot(): void
