@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'delivery_price' => 500,
+    'delivery_price' => 800,
     'email' => 'uspehisportasale@gmail.com'
 ];
