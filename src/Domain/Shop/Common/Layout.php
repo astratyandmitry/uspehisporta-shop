@@ -136,7 +136,7 @@ class Layout
             [
                 'icon' => 'post',
                 'title' => 'Почта России',
-                'detail' => '500 ₽, от 2 до 10 дней',
+                'detail' => config('shop.delivery_price') . ' ₽, от 2 до 10 дней',
             ],
             [
                 'icon' => 'ems',

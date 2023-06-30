@@ -100,7 +100,7 @@ class Catalog
         if ($this->category) {
             $this->categories = optional($this->category->parent)->children ?? $this->category->children;
         } else {
-            $this->categories = (new CategoriesRepository())->children();
+            $this->categories = (new CategoriesRepository())->any();
         }
 
         if ($this->request->category) {

@@ -21,4 +21,9 @@ class CategoriesRepository
     {
         return Category::query()->whereNotNull('parent_id')->get();
     }
+
+    public function any(): Collection
+    {
+        return Category::query()->get();
+    }
 }
