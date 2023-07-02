@@ -34,7 +34,7 @@
             <img src="/images/icons/anabolycs.svg" alt="Anabolycs">
           </a>
 
-          <a class="i-button i-button--icon" target="_blank" href="{{ $layout->getSettings(SETTINGS_URL_TELEGRAM_CONSULTING) }}">
+          <a class="i-button i-button--icon hide-mobile" target="_blank" href="{{ $layout->getSettings(SETTINGS_URL_TELEGRAM_CONSULTING) }}">
             <span>Констультация</span>
             @include('shop::layouts.partials.svg.telegram', ['class' => 'i-button__icon'])
           </a>

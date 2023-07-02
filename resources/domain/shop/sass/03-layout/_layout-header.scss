@@ -52,6 +52,7 @@
       left: 0;
       right: 0;
       bottom: 0;
+    z-index: 100;
       padding: 1rem;
 
       .buttons {
@@ -62,12 +63,25 @@
       }
 
       .i-button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
         font-size: 14px;
+        @include radius(8px);
       }
 
       .i-button--circle {
+        background: rgba($color-white, .64);
+      }
+
+      .hide-mobile {
         display: none;
       }
+    }
+
+
+    @include not-mobile {
+      display: block;
     }
   }
 
