@@ -113,6 +113,10 @@ class Product extends Model implements HasUrl
             return $builder->whereIn('category_id', explode(',', $request->category));
         });
 
+        $builder->when($request->category_id, function (Builder $builder) use ($request): Builder {
+            return $builder->whereIn('category_id', explode(',', $request->category_id));
+        });
+
         $builder->when($request->brand, function (Builder $builder) use ($request): Builder {
             return $builder->whereIn('brand_id', explode(',', $request->brand));
         });

@@ -94,7 +94,11 @@ class Catalog
         }
 
         if ($this->category) {
-            $this->request->merge(['category_id' => $this->category->id]);
+            $this->request->merge([
+                'category_id' => $this->category->children->isNotEmpty()
+                    ? implode(',', $this->category->children->pluck('id')->toArray() )
+                    : $this->category->id,
+            ]);
         }
 
         if ($this->category) {
@@ -113,7 +117,7 @@ class Catalog
             if (optional($this->category)->parent) {
                 $this->categoriesQuery[] = $this->category->id;
             } else {
-                $this->categoriesQuery = $this->categories->isNotEmpty() ? $this->categories->pluck('id')->toArray() : [$this->category->id];
+                $this->categoriesQuery = $this->categories->pluck('id')->toArray();
 
                 $resetCategoriesQuery = true;
             }
@@ -145,7 +149,7 @@ class Catalog
 
     protected function setupOther(): void
     {
-        $this->saleOnly = (bool) $this->request->discount;
+        $this->saleOnly = (bool)$this->request->discount;
     }
 
     public function sortingLabel(): string
