@@ -25,6 +25,10 @@
       </div>
 
       <div class="header__right">
+        <div class="forums">
+          Наши ветки на форумах Do4a и ANABOLICSHOP
+        </div>
+
         <div class="buttons">
           <a class="i-button i-button--circle" target="_blank" href="{{ $layout->getSettings(SETTINGS_URL_FORUM_DO4A) }}">
             <img src="/images/icons/do4a.svg" alt="Do4a">

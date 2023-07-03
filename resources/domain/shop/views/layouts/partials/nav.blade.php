@@ -35,6 +35,16 @@
           </a>
         </li>
       </ul>
+
+      <ul class="menu mobile-only">
+        @foreach($layout->getCategories() as $category)
+          <li class="menu-item">
+            <a href="{{ route('shop::catalog', $category) }}" class="menu-link">
+              <span>{{ $category->name }}</span>
+            </a>
+          </li>
+        @endforeach
+      </ul>
     </div>
   </div>
 </nav>

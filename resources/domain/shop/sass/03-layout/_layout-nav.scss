@@ -4,7 +4,7 @@ nav {
   padding: .750rem 0;
 
   @include mobile() {
-      display: none;
+    display: none;
 
     &.is-active {
       display: block;
@@ -15,6 +15,22 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include mobile() {
+      display: block;
+
+      .menu {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #E2E8F0;
+
+        &:first-child {
+          margin: 0;
+          padding: 0;
+          border: none;
+        }
+      }
+    }
   }
 
   .menu {
@@ -23,6 +39,16 @@ nav {
     margin: 0;
     padding: 0;
 
+
+    &.mobile-only {
+      display: flex;
+
+      @include not-mobile() {
+        display: none;
+      }
+
+    }
+
     @include mobile() {
       flex-direction: column;
       align-items: flex-start;
@@ -30,6 +56,10 @@ nav {
 
     .menu-item {
       margin-right: 1.5rem;
+
+      @include mobile() {
+        margin: .250rem 0;
+      }
 
       &:last-child {
         margin-right: 0;
@@ -42,7 +72,7 @@ nav {
         font-size: 14px;
 
         @include mobile() {
-            font-size: 16px;
+          font-size: 16px;
         }
 
         &.menu-link--icon {

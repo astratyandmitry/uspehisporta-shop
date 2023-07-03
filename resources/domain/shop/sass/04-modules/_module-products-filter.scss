@@ -94,6 +94,10 @@
 
     @include mobile() {
       position: static;
+
+      &.filter--static {
+        display: block;
+      }
     }
 
     .filter__button {

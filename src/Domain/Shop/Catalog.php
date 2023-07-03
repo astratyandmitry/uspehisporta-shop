@@ -2,6 +2,7 @@
 
 namespace Domain\Shop;
 
+use Domain\Shop\Models\Brand;
 use Domain\Shop\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -74,6 +75,12 @@ class Catalog
     {
         $this->products = (new CatalogRepository)->find($this->request);
         $this->total = $this->products->total();
+
+        $brandsInProducts = $this->products->pluck('brand_id')->toArray();
+
+        $this->brands = $this->brands->filter(function (Brand $brand) use ($brandsInProducts) {
+            return in_array($brand->id, $brandsInProducts);
+        });
     }
 
     protected function setupSorting(): void
