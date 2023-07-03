@@ -34,15 +34,15 @@
     }
 
     @include mobile() {
-        display: flex;
+      display: flex;
     }
   }
 
   .header__right {
     display: flex;
     align-items: center;
-    flex-grow: 1;
     justify-content: flex-end;
+    flex-grow: 1;
 
     @include mobile() {
       backdrop-filter: blur(10px);
@@ -52,7 +52,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-    z-index: 100;
+      z-index: 100;
       padding: 1rem;
 
       .buttons {
@@ -79,9 +79,8 @@
       }
     }
 
-
     @include not-mobile {
-      display: block;
+      display: flex;
     }
   }
 
