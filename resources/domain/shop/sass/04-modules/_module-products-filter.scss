@@ -163,8 +163,10 @@
       @include radius();
 
       @include mobile() {
-        min-width: 100vw;
-        left: 0;
+        left: 16px;
+        right: 16px;
+        top: 240px;
+        margin: 0;
       }
 
       &.filter__dropdown--right {
