@@ -14,7 +14,7 @@
   @include('shared.head-icons')
   @stack('styles')
 </head>
-<body class="preload">
+<body class="preload" tabindex="0">
 
 <section id="shop" class="app">
   @include('shop::layouts.partials.nav')
