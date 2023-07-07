@@ -5,6 +5,7 @@ namespace App\Providers;
 use Domain\Shop\Basket;
 use Domain\Shop\Catalog;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
