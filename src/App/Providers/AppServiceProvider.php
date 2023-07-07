@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if (! $this->app->environment('local')) {
+            URL::forceScheme('https');
+        }
+
         Validator::extend('current_password', function ($attribute, $value, $parameters, $validator): bool {
             return Hash::check($value, optional(auth('shop')->user())->password);
         });
