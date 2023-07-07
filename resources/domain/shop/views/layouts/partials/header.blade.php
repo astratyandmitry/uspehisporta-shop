@@ -26,7 +26,7 @@
 
       <div class="header__right">
         <div class="forums">
-          Наши ветки на форумах Do4a и ANABOLICSHOP
+          Наши ветки на форумах <br> Do4a и ANABOLICSHOP
         </div>
 
         <div class="buttons">
