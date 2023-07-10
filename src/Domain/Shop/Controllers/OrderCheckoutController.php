@@ -24,6 +24,7 @@ class OrderCheckoutController extends Controller
 
         Mail::to($request->email)->send(new OrderMail($order));
         Mail::to(config('shop.email'))->send(new OrderMail($order));
+        Mail::to(config('shop.email2'))->send(new OrderMail($order));
 
         return redirect()->to(
             auth(SHOP_GUARD)->guest() ? $order->detailUrl() : $order->url()
