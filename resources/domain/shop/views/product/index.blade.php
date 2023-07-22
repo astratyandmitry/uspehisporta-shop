@@ -24,6 +24,18 @@
 @endif
 
 @section('content')
+  @if ($category && $category->children->isNotEmpty())
+    <div class="container">
+      <div class="product-categories">
+        @foreach($category->children as $subcategory)
+          <a class="subcategory" href="{{ $subcategory->url() }}">
+            {{ $subcategory->name }}
+          </a>
+        @endforeach
+      </div>
+    </div>
+  @endif
+
   <div class="products">
     <section id="filter">
       <catalog-filter
