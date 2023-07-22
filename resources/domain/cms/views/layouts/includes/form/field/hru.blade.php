@@ -3,7 +3,7 @@
     'attribute' => 'hru',
     'helper' => config('app.url') . '/{example-hru-123}',
     'required' => true,
-    'disabled' => isset($model),
+    'disabled' => isset($model) && $model->id,
 ])
 
 @isset($model)

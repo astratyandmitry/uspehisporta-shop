@@ -5,6 +5,14 @@
 @php $model_name = isset($local_model) ? $local_model : $globals['model'] @endphp
 
 <ul class="navigation">
+  @if ($model_name === 'products')
+    <li>
+      <a href="{{ route('cms::products.create', ['clone' => $model->id]) }}" target="_blank">
+        Клонировать запись
+      </a>
+    </li>
+  @endif
+
   @if (method_exists($model, 'link'))
     <li>
       <a href="{{ $model->link() }}" target="_blank">

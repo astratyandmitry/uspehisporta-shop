@@ -43,8 +43,18 @@ class ProductsController extends Controller
 
     public function create(): View
     {
+        if ($cloneId = \request()->query('clone')) {
+            $clone = Product::query()->find($cloneId);
+
+            $model = new Product;
+            $model->setRawAttributes($clone->getAttributes());
+            $model->setAttribute('id', null);
+            $model->setAttribute('hru', null);
+        }
+
         return $this->view([
             'action' => $this->route('store'),
+            'model' => $model ?? null,
         ]);
     }
 
