@@ -48,7 +48,7 @@
                 @lang('cms.field.about')
               </td>
               <td>
-                {{ $model->about }}
+                {!! $model->about !!}
               </td>
             </tr>
             @include('cms::layouts.includes.show.detail_active')

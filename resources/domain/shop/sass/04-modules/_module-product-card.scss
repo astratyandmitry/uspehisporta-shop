@@ -77,8 +77,12 @@
       }
 
       .media__image {
-        width: 100%;
+        max-height: 400px;
         @include radius();
+
+        @include mobile() {
+          max-height: auto;
+        }
       }
     }
 

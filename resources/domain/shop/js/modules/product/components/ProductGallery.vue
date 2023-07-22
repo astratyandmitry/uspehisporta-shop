@@ -1,7 +1,9 @@
 <template>
   <div class="media-gallery">
     <div class="media-gallery__main">
-      <img :src="imgs[active]" :alt="name" class="media__image">
+      <a data-lightbox="image-1" :href="imgs[active]" style="max-height: 100%; display: flex; align-items: center; justify-content: center">
+        <img :src="imgs[active]" :alt="name" class="media__image">
+      </a>
     </div>
 
     <div class="media-gallery__list" v-if="imgs.length > 1">

@@ -29,7 +29,7 @@ class CategoryRequest extends Request
                 'hru' => 'required|max:80|alpha_dash',
                 'name' => 'required|max:120',
                 'title' => 'required|max:200',
-                'about' => 'required|max:1000',
+                'about' => 'required',
                 'image' => 'required',
                 'active' => 'boolean',
             ]);
