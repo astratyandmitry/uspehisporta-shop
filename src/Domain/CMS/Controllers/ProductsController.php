@@ -34,6 +34,8 @@ class ProductsController extends Controller
 
     public function index(): View
     {
+        $this->sortable = ! is_null(request('category_id'));
+
         return $this->view([
             'models' => Product::filter()->paginate($this->paginationSize()),
         ]);

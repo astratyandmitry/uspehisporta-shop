@@ -27,9 +27,10 @@ class Catalog
      */
     public $products = [];
 
-    public string $sorting = 'views.desc';
+    public string $sorting = 'relevance';
 
     public array $sortingOptions = [
+        'relevance' => 'По релевантности',
         'views.desc' => 'По популярности',
         'date.desc' => 'Сначала новые',
         'date.asc' => 'Сначала старые',

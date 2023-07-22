@@ -8,6 +8,9 @@
       <table>
         <thead>
         <tr>
+          @if ($sortable)
+            <th nowrap width="12"></th>
+          @endif
           <th nowrap width="64"></th>
           <th nowrap width="88">
             @lang('cms.field.id')
@@ -25,6 +28,9 @@
           <th nowrap width="80"></th>
         </tr>
         <tr class="row--filter form">
+          @if ($sortable)
+            <th class="field"></th>
+          @endif
           <th class="field">
             <div class="holder">&nbsp</div>
           </th>
@@ -64,10 +70,15 @@
           </th>
         </tr>
         </thead>
-        <tbody>
+        <tbody @if ($sortable) class="js-sortable" data-model="{{ $globals['model'] }}" @endif>
         @if (count($models))
           @foreach($models as $model)
-            <tr>
+            <tr data-id="{{ $model->id }}">
+              @if ($sortable)
+                <td nowrap class="is-icon text--center has--icon">
+                  <i class="fas fa-bars js-sortable-handle"></i>
+                </td>
+              @endif
               <td nowrap class="cell--image text--center">
                 <img src="{{ $model->image }}">
               </td>

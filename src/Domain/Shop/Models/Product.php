@@ -4,6 +4,7 @@ namespace Domain\Shop\Models;
 
 use Domain\Shop\Models\Interfaces\HasUrl;
 use Domain\Shop\Models\Traits\HasActiveState;
+use Domain\Shop\Models\Traits\HasSorting;
 use Domain\Shop\Requests\CatalogRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,7 +43,7 @@ use Illuminate\Support\Facades\Session;
  */
 class Product extends Model implements HasUrl
 {
-    use HasActiveState, HasFactory;
+    use HasActiveState, HasSorting, HasFactory;
 
     protected $guarded = [];
 
@@ -92,7 +93,15 @@ class Product extends Model implements HasUrl
             $request = request();
         }
 
+        $builder->unless($request->sort, function (Builder $builder): Builder {
+            return $builder->orderBy('sort');
+        });
+
         $builder->when($request->sort, function (Builder $builder) use ($request): Builder {
+            if ($request->sort === 'relevance') {
+                return $builder->orderBy('sort');
+            }
+
             [$column, $type] = explode('.', $request->sort, 2);
 
             $realColumns = [
@@ -105,7 +114,6 @@ class Product extends Model implements HasUrl
 
             return $builder;
         });
-
 
         $builder->where('quantity', '>', 0);
 
@@ -141,7 +149,7 @@ class Product extends Model implements HasUrl
             return $builder->where('name', 'LIKE', '%'.request()->get('term').'%');
         });
 
-        return $builder;
+        return parent::scopeFilter($builder, false);
     }
 
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
@@ -160,7 +168,7 @@ class Product extends Model implements HasUrl
             return $builder->where('brand_id', request('brand_id'));
         });
 
-        return parent::scopeFilter($builder);
+        return parent::scopeFilter($builder, false);
     }
 
     public function getUrlAttribute(): string

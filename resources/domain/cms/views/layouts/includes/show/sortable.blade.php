@@ -1,6 +1,6 @@
 @php /** @var string $relation */ @endphp
 
-<sectopn>
+<section>
   <div class="subheading">
     <div class="heading-text">
       <h2>{{ __("cms.model.{$relation}") }}</h2>
@@ -8,4 +8,4 @@
   </div>
 
   {{ $slot }}
-</sectopn>
+</section>
