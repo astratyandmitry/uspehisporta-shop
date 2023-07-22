@@ -14,7 +14,7 @@
 
           @if ($category->about)
             <div class="heading-body">
-              {{ $category->about }}
+              {!! $category->about !!}
             </div>
           @endif
         </div>
