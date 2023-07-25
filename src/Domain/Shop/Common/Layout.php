@@ -32,7 +32,7 @@ class Layout
 
     private function setupData(): void
     {
-        $this->data['categories'] = Category::query()->whereNull('parent_id')->withCount('products')->get();
+        $this->data['categories'] = Category::query()->whereNull('parent_id')->get();
         $this->data['settings'] = Settings::options();
     }
 

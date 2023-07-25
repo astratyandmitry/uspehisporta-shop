@@ -34,7 +34,7 @@ class ProductsController extends Controller
 
     public function index(): View
     {
-        $this->sortable = ! is_null(request('category_id'));
+        $this->sortable = true;
 
         return $this->view([
             'models' => Product::filter()->paginate($this->paginationSize()),
@@ -65,6 +65,8 @@ class ProductsController extends Controller
             $this->getAttributesFromRequest($request)
         );
 
+        $model->categories()->sync($request->categories_ids);
+
         return $this->redirectSuccess('show', ['product' => $model->id]);
     }
 
@@ -86,6 +88,8 @@ class ProductsController extends Controller
         $model->update(
             $this->getAttributesFromRequest($request)
         );
+
+        $model->categories()->sync($request->categories_ids);
 
         return $this->redirectSuccess('show', ['product' => $model->id]);
     }
@@ -116,7 +120,7 @@ class ProductsController extends Controller
 
         $quantity = count($variations) ? array_sum(array_column($variations, 'quantity')) : $request->get('quantity');
 
-        return array_merge($request->validated(), [
+        return array_merge($request->except('categories_ids'), [
             'quantity' => $quantity,
             'variations' => $variations,
             'gallery' => $gallery,

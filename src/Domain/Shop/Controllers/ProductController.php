@@ -17,14 +17,6 @@ class ProductController extends Controller
             ->setMeta($product)
             ->addCatalogBreadcrumb();
 
-        if ($product->category->parent) {
-            $this->layout->addBreadcrumb($product->category->parent->name, $product->category->parent->url());
-        }
-
-        $this->layout
-            ->addBreadcrumb($product->category->name, $product->category->url())
-            ->addBreadcrumb($product->name);
-
         return $this->view('product.show', [
             'product' => $product,
         ]);

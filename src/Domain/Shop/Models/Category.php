@@ -6,6 +6,7 @@ use Domain\Shop\Models\Interfaces\HasUrl;
 use Domain\Shop\Models\Traits\HasActiveState;
 use Domain\Shop\Models\Traits\HasSorting;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -56,9 +57,9 @@ class Category extends Model implements HasUrl
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    public function products(): HasMany
+    public function products(): BelongsToMany
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class, 'category_product', 'category_id', 'product_id');
     }
 
     public function getRouteKeyName(): string

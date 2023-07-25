@@ -23,3 +23,18 @@ function image_url(?string $image = null): ?string
 {
     return $image;
 }
+
+function checkArraySimilarity($array1, $array2) {
+    // Convert arrays to sets to efficiently check for common elements
+    $set1 = array_flip($array1);
+    $set2 = array_flip($array2);
+
+    // Check for common elements
+    foreach ($set1 as $element => $_) {
+        if (isset($set2[$element])) {
+            return true;
+        }
+    }
+
+    return false;
+}

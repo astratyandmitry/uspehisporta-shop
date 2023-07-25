@@ -19,14 +19,6 @@
             </tr>
             <tr>
               <td class="cell--key">
-                @lang('cms.field.category_id')
-              </td>
-              <td>
-                {{ $model->category->name }}
-              </td>
-            </tr>
-            <tr>
-              <td class="cell--key">
                 @lang('cms.field.brand_id')
               </td>
               <td>

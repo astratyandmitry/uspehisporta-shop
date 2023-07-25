@@ -2,10 +2,6 @@
 
 @extends('shop::layouts.master')
 
-@section('subtitle')
-  @include('shop::product.partials.show-detail')
-@endsection
-
 @section('content')
   <div class="product-card">
     <div class="product" id="product">

@@ -9,6 +9,7 @@ use Domain\Shop\Requests\CatalogRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -34,7 +35,10 @@ use Illuminate\Support\Facades\Session;
  * @property boolean $hot_sale
  * @property integer $count_views
  *
+ * @property-read array $categories_ids
+ *
  * @property \Domain\Shop\Models\Category $category
+ * @property \Domain\Shop\Models\Category[]|\Illuminate\Database\Eloquent\Collection $categories
  * @property \Domain\Shop\Models\Brand $brand
  * @property \Domain\Shop\Models\Review[]|\Illuminate\Database\Eloquent\Collection $reviews
  *
@@ -65,6 +69,11 @@ class Product extends Model implements HasUrl
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
     }
 
     public function brand(): BelongsTo
@@ -118,11 +127,15 @@ class Product extends Model implements HasUrl
         $builder->where('quantity', '>', 0);
 
         $builder->when($request->category, function (Builder $builder) use ($request): Builder {
-            return $builder->whereIn('category_id', explode(',', $request->category));
+            return $builder->whereHas('categories', function (Builder $builder) use ($request): Builder {
+                return $builder->whereIn('id', explode(',', $request->category));
+            });
         });
 
         $builder->when($request->category_id, function (Builder $builder) use ($request): Builder {
-            return $builder->whereIn('category_id', explode(',', $request->category_id));
+            return $builder->whereHas('categories', function (Builder $builder) use ($request): Builder {
+                return $builder->whereIn('id', explode(',', $request->category_id));
+            });
         });
 
         $builder->when($request->brand, function (Builder $builder) use ($request): Builder {
@@ -201,5 +214,10 @@ class Product extends Model implements HasUrl
         $this->update([
             'rating' => number_format((float) $this->reviews->avg('rating'), 1, '.', ''),
         ]);
+    }
+
+    public function getCategoriesIdsAttribute(): array
+    {
+        return $this->categories?->pluck('id')?->toArray() ?? [];
     }
 }

@@ -6,7 +6,6 @@ use Domain\Shop\Models\Product;
 
 /**
  * @property string $hru
- * @property integer $category_id
  * @property integer $brand_id
  * @property integer|null $quantity
  * @property integer $price
@@ -19,6 +18,7 @@ use Domain\Shop\Models\Product;
  * @property string|null $badges
  * @property boolean $active
  * @property boolean $featured
+ * @property array $categories_ids
  */
 class ProductRequest extends Request
 {
@@ -31,7 +31,7 @@ class ProductRequest extends Request
             ->addUniqueRule('hru', Product::getTableName())
             ->addMetaRules()
             ->addRules([
-                'category_id' => 'required|exists:categories,id',
+                'categories_ids' => 'required|array',
                 'brand_id' => 'required|exists:brands,id',
                 'quantity' => 'nullable',
                 'price' => 'required|integer|min:1',

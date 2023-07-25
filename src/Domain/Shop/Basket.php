@@ -41,8 +41,9 @@ class Basket
     {
         $discount = 0;
 
+        /** @var \Domain\Shop\Models\Basket $basket */
         foreach ($this->baskets as $basket) {
-            if (in_array($basket->product->category_id, $promo->categories)) {
+            if (checkArraySimilarity($promo->categories, $basket->product->categories_ids)) {
                 $discount += $basket->total * $promo->discount;
             }
         }

@@ -5,8 +5,9 @@
     <div class="form-grid form-grid--2">
       @include('cms::layouts.includes.form.field.dropdown-grouped', [
           'label' => __('cms.field.category_id'),
-          'attribute' => 'category_id',
+          'attribute' => 'categories_ids[]',
           'required' => true,
+          'multiple' => true,
           'options' => $data['categories'],
       ])
 
