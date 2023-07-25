@@ -1,9 +1,11 @@
 <?php
 
+use Domain\Shop\Models\Promo;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('mail', function() {
+Route::get('mail', function () {
     return new \Domain\Shop\Mails\OrderMail(\Domain\Shop\Models\Order::first());
 });
 
@@ -22,6 +24,19 @@ Route::post('/basket/decrease', 'BasketController@decrease')->name('basket.decre
 Route::delete('/basket/{id}', 'BasketController@destroy')->name('basket.destroy');
 Route::get('/checkout', 'OrderFormController')->name('order-form');
 Route::post('/order', 'OrderCheckoutController')->name('checkout');
+
+Route::any('/promo-code/{code}', function (string $code): JsonResponse {
+    /** @var \Domain\Shop\Models\Promo $promo */
+    $promo = Promo::query()
+        ->where('code', $code)
+        ->where('date_start', '<=', now())
+        ->where('date_end', '>=', now())
+        ->first();
+
+    return response()->json([
+        'discount' => $promo->discount ?? 0,
+    ]);
+});
 
 Route::middleware('shop.signed')->group(function (): void {
     Route::get('/catalog/product/{hru}/review', 'ProductReviewController@form')->name('product.review');

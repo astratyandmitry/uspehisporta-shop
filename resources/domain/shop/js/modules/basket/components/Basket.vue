@@ -60,10 +60,38 @@
               ₽{{ total | formatPrice }}
             </div>
           </div>
+
+          <div class="basket-info__item">
+            <div class="basket-info__content">
+              <div class="basket-info__label">
+                Итог
+              </div>
+            </div>
+
+            <div class="basket-info__value">
+              ₽{{ total | formatPrice }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-top: 2rem">
+          <label class="form-label" for="promo">Промо-код:</label>
+          <div class="promo">
+            <input type="text" id="promo" class="form-input" v-model="promo.code" placeholder="Введите промо-код">
+            <button type="button" class="i-button" style="margin-left: 0.5rem" @click="checkPromoCode">Проверить</button>
+          </div>
+
+          <div class="form-help form-help--success" v-if="promo.discount">
+            Промо-код действителен, скидка {{ promo.discount }}% на определнную продукцию, детали можно увидеть на странице оформления заказа
+          </div>
+
+          <div class="form-help form-help--error" v-else-if="promo.error">
+            Промо-код не найден или уже недействителен
+          </div>
         </div>
 
         <div class="basket-actions">
-          <a href="/checkout" class="i-button i-button--full i-button--fill" type="button">
+          <a :href="`/checkout?promo=${promo.code}`" class="i-button i-button--full i-button--fill" type="button">
             <span>Оформить заказ</span>
           </a>
         </div>
@@ -73,6 +101,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import BasketItem from './BasketItem'
 
 export default {
@@ -93,6 +122,11 @@ export default {
       items: [],
       amount: 0,
       loading: false,
+      promo: {
+        code: '',
+        discount: 0,
+        error: false,
+      }
     }
   },
   created() {
@@ -108,6 +142,26 @@ export default {
     },
   },
   methods: {
+    checkPromoCode() {
+      this.promo.discount = 0
+      this.promo.success = false
+      this.promo.error = false
+
+      if (!this.promo.code) {
+        this.promo.error = true;
+        return;
+      }
+
+      axios.post(`/promo-code/${this.promo.code}`)
+        .then(({data}) => {
+          if (data.discount) {
+            this.promo.discount = data.discount
+          } else {
+            this.promo.error = true
+          }
+        })
+        .catch(() => this.promo.error = true)
+    },
     updateItem({id, total}) {
       let item = this.items.find((item) => item.id === id)
       let _index = this.items.indexOf(item)
@@ -143,3 +197,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.promo {
+  display: flex;
+  align-items: center;
+}
+</style>

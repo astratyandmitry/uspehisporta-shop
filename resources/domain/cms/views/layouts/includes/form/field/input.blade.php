@@ -24,6 +24,7 @@
     @if (isset($tabindex)) tabindex="{{ $tabindex }}" @endif
     @if (isset($disabled) && $disabled) disabled @endif
     @if (isset($required) && $required) required @endif
+    @if (isset($step) && $step) step="{{ $step }}" @endif
     @if (isset($autofocus) && $autofocus) autofocus @endif
   />
 

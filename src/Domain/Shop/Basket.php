@@ -3,6 +3,7 @@
 namespace Domain\Shop;
 
 use Domain\Shop\Models\Basket as BasketModel;
+use Domain\Shop\Models\Promo;
 use Domain\Shop\Repositories\BasketRepository;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -34,5 +35,18 @@ class Basket
 
             return $basket->product->price() * $basket->count;
         });
+    }
+
+    public function discount(Promo $promo): int
+    {
+        $discount = 0;
+
+        foreach ($this->baskets as $basket) {
+            if (in_array($basket->product->category_id, $promo->categories)) {
+                $discount += $basket->total * $promo->discount;
+            }
+        }
+
+        return $discount;
     }
 }

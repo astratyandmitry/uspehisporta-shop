@@ -41,5 +41,6 @@ Route::middleware('cms.signed')->group(function (): void {
         'managers' => 'ManagersController',
         'faqs' => 'FaqsController',
         'testimonials' => 'TestimonialsController',
+        'promos' => 'PromosController',
     ]);
 });

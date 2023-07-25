@@ -9,6 +9,16 @@
         <div class="table table--card">
           <table>
             @include('cms::layouts.includes.show.detail_id')
+            @if ($model->promo)
+              <tr>
+                <td class="cell--key">
+                  Промо-код
+                </td>
+                <td>
+                  {{ $model->promo->code }} ({{ $model->promo->discount * 100 }}%)
+                </td>
+              </tr>
+            @endif
             <tr>
               <td class="cell--key">
                 @lang('cms.field.client')
@@ -111,9 +121,16 @@
                   </td>
                 </tr>
               @endif
+              @if ($model->discount)
+                <tr>
+                  <td colspan="4" style="text-align: right; background: #fafafa">
+                    Скидка -₽{{ number_format($model->discount) }}
+                  </td>
+                </tr>
+              @endif
               <tr>
                 <th colspan="4" style="text-align: right; font-size: 16px">
-                  Итого ₽{{ number_format($model->total) }}
+                  Итого ₽{{ number_format($model->total + $model->delivery_price - (int) $model->discount) }}
                 </th>
               </tr>
             </table>

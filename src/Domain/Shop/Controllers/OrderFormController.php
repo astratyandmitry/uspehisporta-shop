@@ -2,6 +2,7 @@
 
 namespace Domain\Shop\Controllers;
 
+use Domain\Shop\Models\Promo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -15,6 +16,14 @@ class OrderFormController extends Controller
 
         $this->setup(PAGE_CHECKOUT);
 
-        return $this->view('order.form');
+        $promo = Promo::query()
+            ->where('code', request()->query('promo'))
+            ->where('date_start', '<=', now())
+            ->where('date_end', '>=', now())
+            ->first();
+
+        return $this->view('order.form', [
+            'promo' => $promo,
+        ]);
     }
 }

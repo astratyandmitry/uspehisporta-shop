@@ -21,6 +21,11 @@
               @lang('cms.model.products')
             </a>
           </li>
+          <li {{ isActive($model == 'promos') }}>
+            <a href="{{ route('cms::promos.index') }}">
+              @lang('cms.model.promos')
+            </a>
+          </li>
           <li class="is-divider">
             <span>&middot;</span>
           </li>

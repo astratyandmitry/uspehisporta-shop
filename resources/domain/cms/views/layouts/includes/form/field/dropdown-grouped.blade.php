@@ -1,18 +1,18 @@
 <div class="field @if ($errors->has($attribute)) field--error @endif">
   @if (isset($label))
     <label for="{{ $attribute }}">
-            <span>
-                {{ $label }}
+      <span>
+        {{ $label }}
 
-              @if (isset($required) && $required == true)
-                <strong>*</strong>
-              @endif
-            </span>
+        @if (isset($required) && $required == true)
+          <strong>*</strong>
+        @endif
+      </span>
 
       @if (isset($helper))
         <span class="text--detail">
-                    {!! $helper !!}
-                </span>
+          {!! $helper !!}
+        </span>
       @endif
     </label>
   @endif
@@ -23,8 +23,11 @@
     @if (isset($disabled) && $disabled) disabled @endif
     @if (isset($required) && $required) required @endif
     @if (isset($autofocus) && $autofocus) autofocus @endif
+    @if (isset($multiple) && $multiple) multiple @endif
   >
-    <option selected>{{ (isset($placeholder)) ? $placeholder : '...' }}</option>
+    @if (!isset($multiple))
+      <option selected>{{ (isset($placeholder)) ? $placeholder : '...' }}</option>
+    @endif
     @foreach($options as $group => $data)
       @if (is_array($data))
         <optgroup label="{{ $group }}">

@@ -6,6 +6,7 @@ use Domain\Shop\Basket;
 use Domain\Shop\Models\Basket as BasketModel;
 use Domain\Shop\Models\Order;
 use Domain\Shop\Models\OrderItem;
+use Domain\Shop\Models\Promo;
 use Domain\Shop\Requests\OrderRequest;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -53,6 +54,22 @@ class OrdersRepository
 
         if ($user_id = auth(SHOP_GUARD)->id()) {
             $order->user_id = $user_id;
+        }
+
+        if ($request->promo_code) {
+            /** @var \Domain\Shop\Models\Promo $promo */
+            $promo = Promo::query()
+                ->where('code', $request->promo_code)
+                ->where('date_start', '<=', now())
+                ->where('date_end', '>=', now())
+                ->first();
+
+            if ($promo) {
+                if ($discount = $basket->discount($promo)) {
+                    $order->promo_id = $promo->id;
+                    $order->discount = $discount;
+                }
+            }
         }
 
         $order->save();

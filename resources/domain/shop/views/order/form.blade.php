@@ -1,5 +1,6 @@
 @php /** @var \Domain\Shop\Models\Basket[] $baskets */ @endphp
 @php /** @var \Domain\Shop\Common\Layout $layout */ @endphp
+@php /** @var \Domain\Shop\Models\Promo $promo */ @endphp
 
 @extends('shop::layouts.master', ['layout' => $layout])
 
@@ -118,6 +119,30 @@
                 </div>
               </div>
 
+              @php  $discount = 0 @endphp
+
+              @if ($promo)
+                @if ($discount = app('basket')->discount($promo))
+                  <input type="hidden" value="{{ $promo->code }}" name="promo_code">
+
+                  <div class="basket-info__item">
+                    <div class="basket-info__content">
+                      <div class="basket-info__label">
+                        Скидка {{ $promo->discount * 100 }}%
+                      </div>
+
+                      <div class="basket-info__detail">
+                        На категории: {{ $promo->categories()->pluck('name')->implode(', ') }}
+                      </div>
+                    </div>
+
+                    <div class="basket-info__value">
+                      -₽{{ number_format($discount) }}
+                    </div>
+                  </div>
+                @endif
+              @endif
+
               <div class="basket-info__item">
                 <div class="basket-info__content">
                   <div class="basket-info__label">
@@ -126,7 +151,7 @@
                 </div>
 
                 <div class="basket-info__value">
-                  ₽{{ number_format(app('basket')->total() + config('shop.delivery_price')) }}
+                  ₽{{ number_format(app('basket')->total() + config('shop.delivery_price') - $discount) }}
                 </div>
               </div>
             </div>
@@ -138,7 +163,6 @@
             </div>
           </div>
         </div>
-
       </form>
     </div>
   </div>

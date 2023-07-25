@@ -10,6 +10,7 @@ namespace Domain\Shop\Requests;
  * @property string $postcode
  * @property string $phone
  * @property string $email
+ * @property string|null $promo_code
  */
 class OrderRequest extends Request
 {
@@ -23,6 +24,7 @@ class OrderRequest extends Request
             'postcode' => 'required|min:3',
             'phone' => 'required',
             'email' => 'required|email',
+            'promo_code' => 'nullable',
         ];
     }
 }

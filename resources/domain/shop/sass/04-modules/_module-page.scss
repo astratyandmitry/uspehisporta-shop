@@ -1,3 +1,11 @@
+.page__aside {
+  width: 400px;
+
+  @include mobile() {
+      width: auto;
+  }
+}
+
 .page {
   .page__grid {
     display: flex;

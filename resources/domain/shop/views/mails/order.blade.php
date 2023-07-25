@@ -12,6 +12,9 @@
 * **Телефон:** {{ $order->client_phone }}
 * **E-mail:** {{ $order->client_email }}
 * **Адрес:** {{ $order->delivery_address }}
+@if ($order->promo)
+* **Промо-код:** {{ $order->promo->code }} ({{ $order->promo->discount * 100 }}%)
+@endif
 
 @component('mail::table')
 | Товар                       |  Кол.                               | Сумма                               |
@@ -21,7 +24,10 @@
 @endforeach
 |  | Товары | **₽{{ price($order->total) }}** |
 |  | Доставка | **₽{{ price($order->delivery_price) }}** |
-|  | Итого | **₽{{ price($order->total + $order->delivery_price) }}** |
+@if ($order->discount)
+|  | Скидка | **-₽{{ price($order->discount) }}** |
+@endif
+|  | Итого | **₽{{ price($order->total + $order->delivery_price - (int) $order->discount) }}** |
 @endcomponent
 
 @component('mail::button', ['url' => $order->detailUrl()])

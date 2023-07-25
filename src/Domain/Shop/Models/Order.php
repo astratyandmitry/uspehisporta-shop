@@ -11,15 +11,18 @@ use Ramsey\Uuid\Uuid;
  * @property string $uuid
  * @property string $status_key
  * @property integer|null $user_id
+ * @property integer|null $promo_id
  * @property string $client_name
  * @property string $client_phone
  * @property string $client_email
  * @property string $delivery_address
  * @property integer $delivery_price
  * @property integer $total
+ * @property integer|null $discount
  * @property string|null $comment
  *
  * @property \Domain\Shop\Models\OrderStatus $status
+ * @property \Domain\Shop\Models\Promo $promo
  * @property \Domain\Shop\Models\User $user
  * @property \Domain\Shop\Models\OrderItem[] $items
  */
@@ -36,6 +39,8 @@ class Order extends Model
     protected $casts = [
         'user_id' => 'integer',
         'delivery_price' => 'integer',
+        'total' => 'integer',
+        'discount' => 'integer',
     ];
 
     public static function boot(): void
@@ -50,6 +55,11 @@ class Order extends Model
     public function status(): BelongsTo
     {
         return $this->belongsTo(OrderStatus::class, 'status_key', 'key');
+    }
+
+    public function promo(): BelongsTo
+    {
+        return $this->belongsTo(Promo::class);
     }
 
     public function user(): BelongsTo

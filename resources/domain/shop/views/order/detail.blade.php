@@ -71,12 +71,22 @@
               </th>
             </tr>
           @endif
+          @if ($order->discount)
+            <tr>
+              <th align="right" colspan="2">
+                <span>Скидка</span>
+              </th>
+              <th nowrap align="right">
+                -₽{{ price($order->discount) }}
+              </th>
+            </tr>
+          @endif
           <tr>
             <th align="right" colspan="2">
               <span>Итого</span>
             </th>
             <th nowrap align="right">
-              ₽{{ price($order->total + $order->delivery_price) }}
+              ₽{{ price($order->total + $order->delivery_price - (int) $order->discount) }}
             </th>
           </tr>
           </tfoot>
@@ -92,6 +102,17 @@
           ] @endphp
 
           <div class="detail__content">
+            @if ($order->promo)
+              <div class="section">
+                <div class="section__label">
+                  <span>Промо-код</span>
+                </div>
+                <div class="section__content">
+                  {{ $order->promo->code }} ({{ $order->promo->discount * 100 }}%)
+                </div>
+              </div>
+            @endif
+
             @foreach($detail as $key => $label)
               @continue(empty($order->{$key}))
               <div class="section">
