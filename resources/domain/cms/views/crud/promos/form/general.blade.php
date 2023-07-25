@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  @unless($model))
+{{--  @unless($model))--}}
     <div class="section">
       @include('cms::layouts.includes.form.field.dropdown-grouped', [
            'label' => __('cms.field.category_id'),
@@ -48,5 +48,5 @@
            'options' => $data['categories'],
        ])
     </div>
-  @endunless
+{{--  @endunless--}}
 </section>

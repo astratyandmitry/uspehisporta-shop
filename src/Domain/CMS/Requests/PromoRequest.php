@@ -18,13 +18,11 @@ class PromoRequest extends Request
     {
         $this->rulesBuilder
             ->addUniqueRule('code', Promo::getTableName())
-            ->addRulesWhen($this->isMethod('POST'), [
-                'categories' => 'required|array',
-            ])
             ->addRules([
                 'discount' => 'required|numeric|min:0.05|max:0.95',
                 'date_start' => 'required|date',
                 'date_end' => 'required|date|after:date_start',
+                'categories' => 'required|array',
                 'active' => 'boolean',
             ]);
     }
