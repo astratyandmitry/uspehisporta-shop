@@ -18,6 +18,7 @@ class CategoryRequest extends Request
     {
         $this->rulesBuilder
             ->addUniqueRule('hru', Category::getTableName())
+            ->addUniqueRule('name', Category::getTableName())
             ->addMetaRules()
             ->addRulesWhen(! is_null($this->get('parent_id')), [
                 'parent_id' => 'required|exists:categories,id',
