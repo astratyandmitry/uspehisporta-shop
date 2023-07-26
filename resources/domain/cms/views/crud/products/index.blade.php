@@ -18,6 +18,9 @@
           <th nowrap>
             @lang('cms.field.info')
           </th>
+          <th nowrap width="320">
+            @lang('cms.field.category_id')
+          </th>
           <th nowrap width="200">
             @lang('cms.field.brand_id')
           </th>
@@ -41,6 +44,13 @@
             @include('cms::layouts.includes.form.filter.input', [
                'placeholder' => __('cms.field.info'),
                'attribute' => 'info',
+           ])
+          </th>
+          <th class="field">
+            @include('cms::layouts.includes.form.filter.dropdown-grouped', [
+               'placeholder' => __('cms.all'),
+               'attribute' => 'category_id',
+               'options' => $data['categories'],
            ])
           </th>
           <th class="field">
@@ -77,7 +87,7 @@
                   {{ hid($model->id) }}
                 </div>
               </td>
-              <td nowrap>
+              <td nowrap colspan="2">
                 <div class="text--label">
                   {{ $model->name }}
                 </div>

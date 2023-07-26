@@ -10,6 +10,10 @@
   @include radius($radius);
 }
 
+.select2-selection__choice {
+  line-height: 30px !important;
+}
+
 .select2-selection__arrow {
   height: 44px !important;
   right: .750em !important;
