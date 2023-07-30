@@ -15,7 +15,7 @@
 
           <span class="header-basket__info">
             <span class="header-basket__label">Корзина</span>
-            <span class="header-basket__value">₽{{ number_format(app('basket')->total()) }}</span>
+            <span class="header-basket__value" id="basket-total">₽{{ number_format(app('basket')->total()) }}</span>
           </span>
         </a>
       </div>

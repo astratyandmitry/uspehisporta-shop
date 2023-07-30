@@ -115,6 +115,8 @@ export default {
       axios.post(endpoint, data)
         .then(({ data }) => {
           this.$set(this.added, this.product_id, this.count = data.count)
+
+          window.document.getElementById('basket-total').innerText = data.total
         })
     },
     handle () {

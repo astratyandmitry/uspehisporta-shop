@@ -37,6 +37,7 @@ class BasketController extends Controller
 
         return response()->json([
             'count' => $basket->count,
+            'total' => '₽' . number_format(app('basket')->total()),
         ]);
     }
 
@@ -56,6 +57,7 @@ class BasketController extends Controller
 
         return response()->json([
             'count' => $basket->count,
+            'total' => '₽' . number_format(app('basket')->total()),
         ]);
     }
 
@@ -78,6 +80,7 @@ class BasketController extends Controller
 
         return response()->json([
             'count' => $basket->count,
+            'total' => '₽' . number_format(app('basket')->total()),
         ]);
     }
 

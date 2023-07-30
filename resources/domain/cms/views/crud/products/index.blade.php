@@ -87,7 +87,7 @@
                   {{ hid($model->id) }}
                 </div>
               </td>
-              <td nowrap colspan="2">
+              <td nowrap>
                 <div class="text--label">
                   {{ $model->name }}
                 </div>
@@ -100,6 +100,19 @@
                     ₽{{ price($model->price) }}
                   @endif
                 </div>
+              </td>
+              <td nowrap>
+                @if ($model->categories->isNotEmpty())
+                  <div class="text--label">
+                    {{ $model->categories->implode('name', ', ') }}
+                  </div>
+                @else
+                  <div class="text--detail">
+                    <div class="badge">
+                      @lang('cms.null')
+                    </div>
+                  </div>
+                @endif
               </td>
               <td>
                 <div class="text--label">
