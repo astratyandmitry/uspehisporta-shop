@@ -5,7 +5,7 @@
     <div class="categories__content">
       <div class="categories__main">
         <a href="{{ route('shop::catalog', ['featured' => true]) }}" class="category category--main">
-          <img class="category-image" src="/images/home/sales.png">
+          <img class="category-image" src="/images/home/sales.png?2">
         </a>
       </div>
 
