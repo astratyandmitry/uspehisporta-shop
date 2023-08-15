@@ -1,5 +1,5 @@
-<div class="chat-modal" x-data="{open: true}" x-show="open && !localStorage.getItem('modalChatClosed')">
-  <div class="chat-modal__backdrop" x-on:click="closeModal(() => open = false)"></div>
+<div class="chat-modal" style="display: none">
+  <div class="chat-modal__backdrop js-close-modal"></div>
   <div class="chat-modal__content">
     <div class="chat-message">
       <h2>Важное сообщение</h2>
@@ -17,18 +17,27 @@
       </p>
 
       <p>
-        <button class="chat-message__close" x-on:click="closeModal(() => open = false)">Закрыть</button>
+        <button class="chat-message__close js-close-modal">Закрыть</button>
       </p>
     </div>
   </div>
 </div>
 
 @push('scripts')
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  <script
+    src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+    crossorigin="anonymous"></script>
+
   <script>
-    function closeModal(callback) {
-      callback();
-      localStorage.setItem('modalChatClosed', 'true');
+    if (! localStorage.getItem('modalChatClosed', 'true')) {
+      $('.chat-modal').fadeIn(200);
     }
+
+    $('.js-close-modal').on('click', function() {
+      $('.chat-modal').fadeOut(200);
+      localStorage.setItem('modalChatClosed', 'true');
+    });
+
   </script>
 @endpush
