@@ -74,10 +74,11 @@ class Category extends Model implements HasUrl
 
     public function productsCount(): int
     {
-        return $this->children->isNotEmpty() ? $this->children->sum(fn(Category $child) => $child->products()->count()) : $this->products_count;
+        return $this->children->isNotEmpty() ? $this->children->sum(fn(Category $child
+        ) => $child->products()->count()) : $this->products_count;
     }
 
-    public static function groupedOptions(): array
+    public static function groupedOptions(bool $withAllOptions = false): array
     {
         /** @var \Domain\Shop\Models\Category[] $parentCategories */
         $parentCategories = Category::query()->whereNull('parent_id')->with(['children'])->get();
@@ -88,6 +89,10 @@ class Category extends Model implements HasUrl
             if ($parentCategory->children->isEmpty()) {
                 $options[$parentCategory->id] = $parentCategory->name;
             } else {
+                if ($withAllOptions) {
+                    $options[$parentCategory->name]["{$parentCategory->id}_all"] = "ВСЕ: {$parentCategory->name}";
+                }
+
                 foreach ($parentCategory->children as $child) {
                     $options[$parentCategory->name][$child->id] = $child->name;
                 }

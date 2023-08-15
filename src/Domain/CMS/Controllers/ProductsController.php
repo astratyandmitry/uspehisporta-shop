@@ -34,6 +34,8 @@ class ProductsController extends Controller
 
     public function index(): View
     {
+        $this->with('categories', Category::groupedOptions(true));
+
         $this->sortable = ! is_null(request('category_id'));
 
         return $this->view([

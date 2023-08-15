@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 /**
  * @property integer $category_id
@@ -168,13 +169,23 @@ class Product extends Model implements HasUrl
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
         $builder->when(request('info'), function (Builder $builder): Builder {
-            return $builder
-                ->where('name', 'LIKE', '%'.request()->get('info').'%')
-                ->orWhere('hru', 'LIKE', '%'.request()->get('info').'%');
+            return $builder->where(function (Builder $builder): Builder {
+                return $builder->where('name', 'LIKE', '%'.request()->get('info').'%')
+                    ->orWhere('hru', 'LIKE', '%'.request()->get('info').'%');
+            });
         });
 
         $builder->when(request('category_id'), function (Builder $builder): Builder {
-            return $builder->where('category_id', request('category_id'));
+            return $builder->whereHas('categories', function (Builder $builder): Builder {
+                if (Str::contains(request('category_id'), '_all')) {
+                    /** @var \Domain\Shop\Models\Category $category */
+                    $category = Category::query()->find(Str::before(request('category_id'), '_all'));
+
+                    return $builder->whereIn('id', $category->children->pluck('id'));
+                }
+
+                return $builder->where('id', request('category_id'));
+            });
         });
 
         $builder->when(request('brand_id'), function (Builder $builder): Builder {
