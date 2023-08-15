@@ -345,6 +345,7 @@ input {
     box-shadow:  0 8px 16px rgba(0, 0, 0, .08);
     padding: 2rem;
     text-align: center;
+
     @include radius();
 
     .chat-message__close {
@@ -352,6 +353,8 @@ input {
       font-size: 14px;
       color: rgba($color-black, .50);
       cursor: pointer;
+      background: transparent;
+      border: none;
       border-bottom: 1px dashed rgba($color-black, .24);
       display: inline-block;
 
