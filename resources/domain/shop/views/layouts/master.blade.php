@@ -16,6 +16,8 @@
 </head>
 <body class="preload" tabindex="0">
 
+@include('shop::layouts.partials.chat-modal')
+
 <section id="shop" class="app">
   @include('shop::layouts.partials.nav')
 
@@ -34,7 +36,23 @@
   <div class="loader"></div>
 </section>
 
-
+<script id="chatBroEmbedCode">/* Chatbro Widget Embed Code Start */
+    function ChatbroLoader(chats, async) {
+        async = !1 !== async;
+        var params = {
+            embedChatsParameters: chats instanceof Array ? chats : [chats],
+            lang: navigator.language || navigator.userLanguage,
+            needLoadCode: 'undefined' == typeof Chatbro,
+            embedParamsVersion: localStorage.embedParamsVersion,
+            chatbroScriptVersion: localStorage.chatbroScriptVersion
+        }, xhr = new XMLHttpRequest;
+        xhr.withCredentials = !0, xhr.onload = function () {
+            eval(xhr.responseText)
+        }, xhr.onerror = function () {
+            console.error('Chatbro loading error')
+        }, xhr.open('GET', 'https://www.chatbro.com/embed.js?' + btoa(unescape(encodeURIComponent(JSON.stringify(params)))), async), xhr.send()
+    }/* Chatbro Widget Embed Code End */
+    ChatbroLoader({encodedChatId: '08wBX'});</script>
 <script src="{{ mix('/assets/shop/js/app.js') }}"></script>
 @stack('scripts')
 
