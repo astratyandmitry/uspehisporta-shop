@@ -51,7 +51,6 @@
       @include('cms::layouts.includes.form.field.dropdown-grouped', [
            'label' => __('cms.field.brand_id'),
            'attribute' => 'brands[]',
-           'required' => true,
            'multiple' => true,
            'options' => $data['brands'],
        ])
