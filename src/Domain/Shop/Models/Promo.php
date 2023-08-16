@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 /**
  * @property string $code
  * @property array $categories
+ * @property array $brands
  * @property float $discount
  * @property \Carbon\Carbon $date_start
  * @property \Carbon\Carbon $date_end
@@ -29,11 +30,14 @@ class Promo extends Model
      */
     protected $casts = [
         'categories' => 'array',
+        'brands' => 'array',
         'discount' => 'float',
         'active' => 'boolean',
     ];
 
     protected ?Collection $_categories = null;
+
+    protected ?Collection $_brands = null;
 
     public static function scopeFilter(Builder $builder, bool $applyOrder = true): Builder
     {
@@ -57,5 +61,20 @@ class Promo extends Model
         }
 
         return $this->_categories;
+    }
+
+    public function brands(): Collection
+    {
+        if ($this->_brands === null) {
+            if (is_array($this->brands) && count($this->brands)) {
+                $this->_brands = Brand::query()
+                    ->whereIn('id', $this->brands)
+                    ->get();
+            } else {
+                $this->_brands = collect();
+            }
+        }
+
+        return $this->_brands;
     }
 }

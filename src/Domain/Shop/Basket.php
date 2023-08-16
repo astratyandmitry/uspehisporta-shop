@@ -40,10 +40,15 @@ class Basket
     public function discount(Promo $promo): int
     {
         $discount = 0;
-
         /** @var \Domain\Shop\Models\Basket $basket */
         foreach ($this->baskets as $basket) {
             if (checkArraySimilarity($promo->categories, $basket->product->categories_ids)) {
+                if (is_array($promo->brands) && count($promo->brands)) {
+                    if (! in_array($basket->product->brand_id, $promo->brands)) {
+                        continue;
+                    }
+                }
+
                 $discount += $basket->total * $promo->discount;
             }
         }
