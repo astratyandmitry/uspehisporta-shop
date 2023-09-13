@@ -7,6 +7,8 @@
 
 @section('content')
   <div class="home">
+    @include('shop::home.partials.banners')
+
     @include('shop::home.partials.categories')
 
     <div class="home-main">

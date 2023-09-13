@@ -21,6 +21,11 @@
               @lang('cms.model.products')
             </a>
           </li>
+          <li {{ isActive($model == 'banners') }}>
+            <a href="{{ route('cms::banners.index') }}">
+              @lang('cms.model.banners')
+            </a>
+          </li>
           <li {{ isActive($model == 'promos') }}>
             <a href="{{ route('cms::promos.index') }}">
               @lang('cms.model.promos')
