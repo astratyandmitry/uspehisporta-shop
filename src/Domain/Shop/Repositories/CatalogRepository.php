@@ -14,6 +14,11 @@ class CatalogRepository
         return Product::catalog($request)->paginate(25);
     }
 
+    public function all(CatalogRequest $request): LengthAwarePaginator
+    {
+        return Product::catalog($request)->get();
+    }
+
     public function latest(): Collection
     {
         return Product::catalog()->orderByDesc('created_at')->limit(8)->get();

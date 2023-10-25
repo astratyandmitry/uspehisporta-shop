@@ -77,7 +77,9 @@ class Catalog
         $this->products = (new CatalogRepository)->find($this->request);
         $this->total = $this->products->total();
 
-        $brandsInProducts = $this->products->pluck('brand_id')->toArray();
+        $allProducts = (new CatalogRepository())->find($this->request);
+
+        $brandsInProducts = $allProducts->pluck('brand_id')->toArray();
 
         $this->brands = $this->brands->filter(function (Brand $brand) use ($brandsInProducts) {
             return in_array($brand->id, $brandsInProducts);
