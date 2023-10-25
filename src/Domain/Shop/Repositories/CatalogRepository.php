@@ -14,7 +14,7 @@ class CatalogRepository
         return Product::catalog($request)->paginate(25);
     }
 
-    public function all(CatalogRequest $request): LengthAwarePaginator
+    public function all(CatalogRequest $request): Collection
     {
         return Product::catalog($request)->get();
     }
