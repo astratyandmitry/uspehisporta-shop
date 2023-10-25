@@ -77,7 +77,7 @@ class Catalog
         $this->products = (new CatalogRepository)->find($this->request);
         $this->total = $this->products->total();
 
-        $allProducts = (new CatalogRepository())->find($this->request);
+        $allProducts = (new CatalogRepository())->all($this->request);
 
         $brandsInProducts = $allProducts->pluck('brand_id')->toArray();
 
